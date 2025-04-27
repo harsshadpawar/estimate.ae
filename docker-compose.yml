@@ -1,0 +1,74 @@
+version: '3.8'
+
+services:
+  web:
+    build:
+      context: ./server   # path to Flask backend
+      dockerfile: Dockerfile          # Flask Dockerfile
+    volumes: 
+      - ./server:/app                 # Mounts backend code for live reloading
+    ports:
+      - "5001:5000"
+    environment:
+      - FLASK_ENV=${FLASK_ENV}
+      - FLASK_APP=${FLASK_APP}
+      - POSTGRES_HOST=${POSTGRES_HOST}
+      - POSTGRES_PORT=${POSTGRES_PORT}
+      - POSTGRES_DB=${POSTGRES_DB}
+      - POSTGRES_USER=${POSTGRES_USER}
+      - POSTGRES_PASSWORD=${POSTGRES_PASSWORD}
+      - DATABASE_URL=${DATABASE_URL}
+      - AWS_ACCESS_KEY_ID=${AWS_ACCESS_KEY_ID}
+      - AWS_SECRET_ACCESS_KEY=${AWS_SECRET_ACCESS_KEY}
+      - AWS_DEFAULT_REGION=${AWS_DEFAULT_REGION}
+    env_file:
+      - .env
+    depends_on:
+      db:
+        condition: service_healthy
+    command: watchmedo auto-restart --recursive --patterns="*.py" -- flask run --host=0.0.0.0
+
+  db:
+    image: postgres:13
+    environment:
+      POSTGRES_DB: ${POSTGRES_DB}
+      POSTGRES_USER: ${POSTGRES_USER}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+    ports:
+      - "5432:5432"
+    env_file:
+      - .env
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U ${POSTGRES_USER}"]
+      interval: 5s
+      retries: 5
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+
+   # Frontend client service for development
+  
+  client_dev:
+    build:
+      context: ./client
+      dockerfile: Dockerfile.dev          # Dedicated Dockerfile for development
+    volumes:
+      - ./client:/app                     # Mount frontend code for live reloading
+      - /app/node_modules                 # Avoid reinstalling dependencies
+    ports:
+      - "3000:3000"                       # Vite's default development server port
+    environment:
+      - CHOKIDAR_USEPOLLING=true
+    command: npm run dev -- --host
+
+  # Frontend client service for production
+  client_prod:
+    build:
+      context: ./client
+      dockerfile: Dockerfile.prod         # Dedicated Dockerfile for production
+    ports:
+      - "80:80"                           # Serve via Nginx or other static server
+    depends_on:
+      - web                               # Ensure backend starts first
+
+volumes:
+  pgdata:
