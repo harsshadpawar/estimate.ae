@@ -1,115 +1,42 @@
 {
-  "model_name": "Part2",
+  "model_name": "BLOCK",
   "parts": [
     {
       "part_number": 0,
-      "part_name": "Part2",
+      "part_name": "BLOCK 1",
       "solid_number": 0,
       "issues": {
-        "Non Standard Radius Milled Part Floor Fillet": {
+        "Deep Pocket": {
           "count": 1,
           "details": [
             {
               "count": 1,
-              "type": "Floor Fillet",
+              "type": "Pocket",
               "properties": {
-                "nearest standard radius": 0.75,
-                "actual radius": 0.7366
+                "expected max depth": 40.00000000000001,
+                "actual depth": 100.0
               }
             }
           ]
         },
         "Small Radius Milled Part Internal Corner": {
-          "count": 230,
-          "details": [
-            {
-              "count": 224,
-              "type": "Internal Corner",
-              "properties": {
-                "expected min radius": 0.3333333333333333,
-                "actual radius": 0.0
-              }
-            },
-            {
-              "count": 1,
-              "type": "Internal Corner",
-              "properties": {
-                "expected min radius": 3.6597230512372647,
-                "actual radius": 1.0
-              }
-            },
-            {
-              "count": 1,
-              "type": "Internal Corner",
-              "properties": {
-                "expected min radius": 3.661049220733986,
-                "actual radius": 1.0
-              }
-            },
-            {
-              "count": 1,
-              "type": "Internal Corner",
-              "properties": {
-                "expected min radius": 19.757236865254153,
-                "actual radius": 0.5
-              }
-            },
-            {
-              "count": 1,
-              "type": "Internal Corner",
-              "properties": {
-                "expected min radius": 20.089474711640204,
-                "actual radius": 0.7366
-              }
-            },
-            {
-              "count": 1,
-              "type": "Internal Corner",
-              "properties": {
-                "expected min radius": 26.65883950072126,
-                "actual radius": 0.5
-              }
-            },
-            {
-              "count": 1,
-              "type": "Internal Corner",
-              "properties": {
-                "expected min radius": 26.9934000668556,
-                "actual radius": 0.7366
-              }
-            }
-          ]
-        },
-        "Milled Part External Edge Fillet": {
-          "count": 26,
-          "details": []
-        },
-        "Inconsistent Radius Milled Part Floor Fillet": {
           "count": 4,
           "details": [
             {
-              "count": 3,
-              "type": "Floor Fillet",
+              "count": 4,
+              "type": "Internal Corner",
               "properties": {
-                "expected radius": 1.0,
-                "actual radius": 0.5
-              }
-            },
-            {
-              "count": 1,
-              "type": "Floor Fillet",
-              "properties": {
-                "expected radius": 1.0,
-                "actual radius": 0.7366
+                "expected min radius": 33.333333333333336,
+                "actual radius": 0.0
               }
             }
           ]
         }
       },
-      "total_issues": 261
+      "total_issues": 5
     }
   ],
-  "timestamp": "2025-05-02T09:19:54.567074",
-  "model_file": "/Users/harsshadpawar/Developer/estimate/cadex-gemini-ai/backend/models/Part2.stp",
+  "timestamp": "2025-05-02T10:59:18.953021",
+  "model_file": "/Users/harsshadpawar/Developer/estimate/estimate.ae/backend/models/BLOCK.stp",
   "operation": "milling"
 }

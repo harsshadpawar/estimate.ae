@@ -24,7 +24,7 @@ import manufacturingtoolkit.CadExMTK as mtk
 from feature_recognizer import main
 
 # Define file paths and operation types
-aSource = abspath(dirname(Path(__file__).resolve()) + "/../../../models/barrel.stp")
+aSource = abspath(dirname(Path(__file__).resolve()) + "/../../../models/BLOCK.stp")
 anOperation = "milling"
 
 def parse_feature_recognizer_output(output_text):

@@ -7,8 +7,10 @@ This guide explains how to use our CAD model analysis tools for CNC machining. T
 1. [Setup](#setup)
 2. [Feature Recognition](#feature-recognition)
 3. [Design for Manufacturing Analysis](#design-for-manufacturing-analysis)
-4. [Understanding the Output](#understanding-the-output)
-5. [Troubleshooting](#troubleshooting)
+4. [Geometry Analysis](#geometry-analysis)
+5. [Cutting Parameters](#cutting-parameters)
+6. [Understanding the Output](#understanding-the-output)
+7. [Troubleshooting](#troubleshooting)
 
 ## Setup
 
@@ -22,9 +24,11 @@ Before running the tools, ensure you have:
 ### Prerequisites
 
 1. **Add your STEP files to the models folder**:
+
    ```
    /backend/models/
    ```
+
    Place all your .stp files in this directory to make them accessible to the analysis tools.
 
 2. **Add the MTK license file**:
@@ -139,6 +143,7 @@ The feature recognition JSON output has this structure:
 ```
 
 Common feature types include:
+
 - Through Hole
 - Flat Bottom Hole
 - Through Pocket
@@ -185,10 +190,137 @@ The DFM analysis JSON output has this structure:
 ```
 
 Common issue types include:
+
 - Non Standard Diameter Hole
 - Deep Pocket
 - Small Radius Milled Part Internal Corner
 - Milled Part External Edge Fillet
+
+## Geometry Analysis
+
+The Geometry Analyzer examines the geometric properties of your CAD models and provides insights about surfaces, volumes, and material usage.
+
+### Running the Geometry Analyzer
+
+```bash
+# Navigate to the geometry_analyzer directory
+cd backend/python/machining/geometry_analyzer
+
+# Run the geometry analysis tool
+python geometryRun.py
+```
+
+By default, the tool analyzes the BLOCK.stp model. To analyze a different model, modify the `step_file` variable in the `geometryRun.py` file:
+
+```python
+# Example: Change the model path
+step_file = abspath(dirname(Path(__file__).resolve()) + "/../../../models/YOUR_MODEL.stp")
+```
+
+### Geometry Analyzer Features
+
+The Geometry Analyzer provides comprehensive analysis of your 3D models:
+
+1. **Surface Identification**: Detects different surface types:
+
+   - Planar faces
+   - Cylindrical faces
+   - Conical faces
+   - Spherical faces
+   - Toroidal faces
+   - Advanced surfaces (B-Splines, Bezier)
+
+2. **Volume and Material Analysis**:
+
+   - Calculates part volume
+   - Determines the minimum raw material block size
+   - Estimates material removal needed
+   - Calculates material utilization percentage
+
+3. **Detailed Surface Data**:
+   - Surface areas
+   - Dimensional parameters (radii, angles, etc.)
+   - Centers of mass
+
+### Geometry Analysis Output
+
+The tool produces three outputs:
+
+1. **Terminal output**: Shows a summary of the analysis
+2. **JSON file**: Located at `geometry_data.json` in the same directory
+3. **Text prompt**: Located at `analysis_prompt.txt` with formatted results
+
+### Required Packages
+
+The Geometry Analyzer requires Python with the Open CASCADE Technology (OCCT) library. It's recommended to install it via Conda:
+
+```bash
+# Create a conda environment
+conda create -n occt-env python=3.8
+conda activate occt-env
+
+# Install PythonOCC
+conda install -c conda-forge pythonocc-core
+```
+
+## Cutting Parameters
+
+The Cutting Parameters tool helps determine optimal machining parameters based on material type.
+
+### Using the Cutting Parameters Tool
+
+```bash
+# Navigate to the cutting_parameters directory
+cd backend/python/machining/cutting_parameters
+
+# Run the cutting parameters tool
+python cutting_para.py
+```
+
+When prompted, enter the material name for which you need cutting parameters. The tool will generate a JSON file with the recommended cutting parameters.
+
+### Features of Cutting Parameters Tool
+
+The tool provides the following information for various material types:
+
+1. **Cutting Speed Ranges**: Minimum and maximum recommended cutting speeds in m/min
+2. **Feed Rates**: Recommended feed per tooth/revolution in mm
+3. **Depth of Cut**: Minimum and maximum recommended depth of cut
+4. **Coolant Requirements**: Whether coolant is required
+5. **Special Notes**: Additional information for specific material/tool combinations
+
+### Available Materials
+
+The tool uses a comprehensive database of materials stored in `cutting_parameters.xlsx`. It supports common engineering materials including:
+
+- Various grades of aluminum
+- Steel alloys
+- Stainless steel
+- Titanium
+- Plastics
+
+### Output Format
+
+The parameters are output as structured JSON files, for example `cutting_params_aluminum.json`, with organized information by:
+
+- Operation type (e.g., drilling, milling, turning)
+- Tool type (e.g., end mill, drill bit, insert)
+- Tool material (e.g., carbide, HSS)
+
+These parameters can be integrated with other components like feature recognition for process planning.
+
+### Required Packages
+
+The cutting_parameters requires
+pandas (version 2.2.3) and openpyxl (version 3.1.5)
+
+A library for reading and writing Excel 2010+ (.xlsx) files
+Allows you to manipulate Excel spreadsheets programmatically
+
+```bash
+conda install -c conda-forge openpyxl=3.1.5
+conda install -c conda-forge pandas=2.2.3
+```
 
 ## Troubleshooting
 
@@ -198,5 +330,7 @@ If you encounter issues:
 2. **Empty results**: Verify the model contains features the tools can recognize
 3. **JSON parsing errors**: Check if the terminal output format changed
 4. **License errors**: Verify the MTK license is activated
+5. **Missing dependencies**: Ensure all required packages are installed
+6. **Conda environment**: Make sure you've activated the correct environment (mtk-env for main tools, occt-env for geometry analyzer)
 
 For more assistance, contact the development team.

@@ -1,0 +1,487 @@
+{
+    "version": "1",
+    "parts": [
+        {
+            "partId": "5cbb91d0-f69e-4e22-aefa-e1e7791fc3d5",
+            "process": "CNC Machining Lathe+Milling",
+            "featureRecognition": {
+                "name": "Feature Recognition",
+                "totalFeatureCount": "19",
+                "featureGroups": [
+                    {
+                        "name": "Bore Face(s)",
+                        "color": "(127, 130, 187)",
+                        "totalGroupFeatureCount": "2",
+                        "subGroupCount": "2",
+                        "subGroups": [
+                            {
+                                "parametersCount": "1",
+                                "parameters": [
+                                    {
+                                        "name": "Radius",
+                                        "units": "mm",
+                                        "value": "62.50"
+                                    }
+                                ],
+                                "featureCount": "1",
+                                "features": [
+                                    {
+                                        "shapeIDCount": "1",
+                                        "shapeIDs": [
+                                            {
+                                                "id": "6316986098082555888"
+                                            }
+                                        ]
+                                    }
+                                ]
+                            },
+                            {
+                                "parametersCount": "1",
+                                "parameters": [
+                                    {
+                                        "name": "Radius",
+                                        "units": "mm",
+                                        "value": "65.00"
+                                    }
+                                ],
+                                "featureCount": "1",
+                                "features": [
+                                    {
+                                        "shapeIDCount": "1",
+                                        "shapeIDs": [
+                                            {
+                                                "id": "8925265034580912762"
+                                            }
+                                        ]
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "name": "Turn Diameter Face(s)",
+                        "color": "(88, 19, 94)",
+                        "totalGroupFeatureCount": "7",
+                        "subGroupCount": "7",
+                        "subGroups": [
+                            {
+                                "parametersCount": "1",
+                                "parameters": [
+                                    {
+                                        "name": "Radius",
+                                        "units": "mm",
+                                        "value": "50.00"
+                                    }
+                                ],
+                                "featureCount": "1",
+                                "features": [
+                                    {
+                                        "shapeIDCount": "1",
+                                        "shapeIDs": [
+                                            {
+                                                "id": "16185794260339245165"
+                                            }
+                                        ]
+                                    }
+                                ]
+                            },
+                            {
+                                "parametersCount": "1",
+                                "parameters": [
+                                    {
+                                        "name": "Radius",
+                                        "units": "mm",
+                                        "value": "75.00"
+                                    }
+                                ],
+                                "featureCount": "1",
+                                "features": [
+                                    {
+                                        "shapeIDCount": "1",
+                                        "shapeIDs": [
+                                            {
+                                                "id": "11257673899243836394"
+                                            }
+                                        ]
+                                    }
+                                ]
+                            },
+                            {
+                                "parametersCount": "1",
+                                "parameters": [
+                                    {
+                                        "name": "Radius",
+                                        "units": "mm",
+                                        "value": "80.00"
+                                    }
+                                ],
+                                "featureCount": "1",
+                                "features": [
+                                    {
+                                        "shapeIDCount": "1",
+                                        "shapeIDs": [
+                                            {
+                                                "id": "1117191842198598825"
+                                            }
+                                        ]
+                                    }
+                                ]
+                            },
+                            {
+                                "parametersCount": "1",
+                                "parameters": [
+                                    {
+                                        "name": "Radius",
+                                        "units": "mm",
+                                        "value": "86.00"
+                                    }
+                                ],
+                                "featureCount": "1",
+                                "features": [
+                                    {
+                                        "shapeIDCount": "1",
+                                        "shapeIDs": [
+                                            {
+                                                "id": "7360321387950688093"
+                                            }
+                                        ]
+                                    }
+                                ]
+                            },
+                            {
+                                "parametersCount": "1",
+                                "parameters": [
+                                    {
+                                        "name": "Radius",
+                                        "units": "mm",
+                                        "value": "90.00"
+                                    }
+                                ],
+                                "featureCount": "1",
+                                "features": [
+                                    {
+                                        "shapeIDCount": "1",
+                                        "shapeIDs": [
+                                            {
+                                                "id": "5129645145079467928"
+                                            }
+                                        ]
+                                    }
+                                ]
+                            },
+                            {
+                                "parametersCount": "1",
+                                "parameters": [
+                                    {
+                                        "name": "Radius",
+                                        "units": "mm",
+                                        "value": "96.43"
+                                    }
+                                ],
+                                "featureCount": "1",
+                                "features": [
+                                    {
+                                        "shapeIDCount": "1",
+                                        "shapeIDs": [
+                                            {
+                                                "id": "9980617512479704674"
+                                            }
+                                        ]
+                                    }
+                                ]
+                            },
+                            {
+                                "parametersCount": "1",
+                                "parameters": [
+                                    {
+                                        "name": "Radius",
+                                        "units": "mm",
+                                        "value": "155.00"
+                                    }
+                                ],
+                                "featureCount": "1",
+                                "features": [
+                                    {
+                                        "shapeIDCount": "1",
+                                        "shapeIDs": [
+                                            {
+                                                "id": "7253685287320418886"
+                                            }
+                                        ]
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "name": "Turn Face Face(s)",
+                        "color": "(239, 136, 190)",
+                        "totalGroupFeatureCount": "7",
+                        "subGroupCount": "6",
+                        "subGroups": [
+                            {
+                                "parametersCount": "1",
+                                "parameters": [
+                                    {
+                                        "name": "Radius",
+                                        "units": "mm",
+                                        "value": "62.50"
+                                    }
+                                ],
+                                "featureCount": "1",
+                                "features": [
+                                    {
+                                        "shapeIDCount": "1",
+                                        "shapeIDs": [
+                                            {
+                                                "id": "16164193624455633550"
+                                            }
+                                        ]
+                                    }
+                                ]
+                            },
+                            {
+                                "parametersCount": "1",
+                                "parameters": [
+                                    {
+                                        "name": "Radius",
+                                        "units": "mm",
+                                        "value": "70.00"
+                                    }
+                                ],
+                                "featureCount": "1",
+                                "features": [
+                                    {
+                                        "shapeIDCount": "1",
+                                        "shapeIDs": [
+                                            {
+                                                "id": "4517847462016317522"
+                                            }
+                                        ]
+                                    }
+                                ]
+                            },
+                            {
+                                "parametersCount": "1",
+                                "parameters": [
+                                    {
+                                        "name": "Radius",
+                                        "units": "mm",
+                                        "value": "80.00"
+                                    }
+                                ],
+                                "featureCount": "1",
+                                "features": [
+                                    {
+                                        "shapeIDCount": "1",
+                                        "shapeIDs": [
+                                            {
+                                                "id": "5047840611526596504"
+                                            }
+                                        ]
+                                    }
+                                ]
+                            },
+                            {
+                                "parametersCount": "1",
+                                "parameters": [
+                                    {
+                                        "name": "Radius",
+                                        "units": "mm",
+                                        "value": "82.00"
+                                    }
+                                ],
+                                "featureCount": "1",
+                                "features": [
+                                    {
+                                        "shapeIDCount": "1",
+                                        "shapeIDs": [
+                                            {
+                                                "id": "4836755519267891162"
+                                            }
+                                        ]
+                                    }
+                                ]
+                            },
+                            {
+                                "parametersCount": "1",
+                                "parameters": [
+                                    {
+                                        "name": "Radius",
+                                        "units": "mm",
+                                        "value": "90.00"
+                                    }
+                                ],
+                                "featureCount": "1",
+                                "features": [
+                                    {
+                                        "shapeIDCount": "1",
+                                        "shapeIDs": [
+                                            {
+                                                "id": "7454749706845730524"
+                                            }
+                                        ]
+                                    }
+                                ]
+                            },
+                            {
+                                "parametersCount": "1",
+                                "parameters": [
+                                    {
+                                        "name": "Radius",
+                                        "units": "mm",
+                                        "value": "155.00"
+                                    }
+                                ],
+                                "featureCount": "2",
+                                "features": [
+                                    {
+                                        "shapeIDCount": "1",
+                                        "shapeIDs": [
+                                            {
+                                                "id": "3375275863240952804"
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "shapeIDCount": "1",
+                                        "shapeIDs": [
+                                            {
+                                                "id": "6073404336766120205"
+                                            }
+                                        ]
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "name": "Turn Form Face(s)",
+                        "color": "(161, 251, 142)",
+                        "totalGroupFeatureCount": "3",
+                        "subGroupCount": "3",
+                        "subGroups": [
+                            {
+                                "parametersCount": "1",
+                                "parameters": [
+                                    {
+                                        "name": "Radius",
+                                        "units": "mm",
+                                        "value": "55.32"
+                                    }
+                                ],
+                                "featureCount": "1",
+                                "features": [
+                                    {
+                                        "shapeIDCount": "1",
+                                        "shapeIDs": [
+                                            {
+                                                "id": "12295447977404078959"
+                                            }
+                                        ]
+                                    }
+                                ]
+                            },
+                            {
+                                "parametersCount": "1",
+                                "parameters": [
+                                    {
+                                        "name": "Radius",
+                                        "units": "mm",
+                                        "value": "72.50"
+                                    }
+                                ],
+                                "featureCount": "1",
+                                "features": [
+                                    {
+                                        "shapeIDCount": "1",
+                                        "shapeIDs": [
+                                            {
+                                                "id": "9590292889738645610"
+                                            }
+                                        ]
+                                    }
+                                ]
+                            },
+                            {
+                                "parametersCount": "1",
+                                "parameters": [
+                                    {
+                                        "name": "Radius",
+                                        "units": "mm",
+                                        "value": "82.50"
+                                    }
+                                ],
+                                "featureCount": "1",
+                                "features": [
+                                    {
+                                        "shapeIDCount": "1",
+                                        "shapeIDs": [
+                                            {
+                                                "id": "4742165655025377664"
+                                            }
+                                        ]
+                                    }
+                                ]
+                            }
+                        ]
+                    }
+                ]
+            },
+            "dfm": {
+                "name": "Design for Manufacturing",
+                "totalFeatureCount": "2",
+                "featureGroups": [
+                    {
+                        "name": "Small Radius Turned Part Internal Corner(s)",
+                        "color": "(127, 130, 187)",
+                        "totalGroupFeatureCount": "2",
+                        "subGroupCount": "1",
+                        "subGroups": [
+                            {
+                                "parametersCount": "2",
+                                "parameters": [
+                                    {
+                                        "name": "Expected Minimum Radius",
+                                        "units": "mm",
+                                        "value": "5.00"
+                                    },
+                                    {
+                                        "name": "Actual Radius",
+                                        "units": "mm",
+                                        "value": "0.00"
+                                    }
+                                ],
+                                "featureCount": "2",
+                                "features": [
+                                    {
+                                        "shapeIDCount": "2",
+                                        "shapeIDs": [
+                                            {
+                                                "id": "4836755519267891162"
+                                            },
+                                            {
+                                                "id": "16185794260339245165"
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "shapeIDCount": "2",
+                                        "shapeIDs": [
+                                            {
+                                                "id": "5047840611526596504"
+                                            },
+                                            {
+                                                "id": "11257673899243836394"
+                                            }
+                                        ]
+                                    }
+                                ]
+                            }
+                        ]
+                    }
+                ]
+            }
+        }
+    ]
+}

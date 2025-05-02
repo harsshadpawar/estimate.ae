@@ -24,7 +24,7 @@ import manufacturingtoolkit.CadExMTK as mtk
 from dfm_analyzer import main
 
 # Define file paths and operation types
-aSource = abspath(dirname(Path(__file__).resolve()) + "/../../../models/Part2.stp")
+aSource = abspath(dirname(Path(__file__).resolve()) + "/../../../models/BLOCK.stp")
 anOperation = "milling"
 
 def parse_terminal_output(output_text):

@@ -1,62 +1,43 @@
 {
-  "model_name": "barrel",
+  "model_name": "BLOCK",
   "parts": [
     {
       "part_number": 0,
-      "part_name": "barrel",
+      "part_name": "BLOCK 1",
       "solid_number": 0,
       "features": {
-        "Circular Milled Face": [
+        "Flat Face Milled Face": [
           {
-            "count": 1,
-            "properties": {}
-          }
-        ],
-        "Curved Milled Face": [
-          {
-            "count": 3,
+            "count": 2,
             "properties": {}
           }
         ],
         "Flat Side Milled Face": [
           {
-            "count": 4,
+            "count": 8,
             "properties": {}
           }
         ],
-        "Through Hole": [
-          {
-            "count": 6,
-            "properties": {
-              "radius": 5.0,
-              "depth": 10.0,
-              "axis": [
-                0.0,
-                0.0,
-                1.0
-              ]
-            },
-            "type": "Hole"
-          },
+        "Through Pocket": [
           {
             "count": 1,
             "properties": {
-              "radius": 5.68173068,
-              "depth": 420.0,
+              "length": 10.000000000000004,
+              "width": 10.000000000000002,
+              "depth": 100.0,
               "axis": [
                 0.0,
                 0.0,
                 1.0
               ]
-            },
-            "type": "Hole"
+            }
           }
         ]
       },
-      "total_features": 15
+      "total_features": 11
     }
   ],
-  "timestamp": "2025-05-02T09:50:55.830769",
-  "model_file": "/Users/harsshadpawar/Developer/estimate/cadex-gemini-ai/backend/models/barrel.stp",
+  "timestamp": "2025-05-02T10:56:19.948303",
+  "model_file": "/Users/harsshadpawar/Developer/estimate/estimate.ae/backend/models/BLOCK.stp",
   "operation": "milling"
 }
