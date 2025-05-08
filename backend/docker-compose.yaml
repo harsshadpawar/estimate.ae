@@ -1,0 +1,49 @@
+version: '3.8'
+
+services:
+  db:
+    image: postgres:latest
+    container_name: estimat_db
+    environment:
+      POSTGRES_USER: myuser
+      POSTGRES_PASSWORD: mypassword
+      POSTGRES_DB: mydb
+    ports:
+      - "5454:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    networks:
+      - mynetwork
+  elasticsearch:
+    image: docker.elastic.co/elasticsearch/elasticsearch:8.11.3
+    container_name: elasticsearch
+    environment:
+      - xpack.security.enabled=false
+      - discovery.type=single-node
+      - ES_JAVA_OPTS=-Xms512m -Xmx512m  # Optional: adjust memory for your machine
+    ports:
+      - "9200:9200"  # Exposes the HTTP interface to localhost:9200
+    volumes:
+      - esdata:/usr/share/elasticsearch/data  # Persists data across restarts
+    networks:
+      - mynetwork    
+  kibana:
+    image: docker.elastic.co/kibana/kibana:8.11.3
+    container_name: kibana
+    environment:
+      - ELASTICSEARCH_URL=http://elasticsearch:9200
+    ports:
+      - "5601:5601"  # Exposes Kibana web interface to localhost:5601
+    networks:
+      - mynetwork
+
+
+volumes:
+  postgres_data:
+    driver: local
+  esdata:
+    driver: local  
+
+networks:
+  mynetwork:
+    driver: bridge
