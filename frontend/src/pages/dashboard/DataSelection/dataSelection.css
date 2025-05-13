@@ -1,0 +1,21 @@
+.machines-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 20px;
+}
+
+.machine-number {
+    font-weight: 700;
+    font-size: 18px;
+    padding-top: 25px;
+    white-space: "nowrap";
+    flex-shrink: 0;
+}
+
+.machine-container {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+    gap: 10px;
+}

@@ -1,0 +1,40 @@
+.selected-file-list-container {
+    border: 1px solid #ccc;
+    padding: 10px;
+    max-width: 300px; /* Reduce width */
+    margin: 20px auto; /* Center the list */
+    border-radius: 4px;
+    background-color: #f9f9f9;
+  }
+  
+  .selected-file-item {
+    border-bottom: 1px solid #e0e0e0;
+    display: flex; /* Use flexbox for layout */
+    justify-content: space-between; /* Space between text and icon */
+  }
+  
+  .selected-file-item:last-child {
+    border-bottom: none;
+  }
+  
+  .file-name {
+    white-space: nowrap; /* Prevent the text from wrapping */
+    overflow: hidden; /* Hide overflow */
+    text-overflow: ellipsis; /* Show ellipsis */
+    max-width: 200px; /* Set a maximum width for the filename */
+  }
+  
+  /* Custom tooltip styles */
+  .custom-tooltip {
+    background-color: #333; /* Dark background */
+    color: #fff; /* White text */
+    font-size: 14px; /* Font size */
+    border-radius: 4px; /* Rounded corners */
+    padding: 5px; /* Padding */
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2); /* Shadow effect */
+  }
+  
+  .custom-tooltip::before {
+    border-color: #333 transparent transparent transparent; /* Arrow color */
+  }
+  

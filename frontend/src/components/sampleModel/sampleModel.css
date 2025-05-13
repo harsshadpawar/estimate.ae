@@ -1,0 +1,8 @@
+.sample-model {
+    margin: 10px;
+    padding: 10px;
+    text-align: center;
+    border-radius: 8px;
+    background-color: #f0f0f0;
+    cursor: pointer;
+}

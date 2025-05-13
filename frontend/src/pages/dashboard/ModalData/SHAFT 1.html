@@ -1,0 +1,1100 @@
+<!DOCTYPE HTML
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/1999/REC-html401-19991224/loose.dtd">
+<html>
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <style type="text/css">
+    /**
+  Copyright (C) 2012-2018 by Autodesk, Inc.
+  http://www.autodesk.com
+  All rights reserved
+*/
+
+    body {
+      background-color: White;
+      font-family: Arial, Helvetica, sans-serif;
+    }
+
+    h1 {
+      font-size: 15pt;
+      text-align: center;
+    }
+
+    h2 {
+      font-size: 13pt;
+    }
+
+    h3 {
+      font-size: 11pt;
+    }
+
+    h3.section {
+      text-decoration: underline;
+    }
+
+    table {
+      border: none;
+      border-spacing: 0;
+    }
+
+    table.jobhead {
+      width: 18cm;
+    }
+
+    table.job,
+    table.sheet {
+      width: 18cm;
+      border: thin solid Gray;
+    }
+
+    th {
+      background-color: #e0e0e0;
+      border-bottom: 1px solid Gray;
+    }
+
+    tr.space td {
+      border-bottom: 1px solid Gray;
+      height: 1px;
+      font-size: 1px;
+    }
+
+    table.info {
+      padding-top: 0.1cm;
+    }
+
+    table.info td {
+      padding-left: 0.1cm;
+    }
+
+    .job td {
+      padding: 0.1cm 0.1cm 0.1cm 0.1cm;
+    }
+
+    .model img {
+      width: 12cm;
+      border: 2px solid Black;
+    }
+
+    .preview img {
+      border: 2px solid Black;
+    }
+
+    tr {
+      border: 1 solid Black;
+      page-break-inside: avoid;
+      padding-top: 30px;
+      padding-bottom: 20px;
+      white-space: nowrap;
+    }
+
+    .even td {
+      background-color: White;
+    }
+
+    .odd td {
+      background-color: #f0f0f0;
+    }
+
+    .jobhead td {
+      font-size: 12pt;
+      vertical-align: top;
+    }
+
+    td {
+      font-size: 9pt;
+      vertical-align: top;
+    }
+
+    .toolimage {
+      vertical-align: middle;
+    }
+
+    td.image {
+      text-align: right;
+    }
+
+    .notes {
+      white-space: normal;
+    }
+
+    pre {
+      padding-left: 0.5cm;
+      font-size: 8pt;
+    }
+
+    p {
+      white-space: nowrap;
+      font-size: 12pt;
+      text-indent: 1cm;
+      display: block;
+    }
+
+    .jobhead td .description {
+      display: inline;
+      font-variant: small-caps;
+    }
+
+    td .description {
+      font-size: 8pt;
+      display: inline;
+      font-variant: small-caps;
+    }
+
+    .value {
+      display: inline;
+      font-family: Geneva, sans-serif;
+      color: #606060;
+    }
+
+    td .percentage {
+      display: inline;
+      font-size: 7pt;
+    }
+
+    .longtext {
+      white-space: normal;
+    }
+
+    img.logo {
+      height: 0.75cm;
+      vertical-align: middle;
+      margin-right: 1em;
+    }
+
+    .footer {
+      font-size: 9pt;
+      color: Silver;
+      text-align: center;
+    }
+
+    line {
+      stroke-width: 1px;
+      vector-effect: non-scaling-stroke;
+    }
+
+    path.holder {
+      stroke-width: 0.5px;
+      vector-effect: non-scaling-stroke;
+    }
+
+    path.cutter {
+      stroke-width: 1px;
+      vector-effect: non-scaling-stroke;
+    }
+
+    path.holderIE {
+      stroke-width: 0; // non-scaling not worker
+    }
+
+    path.cutterIE {
+      stroke-width: 0; // non-scaling not worker
+    }
+  </style>
+  <style type="text/css">
+    .preview img {
+      width: 8cm;
+    }
+  </style>
+  <script type="text/javascript">function detectIE() {
+      var ua = window.navigator.userAgent;
+      var msie = ua.indexOf('MSIE ');
+      if (msie > 0) {
+        // IE 10 or older => return version number
+        return parseInt(ua.substring(msie + 5, ua.indexOf('.', msie)), 10);
+      }
+      var trident = ua.indexOf('Trident/');
+      if (trident > 0) {
+        // IE 11 => return version number
+        var rv = ua.indexOf('rv:');
+        return parseInt(ua.substring(rv + 3, ua.indexOf('.', rv)), 10);
+      }
+      var edge = ua.indexOf('Edge/');
+      if (edge > 0) {
+        // Edge (IE 12+) => return version number
+        return parseInt(ua.substring(edge + 5, ua.indexOf('.', edge)), 10);
+      }
+      return false;
+    }
+
+    function onLoad() {
+      if (detectIE()) {
+        var paths = document.getElementsByTagName("path")
+        for (var i in paths) {
+          var path = paths[i];
+          if (path.getAttribute("class") == "holder") {
+            path.setAttribute("class", "holderIE");
+          } else if (path.getAttribute("class") == "cutter") {
+            path.setAttribute("class", "cutterIE");
+          }
+        }
+      }
+    }
+  </script>
+  <title>Setup Sheet for Program 1001</title>
+</head>
+
+<body onload="onLoad()">
+  <h1>Setup Sheet for Program 1001</h1>
+  <table class="jobhead" align="center">
+    <tr>
+      <td>
+        <div class="description" style="display: inline;">Job Description: </div>
+        <div class="value" style="display: inline;">Setup1</div>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <div class="description" style="display: inline;">Document Path: </div>
+        <div class="value" style="display: inline;">SHAFT 1</div>
+      </td>
+    </tr>
+  </table><br>
+
+  <table class="job" cellspacing="0" align="center">
+    <tr>
+      <th colspan="2">Setup</th>
+    </tr>
+    <tr>
+      <td>
+        <table class="info" cellspacing="0">
+          <tr>
+            <td>
+              <div class="description" style="display: inline;">WCS</div>: #0
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <div class="description" style="display: inline;">Stock</div>: <br>&nbsp;&nbsp;<div class="value"
+                style="display: inline;">DX: 84mm</div><br>&nbsp;&nbsp;<div class="value" style="display: inline;">DY:
+                84mm</div><br>&nbsp;&nbsp;<div class="value" style="display: inline;">DZ: 104mm</div>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <div class="description" style="display: inline;">Part</div>: <br>&nbsp;&nbsp;<div class="value"
+                style="display: inline;">DX: 80mm<br>&nbsp;&nbsp;<div class="value" style="display: inline;">DY: 80mm
+                </div><br>&nbsp;&nbsp;<div class="value" style="display: inline;">DZ: 100mm</div>
+              </div>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <div class="description" style="display: inline;">Stock Lower in WCS #0</div>: <br>&nbsp;&nbsp;<div
+                class="value" style="display: inline;">X: -42mm</div><br>&nbsp;&nbsp;<div class="value"
+                style="display: inline;">Y: -42mm</div><br>&nbsp;&nbsp;<div class="value" style="display: inline;">Z:
+                0mm</div>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <div class="description" style="display: inline;">Stock Upper in WCS #0</div>: <br>&nbsp;&nbsp;<div
+                class="value" style="display: inline;">X: 42mm</div><br>&nbsp;&nbsp;<div class="value"
+                style="display: inline;">Y: 42mm</div><br>&nbsp;&nbsp;<div class="value" style="display: inline;">Z:
+                104mm</div>
+            </td>
+          </tr>
+        </table>
+      </td>
+      <td class="model" align="right">
+        <img src="./test.png" />
+      </td>
+    </tr>
+  </table><br>
+
+  <table class="sheet" cellspacing="0" align="center">
+    <tr>
+      <th>Total</th>
+    </tr>
+    <tr class="info">
+      <td valign="top">
+        <table class="info" cellspacing="0">
+          <tr>
+            <td>
+              <div class="description" style="display: inline;">Number Of Operations: </div>
+              <div class="value" style="display: inline;">3</div>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <div class="description" style="display: inline;">Number Of Tools: </div>
+              <div class="value" style="display: inline;">1</div>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <div class="description" style="display: inline;">Tools: </div>
+              <div class="value" style="display: inline; white-space: normal;"><b>T1</b></div>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <div class="description" style="display: inline;">Maximum Z: </div>
+              <div class="value" style="display: inline;">109mm</div>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <div class="description" style="display: inline;">Minimum Z: </div>
+              <div class="value" style="display: inline;">1.66mm</div>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <div class="description" style="display: inline;">Maximum Feedrate: </div>
+              <div class="value" style="display: inline;">5000mm/min</div>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <div class="description" style="display: inline;">Maximum Spindle Speed: </div>
+              <div class="value" style="display: inline;">5000rpm</div>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <div class="description" style="display: inline;">Cutting Distance: </div>
+              <div class="value" style="display: inline;">1335.16mm</div>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <div class="description" style="display: inline;">Rapid Distance: </div>
+              <div class="value" style="display: inline;">1554.77mm</div>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <div class="description" style="display: inline;">Estimated Cycle Time: </div>
+              <div class="value" style="display: inline;">1m:54s</div>
+            </td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+  </table>
+
+  <br>
+
+  <table class="sheet" cellspacing="0" align="center">
+    <colgroup span="3">
+      <col width="1*" />
+      <col width="1*" />
+      <col width="120" />
+    </colgroup>
+    <tr>
+      <th colspan="4">Tools</th>
+    </tr>
+    <tr class="info">
+      <td valign="top">
+        <table class="info">
+          <tr>
+            <td><b>T1</b> D1 </td>
+          </tr>
+          <tr>
+            <td>
+              <div class="description" style="display: inline;">Type: </div>
+              <div class="value" style="display: inline;">general turning</div>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <div class="description" style="display: inline;">Insert: </div>
+              <div class="value" style="display: inline;">ISO V 35deg</div>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <div class="description" style="display: inline;">Edge length: </div>
+              <div class="value" style="display: inline;">9.69mm</div>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <div class="description" style="display: inline;">Nose radius: </div>
+              <div class="value" style="display: inline;">0.2mm</div>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <div class="description" style="display: inline;">Cross section: </div>
+              <div class="value" style="display: inline;">T</div>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <div class="description" style="display: inline;">Tolerance: </div>
+              <div class="value" style="display: inline;">M</div>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <div class="description" style="display: inline;">Relief: </div>
+              <div class="value" style="display: inline;">N 0deg</div>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <div class="description" style="display: inline;">Compensation: </div>
+              <div class="value" style="display: inline;">Tip tangent</div>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <div class="description" style="display: inline;">Description: </div>
+              <div class="value" style="display: inline;">VNMT Right Hand</div>
+            </td>
+          </tr>
+        </table>
+      </td>
+      <td valign="top">
+        <table class="info">
+          <tr>
+            <td>&nbsp;</td>
+          </tr>
+          <tr>
+            <td>
+              <div class="description" style="display: inline;">Tool Orientation in Turret: </div>
+              <div class="value" style="display: inline;">Radial</div>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <div class="description" style="display: inline;">Minimum Z: </div>
+              <div class="value" style="display: inline;">1.66mm</div>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <div class="description" style="display: inline;">Maximum Feed: </div>
+              <div class="value" style="display: inline;">5000mm/min</div>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <div class="description" style="display: inline;">Maximum Spindle Speed: </div>
+              <div class="value" style="display: inline;">5000rpm</div>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <div class="description" style="display: inline;">Cutting Distance: </div>
+              <div class="value" style="display: inline;">1335.16mm</div>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <div class="description" style="display: inline;">Rapid Distance: </div>
+              <div class="value" style="display: inline;">1554.77mm</div>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <div class="description" style="display: inline;">Estimated Cycle Time: </div>
+              <div class="value" style="display: inline;">1m:39s <div class="percentage">(86.8%)</div>
+              </div>
+            </td>
+          </tr>
+        </table>
+      </td>
+      <td valign="top">
+        <table class="info">
+          <tr>
+            <td>&nbsp;</td>
+          </tr>
+          <tr>
+            <td>
+              <div class="description" style="display: inline;">Holder: </div>
+              <div class="value" style="display: inline;">ISO L Right</div>
+            </td>
+          </tr>
+        </table>
+      </td>
+      <td class="toolimage" valign="center" align="center"><svg class="toolimage" width="30mm" height="35mm"
+          viewBox="-1.2 -125.386 26.945 126.586" style="background:#ffffff">
+          <defs>
+            <linearGradient id='holderGrad' x1='0%' y1='0%' x2='100%' y2='0%'>
+              <stop offset='0%' style='stop-color:rgb(120,120,120);stop-opacity:1' />
+              <stop offset='50%' style='stop-color:rgb(180,180,180);stop-opacity:0.5' />
+              <stop offset='100%' style='stop-color:rgb(150,150,150);stop-opacity:1' />
+            </linearGradient>
+            <linearGradient id='cutterGrad' x1='0%' y1='0%' x2='100%' y2='0%'>
+              <stop offset='0%' style='stop-color:rgb(228,175,52);stop-opacity:1' />
+              <stop offset='50%' style='stop-color:rgb(240,240,240);stop-opacity:1' />
+              <stop offset='100%' style='stop-color:rgb(228,175,52);stop-opacity:1' />
+            </linearGradient>
+          </defs>
+          <path class="holder"
+            d="M24.7455 -29.8266 L0.0637245 -0.154776 L2.79606 -31.3855 L4.74548 -31.3855 L4.74548 -124.386 L24.7455 -124.386 L24.7455 -29.8266 Z"
+            style="fill:url(#holderGrad);vector-effect:non-scaling-stroke;stroke:black;stroke-opacity:0.9" />
+          <path class="cutter"
+            d="M0.153209 0.128558 A0.2 0.2 0 0 1 -0.199239 -0.0174311 L0.584261 -8.97287 A0.2 0.2 0 0 1 0.630291 -9.084 L6.40873 -15.9705 A0.2 0.2 0 0 1 6.76118 -15.8245 L5.97768 -6.86904 A0.2 0.2 0 0 1 5.93165 -6.75791 L0.153209 0.128558 Z"
+            style="fill:url(#cutterGrad);vector-effect:non-scaling-stroke;stroke:black;fill-opacity:1.0;stroke-opacity:0.9" />
+        </svg></td>
+    </tr>
+
+  </table>
+
+  <br>
+
+  <table class="sheet" cellspacing="0" align="center">
+    <colgroup span="4">
+      <col width="1*" />
+      <col width="1*" />
+      <col width="120" />
+    </colgroup>
+    <tr>
+      <th colspan="5">Operations</th>
+    </tr>
+    <tr class="info">
+      <td valign="top">
+        <table class="info" cellspacing="0">
+          <tr>
+            <td>
+              <div class="value" style="display: inline;">Operation 1/3</div>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <div class="description" style="display: inline;">Description: </div>
+              <div class="value" style="display: inline;">Profile Roughing1</div>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <div class="description" style="display: inline;">WCS: </div>
+              <div class="value" style="display: inline;">#0</div>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <div class="description" style="display: inline;">Tolerance: </div>
+              <div class="value" style="display: inline;">0.01mm</div>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <div class="description" style="display: inline;">Maximum stepover: </div>
+              <div class="value" style="display: inline;">1mm</div>
+            </td>
+          </tr>
+        </table>
+      </td>
+      <td valign="top">
+        <table class="info" cellspacing="0">
+          <tr>
+            <td>
+              <div class="value" style="display: inline;">&nbsp;</div>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <div class="description" style="display: inline;">Maximum Z: </div>
+              <div class="value" style="display: inline;">109mm</div>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <div class="description" style="display: inline;">Minimum Z: </div>
+              <div class="value" style="display: inline;">1.66mm</div>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <div class="description" style="display: inline;">Surface Speed: </div>
+              <div class="value" style="display: inline;">200m/min</div>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <div class="description" style="display: inline;">Feedrate per Rev: </div>
+              <div class="value" style="display: inline;">1mm</div>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <div class="description" style="display: inline;">Cutting Distance: </div>
+              <div class="value" style="display: inline;">1150.36mm</div>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <div class="description" style="display: inline;">Rapid Distance: </div>
+              <div class="value" style="display: inline;">1309.28mm</div>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <div class="description" style="display: inline;">Estimated Cycle Time: </div>
+              <div class="value" style="display: inline;">1m:29s <div class="percentage">(77.8%)</div>
+              </div>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <div class="description" style="display: inline;">Coolant: </div>
+              <div class="value" style="display: inline;">Flood</div>
+            </td>
+          </tr>
+        </table>
+      </td>
+      <td valign="top">
+        <table class="info">
+          <tr>
+            <td><b>T1</b> D1 </td>
+          </tr>
+          <tr>
+            <td>
+              <div class="description" style="display: inline;">Type: </div>
+              <div class="value" style="display: inline;">general turning</div>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <div class="description" style="display: inline;">Insert: </div>
+              <div class="value" style="display: inline;">ISO V 35deg</div>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <div class="description" style="display: inline;">Edge length: </div>
+              <div class="value" style="display: inline;">9.69mm</div>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <div class="description" style="display: inline;">Nose radius: </div>
+              <div class="value" style="display: inline;">0.2mm</div>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <div class="description" style="display: inline;">Cross section: </div>
+              <div class="value" style="display: inline;">T</div>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <div class="description" style="display: inline;">Tolerance: </div>
+              <div class="value" style="display: inline;">M</div>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <div class="description" style="display: inline;">Relief: </div>
+              <div class="value" style="display: inline;">N 0deg</div>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <div class="description" style="display: inline;">Compensation: </div>
+              <div class="value" style="display: inline;">Tip tangent</div>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <div class="description" style="display: inline;">Description: </div>
+              <div class="value" style="display: inline;">VNMT Right Hand</div>
+            </td>
+          </tr>
+        </table>
+      </td>
+      <td class="toolimage" align="center"><svg class="toolimage" width="30mm" height="35mm"
+          viewBox="-1.2 -125.386 26.945 126.586" style="background:#ffffff">
+          <defs>
+            <linearGradient id='holderGrad' x1='0%' y1='0%' x2='100%' y2='0%'>
+              <stop offset='0%' style='stop-color:rgb(120,120,120);stop-opacity:1' />
+              <stop offset='50%' style='stop-color:rgb(180,180,180);stop-opacity:0.5' />
+              <stop offset='100%' style='stop-color:rgb(150,150,150);stop-opacity:1' />
+            </linearGradient>
+            <linearGradient id='cutterGrad' x1='0%' y1='0%' x2='100%' y2='0%'>
+              <stop offset='0%' style='stop-color:rgb(228,175,52);stop-opacity:1' />
+              <stop offset='50%' style='stop-color:rgb(240,240,240);stop-opacity:1' />
+              <stop offset='100%' style='stop-color:rgb(228,175,52);stop-opacity:1' />
+            </linearGradient>
+          </defs>
+          <path class="holder"
+            d="M24.7455 -29.8266 L0.0637245 -0.154776 L2.79606 -31.3855 L4.74548 -31.3855 L4.74548 -124.386 L24.7455 -124.386 L24.7455 -29.8266 Z"
+            style="fill:url(#holderGrad);vector-effect:non-scaling-stroke;stroke:black;stroke-opacity:0.9" />
+          <path class="cutter"
+            d="M0.153209 0.128558 A0.2 0.2 0 0 1 -0.199239 -0.0174311 L0.584261 -8.97287 A0.2 0.2 0 0 1 0.630291 -9.084 L6.40873 -15.9705 A0.2 0.2 0 0 1 6.76118 -15.8245 L5.97768 -6.86904 A0.2 0.2 0 0 1 5.93165 -6.75791 L0.153209 0.128558 Z"
+            style="fill:url(#cutterGrad);vector-effect:non-scaling-stroke;stroke:black;fill-opacity:1.0;stroke-opacity:0.9" />
+        </svg></td>
+    </tr>
+    <tr class="space">
+      <td colspan="5">&nbsp;</td>
+    </tr>
+
+    <tr class="info">
+      <td valign="top">
+        <table class="info" cellspacing="0">
+          <tr>
+            <td>
+              <div class="value" style="display: inline;">Operation 2/3</div>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <div class="description" style="display: inline;">Description: </div>
+              <div class="value" style="display: inline;">Face1</div>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <div class="description" style="display: inline;">Strategy: </div>
+              <div class="value" style="display: inline;">Turning Face</div>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <div class="description" style="display: inline;">WCS: </div>
+              <div class="value" style="display: inline;">#0</div>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <div class="description" style="display: inline;">Tolerance: </div>
+              <div class="value" style="display: inline;">0.01mm</div>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <div class="description" style="display: inline;">Maximum stepover: </div>
+              <div class="value" style="display: inline;">1mm</div>
+            </td>
+          </tr>
+        </table>
+      </td>
+      <td valign="top">
+        <table class="info" cellspacing="0">
+          <tr>
+            <td>
+              <div class="value" style="display: inline;">&nbsp;</div>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <div class="description" style="display: inline;">Maximum Z: </div>
+              <div class="value" style="display: inline;">109mm</div>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <div class="description" style="display: inline;">Minimum Z: </div>
+              <div class="value" style="display: inline;">102mm</div>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <div class="description" style="display: inline;">Surface Speed: </div>
+              <div class="value" style="display: inline;">200m/min</div>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <div class="description" style="display: inline;">Feedrate per Rev: </div>
+              <div class="value" style="display: inline;">1mm</div>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <div class="description" style="display: inline;">Cutting Distance: </div>
+              <div class="value" style="display: inline;">92.4mm</div>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <div class="description" style="display: inline;">Rapid Distance: </div>
+              <div class="value" style="display: inline;">122.74mm</div>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <div class="description" style="display: inline;">Estimated Cycle Time: </div>
+              <div class="value" style="display: inline;">5s <div class="percentage">(4.5%)</div>
+              </div>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <div class="description" style="display: inline;">Coolant: </div>
+              <div class="value" style="display: inline;">Flood</div>
+            </td>
+          </tr>
+        </table>
+      </td>
+      <td valign="top">
+        <table class="info">
+          <tr>
+            <td><b>T1</b> D1 </td>
+          </tr>
+          <tr>
+            <td>
+              <div class="description" style="display: inline;">Type: </div>
+              <div class="value" style="display: inline;">general turning</div>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <div class="description" style="display: inline;">Insert: </div>
+              <div class="value" style="display: inline;">ISO V 35deg</div>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <div class="description" style="display: inline;">Edge length: </div>
+              <div class="value" style="display: inline;">9.69mm</div>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <div class="description" style="display: inline;">Nose radius: </div>
+              <div class="value" style="display: inline;">0.2mm</div>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <div class="description" style="display: inline;">Cross section: </div>
+              <div class="value" style="display: inline;">T</div>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <div class="description" style="display: inline;">Tolerance: </div>
+              <div class="value" style="display: inline;">M</div>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <div class="description" style="display: inline;">Relief: </div>
+              <div class="value" style="display: inline;">N 0deg</div>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <div class="description" style="display: inline;">Compensation: </div>
+              <div class="value" style="display: inline;">Tip tangent</div>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <div class="description" style="display: inline;">Description: </div>
+              <div class="value" style="display: inline;">VNMT Right Hand</div>
+            </td>
+          </tr>
+        </table>
+      </td>
+      <td class="toolimage" align="center"><svg class="toolimage" width="30mm" height="35mm"
+          viewBox="-1.2 -125.386 26.945 126.586" style="background:#ffffff">
+          <defs>
+            <linearGradient id='holderGrad' x1='0%' y1='0%' x2='100%' y2='0%'>
+              <stop offset='0%' style='stop-color:rgb(120,120,120);stop-opacity:1' />
+              <stop offset='50%' style='stop-color:rgb(180,180,180);stop-opacity:0.5' />
+              <stop offset='100%' style='stop-color:rgb(150,150,150);stop-opacity:1' />
+            </linearGradient>
+            <linearGradient id='cutterGrad' x1='0%' y1='0%' x2='100%' y2='0%'>
+              <stop offset='0%' style='stop-color:rgb(228,175,52);stop-opacity:1' />
+              <stop offset='50%' style='stop-color:rgb(240,240,240);stop-opacity:1' />
+              <stop offset='100%' style='stop-color:rgb(228,175,52);stop-opacity:1' />
+            </linearGradient>
+          </defs>
+          <path class="holder"
+            d="M24.7455 -29.8266 L0.0637245 -0.154776 L2.79606 -31.3855 L4.74548 -31.3855 L4.74548 -124.386 L24.7455 -124.386 L24.7455 -29.8266 Z"
+            style="fill:url(#holderGrad);vector-effect:non-scaling-stroke;stroke:black;stroke-opacity:0.9" />
+          <path class="cutter"
+            d="M0.153209 0.128558 A0.2 0.2 0 0 1 -0.199239 -0.0174311 L0.584261 -8.97287 A0.2 0.2 0 0 1 0.630291 -9.084 L6.40873 -15.9705 A0.2 0.2 0 0 1 6.76118 -15.8245 L5.97768 -6.86904 A0.2 0.2 0 0 1 5.93165 -6.75791 L0.153209 0.128558 Z"
+            style="fill:url(#cutterGrad);vector-effect:non-scaling-stroke;stroke:black;fill-opacity:1.0;stroke-opacity:0.9" />
+        </svg></td>
+    </tr>
+    <tr class="space">
+      <td colspan="5">&nbsp;</td>
+    </tr>
+
+    <tr class="info">
+      <td valign="top">
+        <table class="info" cellspacing="0">
+          <tr>
+            <td>
+              <div class="value" style="display: inline;">Operation 3/3</div>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <div class="description" style="display: inline;">Description: </div>
+              <div class="value" style="display: inline;">Face2</div>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <div class="description" style="display: inline;">Strategy: </div>
+              <div class="value" style="display: inline;">Turning Face</div>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <div class="description" style="display: inline;">WCS: </div>
+              <div class="value" style="display: inline;">#0</div>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <div class="description" style="display: inline;">Tolerance: </div>
+              <div class="value" style="display: inline;">0.01mm</div>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <div class="description" style="display: inline;">Maximum stepover: </div>
+              <div class="value" style="display: inline;">1mm</div>
+            </td>
+          </tr>
+        </table>
+      </td>
+      <td valign="top">
+        <table class="info" cellspacing="0">
+          <tr>
+            <td>
+              <div class="value" style="display: inline;">&nbsp;</div>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <div class="description" style="display: inline;">Maximum Z: </div>
+              <div class="value" style="display: inline;">109mm</div>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <div class="description" style="display: inline;">Minimum Z: </div>
+              <div class="value" style="display: inline;">102mm</div>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <div class="description" style="display: inline;">Surface Speed: </div>
+              <div class="value" style="display: inline;">200m/min</div>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <div class="description" style="display: inline;">Feedrate per Rev: </div>
+              <div class="value" style="display: inline;">1mm</div>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <div class="description" style="display: inline;">Cutting Distance: </div>
+              <div class="value" style="display: inline;">92.4mm</div>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <div class="description" style="display: inline;">Rapid Distance: </div>
+              <div class="value" style="display: inline;">122.74mm</div>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <div class="description" style="display: inline;">Estimated Cycle Time: </div>
+              <div class="value" style="display: inline;">5s <div class="percentage">(4.5%)</div>
+              </div>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <div class="description" style="display: inline;">Coolant: </div>
+              <div class="value" style="display: inline;">Flood</div>
+            </td>
+          </tr>
+        </table>
+      </td>
+      <td valign="top">
+        <table class="info">
+          <tr>
+            <td><b>T1</b> D1 </td>
+          </tr>
+          <tr>
+            <td>
+              <div class="description" style="display: inline;">Type: </div>
+              <div class="value" style="display: inline;">general turning</div>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <div class="description" style="display: inline;">Insert: </div>
+              <div class="value" style="display: inline;">ISO V 35deg</div>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <div class="description" style="display: inline;">Edge length: </div>
+              <div class="value" style="display: inline;">9.69mm</div>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <div class="description" style="display: inline;">Nose radius: </div>
+              <div class="value" style="display: inline;">0.2mm</div>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <div class="description" style="display: inline;">Cross section: </div>
+              <div class="value" style="display: inline;">T</div>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <div class="description" style="display: inline;">Tolerance: </div>
+              <div class="value" style="display: inline;">M</div>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <div class="description" style="display: inline;">Relief: </div>
+              <div class="value" style="display: inline;">N 0deg</div>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <div class="description" style="display: inline;">Compensation: </div>
+              <div class="value" style="display: inline;">Tip tangent</div>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <div class="description" style="display: inline;">Description: </div>
+              <div class="value" style="display: inline;">VNMT Right Hand</div>
+            </td>
+          </tr>
+        </table>
+      </td>
+      <td class="toolimage" align="center"><svg class="toolimage" width="30mm" height="35mm"
+          viewBox="-1.2 -125.386 26.945 126.586" style="background:#ffffff">
+          <defs>
+            <linearGradient id='holderGrad' x1='0%' y1='0%' x2='100%' y2='0%'>
+              <stop offset='0%' style='stop-color:rgb(120,120,120);stop-opacity:1' />
+              <stop offset='50%' style='stop-color:rgb(180,180,180);stop-opacity:0.5' />
+              <stop offset='100%' style='stop-color:rgb(150,150,150);stop-opacity:1' />
+            </linearGradient>
+            <linearGradient id='cutterGrad' x1='0%' y1='0%' x2='100%' y2='0%'>
+              <stop offset='0%' style='stop-color:rgb(228,175,52);stop-opacity:1' />
+              <stop offset='50%' style='stop-color:rgb(240,240,240);stop-opacity:1' />
+              <stop offset='100%' style='stop-color:rgb(228,175,52);stop-opacity:1' />
+            </linearGradient>
+          </defs>
+          <path class="holder"
+            d="M24.7455 -29.8266 L0.0637245 -0.154776 L2.79606 -31.3855 L4.74548 -31.3855 L4.74548 -124.386 L24.7455 -124.386 L24.7455 -29.8266 Z"
+            style="fill:url(#holderGrad);vector-effect:non-scaling-stroke;stroke:black;stroke-opacity:0.9" />
+          <path class="cutter"
+            d="M0.153209 0.128558 A0.2 0.2 0 0 1 -0.199239 -0.0174311 L0.584261 -8.97287 A0.2 0.2 0 0 1 0.630291 -9.084 L6.40873 -15.9705 A0.2 0.2 0 0 1 6.76118 -15.8245 L5.97768 -6.86904 A0.2 0.2 0 0 1 5.93165 -6.75791 L0.153209 0.128558 Z"
+            style="fill:url(#cutterGrad);vector-effect:non-scaling-stroke;stroke:black;fill-opacity:1.0;stroke-opacity:0.9" />
+        </svg></td>
+    </tr>
+
+  </table>
+  <br>
+  <div class="footer">Generated by <a href="http://cam.autodesk.com">Fusion CAM 2.0.20981</a> 25/12/2024 4:38:46 PM
+    </div< /body>
+
+</html>

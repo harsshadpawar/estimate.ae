@@ -1,0 +1,16 @@
+.upload-container {
+    flex: 1;
+    padding: 20px;
+    text-align: center;
+    border: 2px dashed #ccc;
+    border-radius: 8px;
+    min-height: 250px;
+}
+
+.upload-box {
+    margin-top: 20px;
+    padding: 10px;
+    border: 2px dashed #ccc;
+    border-radius: 8px;
+    background-color: #fafafa;
+}

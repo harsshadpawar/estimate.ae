@@ -1,0 +1,280 @@
+Job Description: Setup1
+Document Path: SHAFT 1
+Setup
+"WCS: #0Stock: 
+ DX: 84mm
+ DY: 84mm
+ DZ: 104mmPart: 
+ DX: 80mm
+ DY: 80mm
+ DZ: 100mmStock Lower in WCS #0: 
+ X: -42mm
+ Y: -42mm
+ Z: 0mmStock Upper in WCS #0: 
+ X: 42mm
+ Y: 42mm
+ Z: 104mm",WCS: #0,"Stock: 
+ DX: 84mm
+ DY: 84mm
+ DZ: 104mm","Part: 
+ DX: 80mm
+ DY: 80mm
+ DZ: 100mm","Stock Lower in WCS #0: 
+ X: -42mm
+ Y: -42mm
+ Z: 0mm","Stock Upper in WCS #0: 
+ X: 42mm
+ Y: 42mm
+ Z: 104mm",
+WCS: #0
+"Stock: 
+ DX: 84mm
+ DY: 84mm
+ DZ: 104mm"
+"Part: 
+ DX: 80mm
+ DY: 80mm
+ DZ: 100mm"
+"Stock Lower in WCS #0: 
+ X: -42mm
+ Y: -42mm
+ Z: 0mm"
+"Stock Upper in WCS #0: 
+ X: 42mm
+ Y: 42mm
+ Z: 104mm"
+WCS: #0
+"Stock: 
+ DX: 84mm
+ DY: 84mm
+ DZ: 104mm"
+"Part: 
+ DX: 80mm
+ DY: 80mm
+ DZ: 100mm"
+"Stock Lower in WCS #0: 
+ X: -42mm
+ Y: -42mm
+ Z: 0mm"
+"Stock Upper in WCS #0: 
+ X: 42mm
+ Y: 42mm
+ Z: 104mm"
+Total
+Number Of Operations: 3Number Of Tools: 1Tools: T1Maximum Z: 109mmMinimum Z: 1.66mmMaximum Feedrate: 5000mm/minMaximum Spindle Speed: 5000rpmCutting Distance: 1335.16mmRapid Distance: 1554.77mmEstimated Cycle Time: 1m:54s,Number Of Operations: 3,Number Of Tools: 1,Tools: T1,Maximum Z: 109mm,Minimum Z: 1.66mm,Maximum Feedrate: 5000mm/min,Maximum Spindle Speed: 5000rpm,Cutting Distance: 1335.16mm,Rapid Distance: 1554.77mm,Estimated Cycle Time: 1m:54s
+Number Of Operations: 3
+Number Of Tools: 1
+Tools: T1
+Maximum Z: 109mm
+Minimum Z: 1.66mm
+Maximum Feedrate: 5000mm/min
+Maximum Spindle Speed: 5000rpm
+Cutting Distance: 1335.16mm
+Rapid Distance: 1554.77mm
+Estimated Cycle Time: 1m:54s
+Number Of Operations: 3
+Number Of Tools: 1
+Tools: T1
+Maximum Z: 109mm
+Minimum Z: 1.66mm
+Maximum Feedrate: 5000mm/min
+Maximum Spindle Speed: 5000rpm
+Cutting Distance: 1335.16mm
+Rapid Distance: 1554.77mm
+Estimated Cycle Time: 1m:54s
+Tools
+T1 D1 Type: general turningInsert: ISO V 35degEdge length: 9.69mmNose radius: 0.2mmCross section: TTolerance: MRelief: N 0degCompensation: Tip tangentDescription: VNMT Right Hand,T1 D1,Type: general turning,Insert: ISO V 35deg,Edge length: 9.69mm,Nose radius: 0.2mm,Cross section: T,Tolerance: M,Relief: N 0deg,Compensation: Tip tangent,Description: VNMT Right Hand,Tool Orientation in Turret: RadialMinimum Z: 1.66mmMaximum Feed: 5000mm/minMaximum Spindle Speed: 5000rpmCutting Distance: 1335.16mmRapid Distance: 1554.77mmEstimated Cycle Time: 1m:39s (86.8%),,Tool Orientation in Turret: Radial,Minimum Z: 1.66mm,Maximum Feed: 5000mm/min,Maximum Spindle Speed: 5000rpm,Cutting Distance: 1335.16mm,Rapid Distance: 1554.77mm,Estimated Cycle Time: 1m:39s (86.8%),Holder: ISO L Right,,Holder: ISO L Right,
+T1 D1
+Type: general turning
+Insert: ISO V 35deg
+Edge length: 9.69mm
+Nose radius: 0.2mm
+Cross section: T
+Tolerance: M
+Relief: N 0deg
+Compensation: Tip tangent
+Description: VNMT Right Hand
+
+Tool Orientation in Turret: Radial
+Minimum Z: 1.66mm
+Maximum Feed: 5000mm/min
+Maximum Spindle Speed: 5000rpm
+Cutting Distance: 1335.16mm
+Rapid Distance: 1554.77mm
+Estimated Cycle Time: 1m:39s (86.8%)
+
+Holder: ISO L Right
+T1 D1
+Type: general turning
+Insert: ISO V 35deg
+Edge length: 9.69mm
+Nose radius: 0.2mm
+Cross section: T
+Tolerance: M
+Relief: N 0deg
+Compensation: Tip tangent
+Description: VNMT Right Hand
+
+Tool Orientation in Turret: Radial
+Minimum Z: 1.66mm
+Maximum Feed: 5000mm/min
+Maximum Spindle Speed: 5000rpm
+Cutting Distance: 1335.16mm
+Rapid Distance: 1554.77mm
+Estimated Cycle Time: 1m:39s (86.8%)
+
+Holder: ISO L Right
+Operations
+Operation 1/3Description: Profile Roughing1WCS: #0Tolerance: 0.01mmMaximum stepover: 1mm,Operation 1/3,Description: Profile Roughing1,WCS: #0,Tolerance: 0.01mm,Maximum stepover: 1mm,Maximum Z: 109mmMinimum Z: 1.66mmSurface Speed: 200m/minFeedrate per Rev: 1mmCutting Distance: 1150.36mmRapid Distance: 1309.28mmEstimated Cycle Time: 1m:29s (77.8%)Coolant: Flood,,Maximum Z: 109mm,Minimum Z: 1.66mm,Surface Speed: 200m/min,Feedrate per Rev: 1mm,Cutting Distance: 1150.36mm,Rapid Distance: 1309.28mm,Estimated Cycle Time: 1m:29s (77.8%),Coolant: Flood,T1 D1 Type: general turningInsert: ISO V 35degEdge length: 9.69mmNose radius: 0.2mmCross section: TTolerance: MRelief: N 0degCompensation: Tip tangentDescription: VNMT Right Hand,T1 D1,Type: general turning,Insert: ISO V 35deg,Edge length: 9.69mm,Nose radius: 0.2mm,Cross section: T,Tolerance: M,Relief: N 0deg,Compensation: Tip tangent,Description: VNMT Right Hand,
+Operation 1/3
+Description: Profile Roughing1
+WCS: #0
+Tolerance: 0.01mm
+Maximum stepover: 1mm
+
+Maximum Z: 109mm
+Minimum Z: 1.66mm
+Surface Speed: 200m/min
+Feedrate per Rev: 1mm
+Cutting Distance: 1150.36mm
+Rapid Distance: 1309.28mm
+Estimated Cycle Time: 1m:29s (77.8%)
+Coolant: Flood
+T1 D1
+Type: general turning
+Insert: ISO V 35deg
+Edge length: 9.69mm
+Nose radius: 0.2mm
+Cross section: T
+Tolerance: M
+Relief: N 0deg
+Compensation: Tip tangent
+Description: VNMT Right Hand
+
+Operation 2/3Description: Face1Strategy: Turning FaceWCS: #0Tolerance: 0.01mmMaximum stepover: 1mm,Operation 2/3,Description: Face1,Strategy: Turning Face,WCS: #0,Tolerance: 0.01mm,Maximum stepover: 1mm,Maximum Z: 109mmMinimum Z: 102mmSurface Speed: 200m/minFeedrate per Rev: 1mmCutting Distance: 92.4mmRapid Distance: 122.74mmEstimated Cycle Time: 5s (4.5%)Coolant: Flood,,Maximum Z: 109mm,Minimum Z: 102mm,Surface Speed: 200m/min,Feedrate per Rev: 1mm,Cutting Distance: 92.4mm,Rapid Distance: 122.74mm,Estimated Cycle Time: 5s (4.5%),Coolant: Flood,T1 D1 Type: general turningInsert: ISO V 35degEdge length: 9.69mmNose radius: 0.2mmCross section: TTolerance: MRelief: N 0degCompensation: Tip tangentDescription: VNMT Right Hand,T1 D1,Type: general turning,Insert: ISO V 35deg,Edge length: 9.69mm,Nose radius: 0.2mm,Cross section: T,Tolerance: M,Relief: N 0deg,Compensation: Tip tangent,Description: VNMT Right Hand,
+Operation 2/3
+Description: Face1
+Strategy: Turning Face
+WCS: #0
+Tolerance: 0.01mm
+Maximum stepover: 1mm
+
+Maximum Z: 109mm
+Minimum Z: 102mm
+Surface Speed: 200m/min
+Feedrate per Rev: 1mm
+Cutting Distance: 92.4mm
+Rapid Distance: 122.74mm
+Estimated Cycle Time: 5s (4.5%)
+Coolant: Flood
+T1 D1
+Type: general turning
+Insert: ISO V 35deg
+Edge length: 9.69mm
+Nose radius: 0.2mm
+Cross section: T
+Tolerance: M
+Relief: N 0deg
+Compensation: Tip tangent
+Description: VNMT Right Hand
+
+Operation 3/3Description: Face2Strategy: Turning FaceWCS: #0Tolerance: 0.01mmMaximum stepover: 1mm,Operation 3/3,Description: Face2,Strategy: Turning Face,WCS: #0,Tolerance: 0.01mm,Maximum stepover: 1mm,Maximum Z: 109mmMinimum Z: 102mmSurface Speed: 200m/minFeedrate per Rev: 1mmCutting Distance: 92.4mmRapid Distance: 122.74mmEstimated Cycle Time: 5s (4.5%)Coolant: Flood,,Maximum Z: 109mm,Minimum Z: 102mm,Surface Speed: 200m/min,Feedrate per Rev: 1mm,Cutting Distance: 92.4mm,Rapid Distance: 122.74mm,Estimated Cycle Time: 5s (4.5%),Coolant: Flood,T1 D1 Type: general turningInsert: ISO V 35degEdge length: 9.69mmNose radius: 0.2mmCross section: TTolerance: MRelief: N 0degCompensation: Tip tangentDescription: VNMT Right Hand,T1 D1,Type: general turning,Insert: ISO V 35deg,Edge length: 9.69mm,Nose radius: 0.2mm,Cross section: T,Tolerance: M,Relief: N 0deg,Compensation: Tip tangent,Description: VNMT Right Hand,
+Operation 3/3
+Description: Face2
+Strategy: Turning Face
+WCS: #0
+Tolerance: 0.01mm
+Maximum stepover: 1mm
+
+Maximum Z: 109mm
+Minimum Z: 102mm
+Surface Speed: 200m/min
+Feedrate per Rev: 1mm
+Cutting Distance: 92.4mm
+Rapid Distance: 122.74mm
+Estimated Cycle Time: 5s (4.5%)
+Coolant: Flood
+T1 D1
+Type: general turning
+Insert: ISO V 35deg
+Edge length: 9.69mm
+Nose radius: 0.2mm
+Cross section: T
+Tolerance: M
+Relief: N 0deg
+Compensation: Tip tangent
+Description: VNMT Right Hand
+Operation 1/3
+Description: Profile Roughing1
+WCS: #0
+Tolerance: 0.01mm
+Maximum stepover: 1mm
+
+Maximum Z: 109mm
+Minimum Z: 1.66mm
+Surface Speed: 200m/min
+Feedrate per Rev: 1mm
+Cutting Distance: 1150.36mm
+Rapid Distance: 1309.28mm
+Estimated Cycle Time: 1m:29s (77.8%)
+Coolant: Flood
+T1 D1
+Type: general turning
+Insert: ISO V 35deg
+Edge length: 9.69mm
+Nose radius: 0.2mm
+Cross section: T
+Tolerance: M
+Relief: N 0deg
+Compensation: Tip tangent
+Description: VNMT Right Hand
+Operation 2/3
+Description: Face1
+Strategy: Turning Face
+WCS: #0
+Tolerance: 0.01mm
+Maximum stepover: 1mm
+
+Maximum Z: 109mm
+Minimum Z: 102mm
+Surface Speed: 200m/min
+Feedrate per Rev: 1mm
+Cutting Distance: 92.4mm
+Rapid Distance: 122.74mm
+Estimated Cycle Time: 5s (4.5%)
+Coolant: Flood
+T1 D1
+Type: general turning
+Insert: ISO V 35deg
+Edge length: 9.69mm
+Nose radius: 0.2mm
+Cross section: T
+Tolerance: M
+Relief: N 0deg
+Compensation: Tip tangent
+Description: VNMT Right Hand
+Operation 3/3
+Description: Face2
+Strategy: Turning Face
+WCS: #0
+Tolerance: 0.01mm
+Maximum stepover: 1mm
+
+Maximum Z: 109mm
+Minimum Z: 102mm
+Surface Speed: 200m/min
+Feedrate per Rev: 1mm
+Cutting Distance: 92.4mm
+Rapid Distance: 122.74mm
+Estimated Cycle Time: 5s (4.5%)
+Coolant: Flood
+T1 D1
+Type: general turning
+Insert: ISO V 35deg
+Edge length: 9.69mm
+Nose radius: 0.2mm
+Cross section: T
+Tolerance: M
+Relief: N 0deg
+Compensation: Tip tangent
+Description: VNMT Right Hand
