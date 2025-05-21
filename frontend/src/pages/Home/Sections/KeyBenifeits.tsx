@@ -5,11 +5,11 @@ import {
     Typography,
     useTheme,
 } from '@mui/material'
-import benefit1 from '../../../assets/images/beneifit1.png'
-import benefit2 from '../../../assets/images/benefit2.png'
-import benefit3 from '../../../assets/images/benefit3.png'
-import benefit4 from '../../../assets/images/benefit4.png'
-import benefit5 from '../../../assets/images/benefit5.png'
+import benefit1 from '@/assets/images/beneifit1.png'
+import benefit2 from '@/assets/images/benefit2.png'
+import benefit3 from '@/assets/images/benefit3.png'
+import benefit4 from '@/assets/images/benefit4.png'
+import benefit5 from '@/assets/images/benefit5.png'
 import { useTranslation } from 'react-i18next'
 
 

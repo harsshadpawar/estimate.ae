@@ -1,8 +1,8 @@
 import React from "react";
 import { Container, Grid, Typography, Box, Link } from "@mui/material";
-import Registerpanel from "../assets/images/RegisterPanel.png";
+import Registerpanel from "@/assets/images/RegisterPanel.png";
 import AuthComponent from "./Template";
-import Email from "../assets/images/Email.png";
+import Email from "@/assets/images/Email.png";
 
 const EmailConfirmation = () => {
   return (

@@ -1,7 +1,8 @@
 import { createAsyncThunk, createSlice, PayloadAction } from "@reduxjs/toolkit";
-import { validateToken } from "../../utils/utils";
-import apiClient from "../../services/interceptor";
-import { triggerToast, dismissToast } from "../../components/common/Snackbar";
+import { validateToken } from "@/utils/utils";
+import apiClient from "@/services/interceptor";
+import { triggerToast, dismissToast } from "@/components/customToast";
+import { jwtDecode } from "jwt-decode";
 
 // Types
 type User = {
@@ -65,6 +66,7 @@ export const login = createAsyncThunk(
   async (data: User, { rejectWithValue }) => {
     try {
       const response = await apiClient.post("/auth/login/", data);
+      console.log("response", response)
       return response.data;
     } catch (error: any) {
       const errorMessage =
@@ -80,12 +82,12 @@ export const register = createAsyncThunk(
   "auth/register",
   async (data: RegisterUser, { rejectWithValue }) => {
     try {
-      const response = await apiClient.post("/auth/register/", data);
+      const response = await apiClient.post("/user/register/", data);
       return response.data;
     } catch (error: any) {
       const errorMessage =
         error.response?.data?.detail ||
-        error.response?.data?.message ||
+        error.response?.data ||
         "Registration failed";
       return rejectWithValue(errorMessage);
     }
@@ -99,7 +101,7 @@ export const verifyOtp = createAsyncThunk(
     { rejectWithValue }
   ) => {
     try {
-      const response = await apiClient.post("/auth/verify-otp", data);
+      const response = await apiClient.post("/user/verify-otp", data);
       const result = response.data;
 
       if (response.status !== 200) {
@@ -107,7 +109,7 @@ export const verifyOtp = createAsyncThunk(
         return rejectWithValue(result.message || "OTP verification failed");
       }
 
-      triggerToast(result.message || "OTP verified successfully!", "success");
+      triggerToast("OTP verified successfully!", "success");
       return result;
     } catch (err: any) {
       const message = err.response?.data?.message || "Something went wrong";
@@ -122,7 +124,9 @@ export const fetchUserProfile = createAsyncThunk(
   async (_, { rejectWithValue }) => {
     try {
       const token = localStorage.getItem("access_token");
-      const response = await apiClient.get("/profile", {
+      const decoded = jwtDecode(token);
+      console.log("Decoded token:", decoded);
+      const response = await apiClient.get(`/user/${decoded?.user_id}`, {
         headers: {
           Authorization: `Bearer ${token}`,
         },
@@ -139,7 +143,7 @@ export const requestResetOtp = createAsyncThunk(
   "auth/requestResetOtp",
   async (data: { email: string }, { rejectWithValue }) => {
     try {
-      const response = await apiClient.post("/auth/reset-password/otp", data);
+      const response = await apiClient.post("/user/forget-password", data);
 
       if (response.status === 200) {
         triggerToast(response.data?.message || "Reset OTP sent successfully!", "success");
@@ -160,9 +164,9 @@ export const resetPassword = createAsyncThunk(
   "auth/resetPassword",
   async (data: { email: string; newPassword: string }, { rejectWithValue }) => {
     try {
-      const response = await apiClient.post("/auth/reset-password", data);
+      const response = await apiClient.post("/user/reset-password", data);
 
-      if (response.status === 200) {
+      if (response.status == 200) {
         triggerToast(response.data?.message || "Password reset successfully!", "success");
         return response.data;
       } else {
@@ -209,7 +213,7 @@ const authSlice = createSlice({
       state.error = null;
     });
     builder.addCase(login.fulfilled, (state, action: PayloadAction<AuthPayload>) => {
-        console.log("action.payload.data",action.payload.data);
+      console.log("action.payload.data", action.payload.data);
       const { access_token, refresh_token, user_role, ...userInfo } = action.payload.data;
       state.status = "succeeded";
       state.basicUserInfo = userInfo;
@@ -218,6 +222,9 @@ const authSlice = createSlice({
       localStorage.setItem("refresh_token", refresh_token);
       localStorage.setItem("role", user_role);
       localStorage.setItem("userInfo", JSON.stringify(userInfo));
+      // const decoded = jwtDecode(access_token);
+      // console.log("decode",decoded);
+      // localStorage.setItem("decoded",JSON.stringify(decoded));
       state.role = user_role;
       state.isAuthenticated = validateToken(access_token);
       dismissToast();
@@ -226,6 +233,9 @@ const authSlice = createSlice({
     builder.addCase(login.rejected, (state, action: PayloadAction<any>) => {
       state.status = "failed";
       state.error = action.payload;
+      console.log("err", action.payload)
+      dismissToast();
+      triggerToast(action.payload, "error");
       state.isAuthenticated = false;
     });
 
@@ -243,9 +253,21 @@ const authSlice = createSlice({
     });
     builder.addCase(register.rejected, (state, action: PayloadAction<any>) => {
       state.status = "failed";
-      state.error = action.payload;
+      state.error = action?.payload?.message || "Registration failed";
       state.isAuthenticated = false;
+
+      console.log("Registration Error:", action);
+
+      dismissToast();
+
+      const errorMessage =
+        action?.payload?.errors?.[0]?.message ||
+        action?.payload?.message ||
+        "Registration error";
+
+      triggerToast(errorMessage, "error");
     });
+
 
     // Verify OTP
     builder.addCase(verifyOtp.pending, (state) => {
@@ -258,10 +280,14 @@ const authSlice = createSlice({
         ...state.basicUserInfo,
         ...action.payload,
       };
+      dismissToast();
+      triggerToast(action.payload.data.message || "OTP verified successfully!", "success");
     });
     builder.addCase(verifyOtp.rejected, (state, action: PayloadAction<any>) => {
       state.status = "failed";
       state.error = action.payload;
+      dismissToast();
+      triggerToast(action.payload, "error");
     });
 
     // Fetch User Profile
@@ -272,8 +298,10 @@ const authSlice = createSlice({
     builder.addCase(
       fetchUserProfile.fulfilled,
       (state, action: PayloadAction<UserProfile>) => {
+        console.log("datarole", action?.payload?.data)
         state.status = "succeeded";
         state.userProfileData = action?.payload?.data;
+        state.role = action?.payload?.data?.role_name
       }
     );
 
@@ -302,13 +330,13 @@ const authSlice = createSlice({
     });
     builder.addCase(resetPassword.fulfilled, (state) => {
       state.status = "succeeded";
-      dismissToast();
+      // dismissToast();
     });
     builder.addCase(resetPassword.rejected, (state, action: PayloadAction<any>) => {
       state.status = "failed";
       state.error = action.payload;
     });
-    
+
   },
 });
 

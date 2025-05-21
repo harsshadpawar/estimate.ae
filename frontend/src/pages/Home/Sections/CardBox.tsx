@@ -1,8 +1,8 @@
 
 import { Box, Button, Typography } from '@mui/material';
 import React from 'react';
-import mask from '../../../assets/images/cardmask.png';
-import cardboximg from '../../../assets/images/cardboximg.png';
+import mask from '@/assets/images/cardmask.png';
+import cardboximg from '@/assets/images/cardboximg.png';
 import { useNavigate } from 'react-router-dom';
   import { useTranslation } from 'react-i18next';
 

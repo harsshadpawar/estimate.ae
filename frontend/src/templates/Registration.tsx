@@ -1,9 +1,9 @@
 import React from "react";
 import { Container, Grid, Typography, Box, Link } from "@mui/material";
-import SucessReg from "../assets/images/SucessReg.png";
+import SucessReg from "@/assets/images/SucessReg.png";
 import AuthComponent from "./Template";
-import Sucess from "../assets/images/Success.png";
-import CustomButton from "../components/common/Button";
+import Sucess from "@/assets/images/Success.png";
+import CustomButton from "@/components/button";
 import { useNavigate } from "react-router-dom";
 
 const ResgitrationTemplate = () => {

@@ -1,6 +1,6 @@
 import { createSlice, createAsyncThunk, PayloadAction } from "@reduxjs/toolkit";
-import apiClient from "../../services/interceptor";
-import { triggerToast } from "../../components/common/Snackbar";
+import apiClient from "@/services/interceptor";
+import { triggerToast } from "@/components/customToast";
 
 // Types
 type Transaction = {

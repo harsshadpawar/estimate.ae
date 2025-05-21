@@ -1,5 +1,5 @@
 import React from 'react';
-import ErrorBoundary from './ErrorBoundary';
+import ErrorBoundary from './errorBoundary';
 import { Navigate } from 'react-router-dom';
 import { Button, Box, Typography, Paper } from '@mui/material';
 import ErrorOutlineIcon from '@mui/icons-material/ErrorOutline';

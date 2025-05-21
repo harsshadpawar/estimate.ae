@@ -11,7 +11,7 @@ import {
 } from "@mui/material";
 import CloseIcon from "@mui/icons-material/Close";
 import { useDispatch, useSelector } from "react-redux";
-import { fetchMachineCategories } from "../../../redux/features/machines/machinesSlice";
+import { fetchMachineCategories } from "@/redux/features/machines/machinesSlice";
 
 const AddNewMachineDrawer = ({ open, machine, onDrawerClose, onSaveMachine }) => {
   const dispatch = useDispatch();

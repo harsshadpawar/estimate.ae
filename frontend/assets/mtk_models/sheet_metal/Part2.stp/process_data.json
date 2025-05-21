@@ -1,0 +1,2856 @@
+{
+    "version": "1",
+    "parts": [
+        {
+            "partId": "5cbb91d0-f69e-4e22-aefa-e1e7791fc3d5",
+            "process": "Sheet Metal",
+            "featureRecognition": {
+                "name": "Feature Recognition",
+                "totalFeatureCount": "118",
+                "featureGroups": [
+                    {
+                        "name": "Bend(s)",
+                        "color": "(0, 35, 245)",
+                        "totalGroupFeatureCount": "19",
+                        "subGroupCount": "11",
+                        "subGroups": [
+                            {
+                                "parametersCount": "4",
+                                "parameters": [
+                                    {
+                                        "name": "Radius",
+                                        "units": "mm",
+                                        "value": "0.50"
+                                    },
+                                    {
+                                        "name": "Angle",
+                                        "units": "deg",
+                                        "value": "90.00"
+                                    },
+                                    {
+                                        "name": "Length",
+                                        "units": "mm",
+                                        "value": "0.79"
+                                    },
+                                    {
+                                        "name": "Width",
+                                        "units": "mm",
+                                        "value": "14.00"
+                                    }
+                                ],
+                                "featureCount": "1",
+                                "features": [
+                                    {
+                                        "shapeIDCount": "1",
+                                        "shapeIDs": [
+                                            {
+                                                "id": "8048010910241914380"
+                                            }
+                                        ]
+                                    }
+                                ]
+                            },
+                            {
+                                "parametersCount": "4",
+                                "parameters": [
+                                    {
+                                        "name": "Radius",
+                                        "units": "mm",
+                                        "value": "0.50"
+                                    },
+                                    {
+                                        "name": "Angle",
+                                        "units": "deg",
+                                        "value": "90.00"
+                                    },
+                                    {
+                                        "name": "Length",
+                                        "units": "mm",
+                                        "value": "0.79"
+                                    },
+                                    {
+                                        "name": "Width",
+                                        "units": "mm",
+                                        "value": "33.00"
+                                    }
+                                ],
+                                "featureCount": "1",
+                                "features": [
+                                    {
+                                        "shapeIDCount": "1",
+                                        "shapeIDs": [
+                                            {
+                                                "id": "13596976974299138431"
+                                            }
+                                        ]
+                                    }
+                                ]
+                            },
+                            {
+                                "parametersCount": "4",
+                                "parameters": [
+                                    {
+                                        "name": "Radius",
+                                        "units": "mm",
+                                        "value": "0.50"
+                                    },
+                                    {
+                                        "name": "Angle",
+                                        "units": "deg",
+                                        "value": "90.00"
+                                    },
+                                    {
+                                        "name": "Length",
+                                        "units": "mm",
+                                        "value": "0.79"
+                                    },
+                                    {
+                                        "name": "Width",
+                                        "units": "mm",
+                                        "value": "39.29"
+                                    }
+                                ],
+                                "featureCount": "1",
+                                "features": [
+                                    {
+                                        "shapeIDCount": "1",
+                                        "shapeIDs": [
+                                            {
+                                                "id": "1513165068276417903"
+                                            }
+                                        ]
+                                    }
+                                ]
+                            },
+                            {
+                                "parametersCount": "4",
+                                "parameters": [
+                                    {
+                                        "name": "Radius",
+                                        "units": "mm",
+                                        "value": "0.50"
+                                    },
+                                    {
+                                        "name": "Angle",
+                                        "units": "deg",
+                                        "value": "90.00"
+                                    },
+                                    {
+                                        "name": "Length",
+                                        "units": "mm",
+                                        "value": "0.79"
+                                    },
+                                    {
+                                        "name": "Width",
+                                        "units": "mm",
+                                        "value": "58.29"
+                                    }
+                                ],
+                                "featureCount": "1",
+                                "features": [
+                                    {
+                                        "shapeIDCount": "1",
+                                        "shapeIDs": [
+                                            {
+                                                "id": "17762918875050154057"
+                                            }
+                                        ]
+                                    }
+                                ]
+                            },
+                            {
+                                "parametersCount": "4",
+                                "parameters": [
+                                    {
+                                        "name": "Radius",
+                                        "units": "mm",
+                                        "value": "0.50"
+                                    },
+                                    {
+                                        "name": "Angle",
+                                        "units": "deg",
+                                        "value": "90.00"
+                                    },
+                                    {
+                                        "name": "Length",
+                                        "units": "mm",
+                                        "value": "0.79"
+                                    },
+                                    {
+                                        "name": "Width",
+                                        "units": "mm",
+                                        "value": "79.00"
+                                    }
+                                ],
+                                "featureCount": "1",
+                                "features": [
+                                    {
+                                        "shapeIDCount": "1",
+                                        "shapeIDs": [
+                                            {
+                                                "id": "9087839169806595837"
+                                            }
+                                        ]
+                                    }
+                                ]
+                            },
+                            {
+                                "parametersCount": "4",
+                                "parameters": [
+                                    {
+                                        "name": "Radius",
+                                        "units": "mm",
+                                        "value": "0.74"
+                                    },
+                                    {
+                                        "name": "Angle",
+                                        "units": "deg",
+                                        "value": "90.00"
+                                    },
+                                    {
+                                        "name": "Length",
+                                        "units": "mm",
+                                        "value": "1.16"
+                                    },
+                                    {
+                                        "name": "Width",
+                                        "units": "mm",
+                                        "value": "55.29"
+                                    }
+                                ],
+                                "featureCount": "1",
+                                "features": [
+                                    {
+                                        "shapeIDCount": "1",
+                                        "shapeIDs": [
+                                            {
+                                                "id": "13444386293743294068"
+                                            }
+                                        ]
+                                    }
+                                ]
+                            },
+                            {
+                                "parametersCount": "4",
+                                "parameters": [
+                                    {
+                                        "name": "Radius",
+                                        "units": "mm",
+                                        "value": "0.74"
+                                    },
+                                    {
+                                        "name": "Angle",
+                                        "units": "deg",
+                                        "value": "90.00"
+                                    },
+                                    {
+                                        "name": "Length",
+                                        "units": "mm",
+                                        "value": "1.16"
+                                    },
+                                    {
+                                        "name": "Width",
+                                        "units": "mm",
+                                        "value": "59.29"
+                                    }
+                                ],
+                                "featureCount": "1",
+                                "features": [
+                                    {
+                                        "shapeIDCount": "1",
+                                        "shapeIDs": [
+                                            {
+                                                "id": "4624806386101796877"
+                                            }
+                                        ]
+                                    }
+                                ]
+                            },
+                            {
+                                "parametersCount": "4",
+                                "parameters": [
+                                    {
+                                        "name": "Radius",
+                                        "units": "mm",
+                                        "value": "0.74"
+                                    },
+                                    {
+                                        "name": "Angle",
+                                        "units": "deg",
+                                        "value": "90.00"
+                                    },
+                                    {
+                                        "name": "Length",
+                                        "units": "mm",
+                                        "value": "1.16"
+                                    },
+                                    {
+                                        "name": "Width",
+                                        "units": "mm",
+                                        "value": "80.00"
+                                    }
+                                ],
+                                "featureCount": "1",
+                                "features": [
+                                    {
+                                        "shapeIDCount": "1",
+                                        "shapeIDs": [
+                                            {
+                                                "id": "2437507887620121305"
+                                            }
+                                        ]
+                                    }
+                                ]
+                            },
+                            {
+                                "parametersCount": "4",
+                                "parameters": [
+                                    {
+                                        "name": "Radius",
+                                        "units": "mm",
+                                        "value": "1.00"
+                                    },
+                                    {
+                                        "name": "Angle",
+                                        "units": "deg",
+                                        "value": "90.00"
+                                    },
+                                    {
+                                        "name": "Length",
+                                        "units": "mm",
+                                        "value": "1.57"
+                                    },
+                                    {
+                                        "name": "Width",
+                                        "units": "mm",
+                                        "value": "10.00"
+                                    }
+                                ],
+                                "featureCount": "8",
+                                "features": [
+                                    {
+                                        "shapeIDCount": "1",
+                                        "shapeIDs": [
+                                            {
+                                                "id": "10683414019679180203"
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "shapeIDCount": "1",
+                                        "shapeIDs": [
+                                            {
+                                                "id": "7019516384440120932"
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "shapeIDCount": "1",
+                                        "shapeIDs": [
+                                            {
+                                                "id": "2621699309571291349"
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "shapeIDCount": "1",
+                                        "shapeIDs": [
+                                            {
+                                                "id": "13968250857116450324"
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "shapeIDCount": "1",
+                                        "shapeIDs": [
+                                            {
+                                                "id": "8052669230524795203"
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "shapeIDCount": "1",
+                                        "shapeIDs": [
+                                            {
+                                                "id": "3688302202846812185"
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "shapeIDCount": "1",
+                                        "shapeIDs": [
+                                            {
+                                                "id": "14690046128893120262"
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "shapeIDCount": "1",
+                                        "shapeIDs": [
+                                            {
+                                                "id": "13808574847505500316"
+                                            }
+                                        ]
+                                    }
+                                ]
+                            },
+                            {
+                                "parametersCount": "4",
+                                "parameters": [
+                                    {
+                                        "name": "Radius",
+                                        "units": "mm",
+                                        "value": "1.00"
+                                    },
+                                    {
+                                        "name": "Angle",
+                                        "units": "deg",
+                                        "value": "90.00"
+                                    },
+                                    {
+                                        "name": "Length",
+                                        "units": "mm",
+                                        "value": "1.57"
+                                    },
+                                    {
+                                        "name": "Width",
+                                        "units": "mm",
+                                        "value": "12.03"
+                                    }
+                                ],
+                                "featureCount": "1",
+                                "features": [
+                                    {
+                                        "shapeIDCount": "1",
+                                        "shapeIDs": [
+                                            {
+                                                "id": "5537248716019573030"
+                                            }
+                                        ]
+                                    }
+                                ]
+                            },
+                            {
+                                "parametersCount": "4",
+                                "parameters": [
+                                    {
+                                        "name": "Radius",
+                                        "units": "mm",
+                                        "value": "1.00"
+                                    },
+                                    {
+                                        "name": "Angle",
+                                        "units": "deg",
+                                        "value": "90.00"
+                                    },
+                                    {
+                                        "name": "Length",
+                                        "units": "mm",
+                                        "value": "1.57"
+                                    },
+                                    {
+                                        "name": "Width",
+                                        "units": "mm",
+                                        "value": "23.26"
+                                    }
+                                ],
+                                "featureCount": "2",
+                                "features": [
+                                    {
+                                        "shapeIDCount": "1",
+                                        "shapeIDs": [
+                                            {
+                                                "id": "9302157858438929130"
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "shapeIDCount": "1",
+                                        "shapeIDs": [
+                                            {
+                                                "id": "16730495984820593559"
+                                            }
+                                        ]
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "name": "Hole(s)",
+                        "color": "(129, 127, 38)",
+                        "totalGroupFeatureCount": "15",
+                        "subGroupCount": "2",
+                        "subGroups": [
+                            {
+                                "parametersCount": "3",
+                                "parameters": [
+                                    {
+                                        "name": "Radius",
+                                        "units": "mm",
+                                        "value": "1.50"
+                                    },
+                                    {
+                                        "name": "Depth",
+                                        "units": "mm",
+                                        "value": "1.00"
+                                    },
+                                    {
+                                        "name": "Axis",
+                                        "units": "",
+                                        "value": "(-0.00, -0.00, -1.00)"
+                                    }
+                                ],
+                                "featureCount": "6",
+                                "features": [
+                                    {
+                                        "shapeIDCount": "2",
+                                        "shapeIDs": [
+                                            {
+                                                "id": "9928794343808140874"
+                                            },
+                                            {
+                                                "id": "10793150548256278572"
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "shapeIDCount": "1",
+                                        "shapeIDs": [
+                                            {
+                                                "id": "11401877869387738146"
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "shapeIDCount": "2",
+                                        "shapeIDs": [
+                                            {
+                                                "id": "7688155661790046473"
+                                            },
+                                            {
+                                                "id": "4388936265695092460"
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "shapeIDCount": "2",
+                                        "shapeIDs": [
+                                            {
+                                                "id": "10294581464651873020"
+                                            },
+                                            {
+                                                "id": "2414388583638674118"
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "shapeIDCount": "2",
+                                        "shapeIDs": [
+                                            {
+                                                "id": "6686053410092515841"
+                                            },
+                                            {
+                                                "id": "5028951921974309402"
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "shapeIDCount": "2",
+                                        "shapeIDs": [
+                                            {
+                                                "id": "6730568783233509449"
+                                            },
+                                            {
+                                                "id": "14559959402741037461"
+                                            }
+                                        ]
+                                    }
+                                ]
+                            },
+                            {
+                                "parametersCount": "3",
+                                "parameters": [
+                                    {
+                                        "name": "Radius",
+                                        "units": "mm",
+                                        "value": "2.00"
+                                    },
+                                    {
+                                        "name": "Depth",
+                                        "units": "mm",
+                                        "value": "1.00"
+                                    },
+                                    {
+                                        "name": "Axis",
+                                        "units": "",
+                                        "value": "(0.00, 0.00, 1.00)"
+                                    }
+                                ],
+                                "featureCount": "9",
+                                "features": [
+                                    {
+                                        "shapeIDCount": "1",
+                                        "shapeIDs": [
+                                            {
+                                                "id": "10271470217387784703"
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "shapeIDCount": "1",
+                                        "shapeIDs": [
+                                            {
+                                                "id": "18423823764207954533"
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "shapeIDCount": "1",
+                                        "shapeIDs": [
+                                            {
+                                                "id": "3621513397487772950"
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "shapeIDCount": "1",
+                                        "shapeIDs": [
+                                            {
+                                                "id": "1241927037724472382"
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "shapeIDCount": "1",
+                                        "shapeIDs": [
+                                            {
+                                                "id": "13269025147780744688"
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "shapeIDCount": "1",
+                                        "shapeIDs": [
+                                            {
+                                                "id": "2553270826572938675"
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "shapeIDCount": "1",
+                                        "shapeIDs": [
+                                            {
+                                                "id": "5674523006446170208"
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "shapeIDCount": "1",
+                                        "shapeIDs": [
+                                            {
+                                                "id": "5075792848311313733"
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "shapeIDCount": "1",
+                                        "shapeIDs": [
+                                            {
+                                                "id": "3778268653028822538"
+                                            }
+                                        ]
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "name": "Cutout(s)",
+                        "color": "(88, 19, 94)",
+                        "totalGroupFeatureCount": "82",
+                        "subGroupCount": "5",
+                        "subGroups": [
+                            {
+                                "parametersCount": "1",
+                                "parameters": [
+                                    {
+                                        "name": "Perimeter",
+                                        "units": "mm",
+                                        "value": "9.43"
+                                    }
+                                ],
+                                "featureCount": "14",
+                                "features": [
+                                    {
+                                        "shapeIDCount": "4",
+                                        "shapeIDs": [
+                                            {
+                                                "id": "6859128803698144710"
+                                            },
+                                            {
+                                                "id": "10022342940685113751"
+                                            },
+                                            {
+                                                "id": "18377522082520798262"
+                                            },
+                                            {
+                                                "id": "16219902096693049181"
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "shapeIDCount": "4",
+                                        "shapeIDs": [
+                                            {
+                                                "id": "3418033789483139743"
+                                            },
+                                            {
+                                                "id": "18316041584768387555"
+                                            },
+                                            {
+                                                "id": "18168665025682977560"
+                                            },
+                                            {
+                                                "id": "18195765219933031285"
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "shapeIDCount": "4",
+                                        "shapeIDs": [
+                                            {
+                                                "id": "14817060245206827175"
+                                            },
+                                            {
+                                                "id": "740512257507254430"
+                                            },
+                                            {
+                                                "id": "10042359197310350672"
+                                            },
+                                            {
+                                                "id": "3021182847163239604"
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "shapeIDCount": "4",
+                                        "shapeIDs": [
+                                            {
+                                                "id": "2347757212557865036"
+                                            },
+                                            {
+                                                "id": "2710869712779360408"
+                                            },
+                                            {
+                                                "id": "4616752042771362573"
+                                            },
+                                            {
+                                                "id": "7432995099374278141"
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "shapeIDCount": "4",
+                                        "shapeIDs": [
+                                            {
+                                                "id": "17614189347275734719"
+                                            },
+                                            {
+                                                "id": "4871487144583043616"
+                                            },
+                                            {
+                                                "id": "15752978532652835581"
+                                            },
+                                            {
+                                                "id": "5947128626090705442"
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "shapeIDCount": "4",
+                                        "shapeIDs": [
+                                            {
+                                                "id": "500948206021829748"
+                                            },
+                                            {
+                                                "id": "14328658076343994302"
+                                            },
+                                            {
+                                                "id": "15377600869093734468"
+                                            },
+                                            {
+                                                "id": "3488188738388885194"
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "shapeIDCount": "4",
+                                        "shapeIDs": [
+                                            {
+                                                "id": "13590729976916605167"
+                                            },
+                                            {
+                                                "id": "8971417654220038847"
+                                            },
+                                            {
+                                                "id": "14081246453688630219"
+                                            },
+                                            {
+                                                "id": "9995666712569034464"
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "shapeIDCount": "4",
+                                        "shapeIDs": [
+                                            {
+                                                "id": "5790538958708255297"
+                                            },
+                                            {
+                                                "id": "12412529538878389723"
+                                            },
+                                            {
+                                                "id": "15707834390814559871"
+                                            },
+                                            {
+                                                "id": "16705480252649503157"
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "shapeIDCount": "4",
+                                        "shapeIDs": [
+                                            {
+                                                "id": "13280748582948498745"
+                                            },
+                                            {
+                                                "id": "18374300331500691274"
+                                            },
+                                            {
+                                                "id": "14695480982371158425"
+                                            },
+                                            {
+                                                "id": "3664178136671262336"
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "shapeIDCount": "4",
+                                        "shapeIDs": [
+                                            {
+                                                "id": "4988505557638594799"
+                                            },
+                                            {
+                                                "id": "1546538045313785728"
+                                            },
+                                            {
+                                                "id": "8075781662040300483"
+                                            },
+                                            {
+                                                "id": "7369974455998229593"
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "shapeIDCount": "4",
+                                        "shapeIDs": [
+                                            {
+                                                "id": "7021453911255361534"
+                                            },
+                                            {
+                                                "id": "14310405320449884173"
+                                            },
+                                            {
+                                                "id": "11703716957858212930"
+                                            },
+                                            {
+                                                "id": "2530872030788778260"
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "shapeIDCount": "4",
+                                        "shapeIDs": [
+                                            {
+                                                "id": "15767266623118993355"
+                                            },
+                                            {
+                                                "id": "9401475858138570323"
+                                            },
+                                            {
+                                                "id": "2838421318360079669"
+                                            },
+                                            {
+                                                "id": "15640999135274056490"
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "shapeIDCount": "4",
+                                        "shapeIDs": [
+                                            {
+                                                "id": "10624283115822206209"
+                                            },
+                                            {
+                                                "id": "8894927751447472970"
+                                            },
+                                            {
+                                                "id": "16811018712177311870"
+                                            },
+                                            {
+                                                "id": "14878854630650168922"
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "shapeIDCount": "4",
+                                        "shapeIDs": [
+                                            {
+                                                "id": "3486187156512360749"
+                                            },
+                                            {
+                                                "id": "3858095131166100157"
+                                            },
+                                            {
+                                                "id": "9866379683818549058"
+                                            },
+                                            {
+                                                "id": "12138631666819179767"
+                                            }
+                                        ]
+                                    }
+                                ]
+                            },
+                            {
+                                "parametersCount": "1",
+                                "parameters": [
+                                    {
+                                        "name": "Perimeter",
+                                        "units": "mm",
+                                        "value": "11.22"
+                                    }
+                                ],
+                                "featureCount": "14",
+                                "features": [
+                                    {
+                                        "shapeIDCount": "4",
+                                        "shapeIDs": [
+                                            {
+                                                "id": "2514692332907258626"
+                                            },
+                                            {
+                                                "id": "7754806657998022525"
+                                            },
+                                            {
+                                                "id": "3123855122427852951"
+                                            },
+                                            {
+                                                "id": "13028405383661545701"
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "shapeIDCount": "4",
+                                        "shapeIDs": [
+                                            {
+                                                "id": "12041217260338951698"
+                                            },
+                                            {
+                                                "id": "1813056875437423541"
+                                            },
+                                            {
+                                                "id": "3636937607579730185"
+                                            },
+                                            {
+                                                "id": "7937717800033182062"
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "shapeIDCount": "4",
+                                        "shapeIDs": [
+                                            {
+                                                "id": "4727976548165532911"
+                                            },
+                                            {
+                                                "id": "788024751377613469"
+                                            },
+                                            {
+                                                "id": "3364730716086426654"
+                                            },
+                                            {
+                                                "id": "6368439976611952409"
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "shapeIDCount": "4",
+                                        "shapeIDs": [
+                                            {
+                                                "id": "12915179058178225193"
+                                            },
+                                            {
+                                                "id": "10974978453052387197"
+                                            },
+                                            {
+                                                "id": "15366836385755723023"
+                                            },
+                                            {
+                                                "id": "2963271958578931410"
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "shapeIDCount": "4",
+                                        "shapeIDs": [
+                                            {
+                                                "id": "7149095351332269512"
+                                            },
+                                            {
+                                                "id": "3857915515481833525"
+                                            },
+                                            {
+                                                "id": "15654363998991208115"
+                                            },
+                                            {
+                                                "id": "5895197803965734858"
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "shapeIDCount": "4",
+                                        "shapeIDs": [
+                                            {
+                                                "id": "9046860145015845074"
+                                            },
+                                            {
+                                                "id": "10653677890637179188"
+                                            },
+                                            {
+                                                "id": "10965792315451789349"
+                                            },
+                                            {
+                                                "id": "14035026950121682342"
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "shapeIDCount": "4",
+                                        "shapeIDs": [
+                                            {
+                                                "id": "152760104238142743"
+                                            },
+                                            {
+                                                "id": "17501594405344675798"
+                                            },
+                                            {
+                                                "id": "11463832744137982053"
+                                            },
+                                            {
+                                                "id": "17862480235343215509"
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "shapeIDCount": "4",
+                                        "shapeIDs": [
+                                            {
+                                                "id": "1856050310080088850"
+                                            },
+                                            {
+                                                "id": "17685057501701248819"
+                                            },
+                                            {
+                                                "id": "17096938021382047481"
+                                            },
+                                            {
+                                                "id": "15318102196694863679"
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "shapeIDCount": "4",
+                                        "shapeIDs": [
+                                            {
+                                                "id": "1017905511001243421"
+                                            },
+                                            {
+                                                "id": "17532119326549166748"
+                                            },
+                                            {
+                                                "id": "1316514705791542210"
+                                            },
+                                            {
+                                                "id": "15810155396944161591"
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "shapeIDCount": "4",
+                                        "shapeIDs": [
+                                            {
+                                                "id": "6516136281394040537"
+                                            },
+                                            {
+                                                "id": "2161310411695901930"
+                                            },
+                                            {
+                                                "id": "2539450531135741556"
+                                            },
+                                            {
+                                                "id": "8475362824116341821"
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "shapeIDCount": "4",
+                                        "shapeIDs": [
+                                            {
+                                                "id": "8057372345616798425"
+                                            },
+                                            {
+                                                "id": "6772571558584574792"
+                                            },
+                                            {
+                                                "id": "11378325287449113735"
+                                            },
+                                            {
+                                                "id": "9886779305527524917"
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "shapeIDCount": "4",
+                                        "shapeIDs": [
+                                            {
+                                                "id": "14407074369949887524"
+                                            },
+                                            {
+                                                "id": "9875361704281125998"
+                                            },
+                                            {
+                                                "id": "7721378835746234637"
+                                            },
+                                            {
+                                                "id": "12469534475950985799"
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "shapeIDCount": "4",
+                                        "shapeIDs": [
+                                            {
+                                                "id": "12103778687493178946"
+                                            },
+                                            {
+                                                "id": "18209752310053264600"
+                                            },
+                                            {
+                                                "id": "9706026498594735172"
+                                            },
+                                            {
+                                                "id": "8947038102629784499"
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "shapeIDCount": "4",
+                                        "shapeIDs": [
+                                            {
+                                                "id": "1095487154529256272"
+                                            },
+                                            {
+                                                "id": "16211472818177709966"
+                                            },
+                                            {
+                                                "id": "18160024976317772725"
+                                            },
+                                            {
+                                                "id": "9020174537158039019"
+                                            }
+                                        ]
+                                    }
+                                ]
+                            },
+                            {
+                                "parametersCount": "1",
+                                "parameters": [
+                                    {
+                                        "name": "Perimeter",
+                                        "units": "mm",
+                                        "value": "13.02"
+                                    }
+                                ],
+                                "featureCount": "14",
+                                "features": [
+                                    {
+                                        "shapeIDCount": "4",
+                                        "shapeIDs": [
+                                            {
+                                                "id": "15982821633032837401"
+                                            },
+                                            {
+                                                "id": "3173923757589359034"
+                                            },
+                                            {
+                                                "id": "15549227475566690203"
+                                            },
+                                            {
+                                                "id": "12595920206016522714"
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "shapeIDCount": "4",
+                                        "shapeIDs": [
+                                            {
+                                                "id": "7756027489885778212"
+                                            },
+                                            {
+                                                "id": "6998625279563255971"
+                                            },
+                                            {
+                                                "id": "3685444906242985842"
+                                            },
+                                            {
+                                                "id": "16569666155291041374"
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "shapeIDCount": "4",
+                                        "shapeIDs": [
+                                            {
+                                                "id": "15066026871824524161"
+                                            },
+                                            {
+                                                "id": "5176462805269524077"
+                                            },
+                                            {
+                                                "id": "5785910363863620962"
+                                            },
+                                            {
+                                                "id": "17093042405449446013"
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "shapeIDCount": "4",
+                                        "shapeIDs": [
+                                            {
+                                                "id": "15318157353125730049"
+                                            },
+                                            {
+                                                "id": "17846512962883175126"
+                                            },
+                                            {
+                                                "id": "10598895766892334053"
+                                            },
+                                            {
+                                                "id": "4777462152496374429"
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "shapeIDCount": "4",
+                                        "shapeIDs": [
+                                            {
+                                                "id": "677727180480999837"
+                                            },
+                                            {
+                                                "id": "7852166638322974076"
+                                            },
+                                            {
+                                                "id": "9793572892485236132"
+                                            },
+                                            {
+                                                "id": "3230346438628746309"
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "shapeIDCount": "4",
+                                        "shapeIDs": [
+                                            {
+                                                "id": "1377310560835727152"
+                                            },
+                                            {
+                                                "id": "6486475547477047805"
+                                            },
+                                            {
+                                                "id": "11964459349235737893"
+                                            },
+                                            {
+                                                "id": "16097878663723738679"
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "shapeIDCount": "4",
+                                        "shapeIDs": [
+                                            {
+                                                "id": "2146505792804770495"
+                                            },
+                                            {
+                                                "id": "14487867043268405331"
+                                            },
+                                            {
+                                                "id": "6385253754690481846"
+                                            },
+                                            {
+                                                "id": "13881747582395056039"
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "shapeIDCount": "4",
+                                        "shapeIDs": [
+                                            {
+                                                "id": "6978106472901155362"
+                                            },
+                                            {
+                                                "id": "15010898061632805071"
+                                            },
+                                            {
+                                                "id": "12017051640905719132"
+                                            },
+                                            {
+                                                "id": "8020003535149334188"
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "shapeIDCount": "4",
+                                        "shapeIDs": [
+                                            {
+                                                "id": "12280225974410462174"
+                                            },
+                                            {
+                                                "id": "1071433100731723652"
+                                            },
+                                            {
+                                                "id": "11449582427192394566"
+                                            },
+                                            {
+                                                "id": "5864642877343511038"
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "shapeIDCount": "4",
+                                        "shapeIDs": [
+                                            {
+                                                "id": "4546449652342697863"
+                                            },
+                                            {
+                                                "id": "5735796834747352492"
+                                            },
+                                            {
+                                                "id": "12621043501149568316"
+                                            },
+                                            {
+                                                "id": "6589031089441209960"
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "shapeIDCount": "4",
+                                        "shapeIDs": [
+                                            {
+                                                "id": "1184022679776551000"
+                                            },
+                                            {
+                                                "id": "3294353369468381332"
+                                            },
+                                            {
+                                                "id": "13168154460747125723"
+                                            },
+                                            {
+                                                "id": "376879172313219286"
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "shapeIDCount": "4",
+                                        "shapeIDs": [
+                                            {
+                                                "id": "12847911485679999402"
+                                            },
+                                            {
+                                                "id": "14589262957591301201"
+                                            },
+                                            {
+                                                "id": "12965613855475233333"
+                                            },
+                                            {
+                                                "id": "434805032275824079"
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "shapeIDCount": "4",
+                                        "shapeIDs": [
+                                            {
+                                                "id": "9429373389796675372"
+                                            },
+                                            {
+                                                "id": "4138844651947078450"
+                                            },
+                                            {
+                                                "id": "18303113335801159642"
+                                            },
+                                            {
+                                                "id": "15597434714933519662"
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "shapeIDCount": "4",
+                                        "shapeIDs": [
+                                            {
+                                                "id": "7512516669014520869"
+                                            },
+                                            {
+                                                "id": "4551336560088781220"
+                                            },
+                                            {
+                                                "id": "3746189059690251873"
+                                            },
+                                            {
+                                                "id": "2924936642189905016"
+                                            }
+                                        ]
+                                    }
+                                ]
+                            },
+                            {
+                                "parametersCount": "1",
+                                "parameters": [
+                                    {
+                                        "name": "Perimeter",
+                                        "units": "mm",
+                                        "value": "14.81"
+                                    }
+                                ],
+                                "featureCount": "14",
+                                "features": [
+                                    {
+                                        "shapeIDCount": "4",
+                                        "shapeIDs": [
+                                            {
+                                                "id": "15311368849069053406"
+                                            },
+                                            {
+                                                "id": "11716179360866218651"
+                                            },
+                                            {
+                                                "id": "6326105962110075749"
+                                            },
+                                            {
+                                                "id": "13419761515808041154"
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "shapeIDCount": "4",
+                                        "shapeIDs": [
+                                            {
+                                                "id": "17241365000098970800"
+                                            },
+                                            {
+                                                "id": "4474083738700756613"
+                                            },
+                                            {
+                                                "id": "2584565694560077995"
+                                            },
+                                            {
+                                                "id": "13826959430289166003"
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "shapeIDCount": "4",
+                                        "shapeIDs": [
+                                            {
+                                                "id": "17590583775633380267"
+                                            },
+                                            {
+                                                "id": "7065260007763993845"
+                                            },
+                                            {
+                                                "id": "6723489450374732383"
+                                            },
+                                            {
+                                                "id": "18273466569441597903"
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "shapeIDCount": "4",
+                                        "shapeIDs": [
+                                            {
+                                                "id": "11489490526701946879"
+                                            },
+                                            {
+                                                "id": "14059239209181652026"
+                                            },
+                                            {
+                                                "id": "13465097344849371114"
+                                            },
+                                            {
+                                                "id": "6369622608966940393"
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "shapeIDCount": "4",
+                                        "shapeIDs": [
+                                            {
+                                                "id": "527081763091225101"
+                                            },
+                                            {
+                                                "id": "17527288101249966564"
+                                            },
+                                            {
+                                                "id": "17455224504307302863"
+                                            },
+                                            {
+                                                "id": "456263082375039459"
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "shapeIDCount": "4",
+                                        "shapeIDs": [
+                                            {
+                                                "id": "10612549390997297338"
+                                            },
+                                            {
+                                                "id": "4093547214716467013"
+                                            },
+                                            {
+                                                "id": "12516738107246765052"
+                                            },
+                                            {
+                                                "id": "8494540988930954007"
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "shapeIDCount": "4",
+                                        "shapeIDs": [
+                                            {
+                                                "id": "17552709460502454707"
+                                            },
+                                            {
+                                                "id": "10826420130480871847"
+                                            },
+                                            {
+                                                "id": "15667386610064319108"
+                                            },
+                                            {
+                                                "id": "5762216501526391849"
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "shapeIDCount": "4",
+                                        "shapeIDs": [
+                                            {
+                                                "id": "16872184958914619255"
+                                            },
+                                            {
+                                                "id": "15374747377963621550"
+                                            },
+                                            {
+                                                "id": "2880388595509240404"
+                                            },
+                                            {
+                                                "id": "10929225405847160223"
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "shapeIDCount": "4",
+                                        "shapeIDs": [
+                                            {
+                                                "id": "12514136365350081162"
+                                            },
+                                            {
+                                                "id": "5987634098303294419"
+                                            },
+                                            {
+                                                "id": "12909839469707834081"
+                                            },
+                                            {
+                                                "id": "9098226054036762351"
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "shapeIDCount": "4",
+                                        "shapeIDs": [
+                                            {
+                                                "id": "5961355081875123947"
+                                            },
+                                            {
+                                                "id": "3959700451405653676"
+                                            },
+                                            {
+                                                "id": "7290048751441197915"
+                                            },
+                                            {
+                                                "id": "6222523721906718587"
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "shapeIDCount": "4",
+                                        "shapeIDs": [
+                                            {
+                                                "id": "15740658504084654064"
+                                            },
+                                            {
+                                                "id": "8203448777832427273"
+                                            },
+                                            {
+                                                "id": "17272052768685563793"
+                                            },
+                                            {
+                                                "id": "11952260511537273570"
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "shapeIDCount": "4",
+                                        "shapeIDs": [
+                                            {
+                                                "id": "17406580052719151576"
+                                            },
+                                            {
+                                                "id": "10944911133859269818"
+                                            },
+                                            {
+                                                "id": "7012679591816536681"
+                                            },
+                                            {
+                                                "id": "11318886973187215920"
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "shapeIDCount": "4",
+                                        "shapeIDs": [
+                                            {
+                                                "id": "7263775811653197579"
+                                            },
+                                            {
+                                                "id": "5224998716057021508"
+                                            },
+                                            {
+                                                "id": "15828686851195516725"
+                                            },
+                                            {
+                                                "id": "5768723884583364093"
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "shapeIDCount": "4",
+                                        "shapeIDs": [
+                                            {
+                                                "id": "13176416817298931205"
+                                            },
+                                            {
+                                                "id": "9094582848401908485"
+                                            },
+                                            {
+                                                "id": "16528754223493990112"
+                                            },
+                                            {
+                                                "id": "4640106516310030380"
+                                            }
+                                        ]
+                                    }
+                                ]
+                            },
+                            {
+                                "parametersCount": "1",
+                                "parameters": [
+                                    {
+                                        "name": "Perimeter",
+                                        "units": "mm",
+                                        "value": "31.54"
+                                    }
+                                ],
+                                "featureCount": "26",
+                                "features": [
+                                    {
+                                        "shapeIDCount": "4",
+                                        "shapeIDs": [
+                                            {
+                                                "id": "1689621545411419229"
+                                            },
+                                            {
+                                                "id": "1461962349843293792"
+                                            },
+                                            {
+                                                "id": "8795651941219811578"
+                                            },
+                                            {
+                                                "id": "1948943182466627494"
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "shapeIDCount": "4",
+                                        "shapeIDs": [
+                                            {
+                                                "id": "13690778527187034876"
+                                            },
+                                            {
+                                                "id": "12435183153963581612"
+                                            },
+                                            {
+                                                "id": "348883554969084830"
+                                            },
+                                            {
+                                                "id": "8142704578616363023"
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "shapeIDCount": "4",
+                                        "shapeIDs": [
+                                            {
+                                                "id": "14228826966387890520"
+                                            },
+                                            {
+                                                "id": "10097990855659699259"
+                                            },
+                                            {
+                                                "id": "10208883601991432381"
+                                            },
+                                            {
+                                                "id": "10709651984573652727"
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "shapeIDCount": "4",
+                                        "shapeIDs": [
+                                            {
+                                                "id": "10763936863258920294"
+                                            },
+                                            {
+                                                "id": "18300114585666801465"
+                                            },
+                                            {
+                                                "id": "11003630242522771782"
+                                            },
+                                            {
+                                                "id": "17003154501926856746"
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "shapeIDCount": "4",
+                                        "shapeIDs": [
+                                            {
+                                                "id": "16356699197911453995"
+                                            },
+                                            {
+                                                "id": "14586444326148865557"
+                                            },
+                                            {
+                                                "id": "15002969589268221746"
+                                            },
+                                            {
+                                                "id": "4668023258555364607"
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "shapeIDCount": "4",
+                                        "shapeIDs": [
+                                            {
+                                                "id": "5261947436794720340"
+                                            },
+                                            {
+                                                "id": "9047009042511593279"
+                                            },
+                                            {
+                                                "id": "2319630578743929937"
+                                            },
+                                            {
+                                                "id": "18067751390883687068"
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "shapeIDCount": "4",
+                                        "shapeIDs": [
+                                            {
+                                                "id": "1268435703999373107"
+                                            },
+                                            {
+                                                "id": "13431992967248251517"
+                                            },
+                                            {
+                                                "id": "17206222134094178346"
+                                            },
+                                            {
+                                                "id": "16881541945042812052"
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "shapeIDCount": "4",
+                                        "shapeIDs": [
+                                            {
+                                                "id": "9751296574568413988"
+                                            },
+                                            {
+                                                "id": "9535139707313592325"
+                                            },
+                                            {
+                                                "id": "8007168231948288913"
+                                            },
+                                            {
+                                                "id": "16817847006817662339"
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "shapeIDCount": "4",
+                                        "shapeIDs": [
+                                            {
+                                                "id": "376111370944207354"
+                                            },
+                                            {
+                                                "id": "2100000899105890005"
+                                            },
+                                            {
+                                                "id": "1513269342083059971"
+                                            },
+                                            {
+                                                "id": "17700220298840189534"
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "shapeIDCount": "4",
+                                        "shapeIDs": [
+                                            {
+                                                "id": "13181129314581747679"
+                                            },
+                                            {
+                                                "id": "8718571257002529772"
+                                            },
+                                            {
+                                                "id": "8161623232538032474"
+                                            },
+                                            {
+                                                "id": "8980958138852823429"
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "shapeIDCount": "4",
+                                        "shapeIDs": [
+                                            {
+                                                "id": "11322620863420119204"
+                                            },
+                                            {
+                                                "id": "9360320934553679069"
+                                            },
+                                            {
+                                                "id": "8150693804790544809"
+                                            },
+                                            {
+                                                "id": "3560939722019720816"
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "shapeIDCount": "4",
+                                        "shapeIDs": [
+                                            {
+                                                "id": "17159212300881195598"
+                                            },
+                                            {
+                                                "id": "11066463622805179553"
+                                            },
+                                            {
+                                                "id": "18117383920521818632"
+                                            },
+                                            {
+                                                "id": "4366391613975068876"
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "shapeIDCount": "4",
+                                        "shapeIDs": [
+                                            {
+                                                "id": "7799166809486968759"
+                                            },
+                                            {
+                                                "id": "9316853511492151548"
+                                            },
+                                            {
+                                                "id": "8698910736369183414"
+                                            },
+                                            {
+                                                "id": "937584680507083929"
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "shapeIDCount": "4",
+                                        "shapeIDs": [
+                                            {
+                                                "id": "3944966395203581376"
+                                            },
+                                            {
+                                                "id": "9698548338767019340"
+                                            },
+                                            {
+                                                "id": "14142487115646874620"
+                                            },
+                                            {
+                                                "id": "15797530431793707381"
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "shapeIDCount": "4",
+                                        "shapeIDs": [
+                                            {
+                                                "id": "3713058621672905120"
+                                            },
+                                            {
+                                                "id": "7699698813232107473"
+                                            },
+                                            {
+                                                "id": "4014281564290652205"
+                                            },
+                                            {
+                                                "id": "5516733421871343426"
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "shapeIDCount": "4",
+                                        "shapeIDs": [
+                                            {
+                                                "id": "13450948710545858540"
+                                            },
+                                            {
+                                                "id": "2058642428392675420"
+                                            },
+                                            {
+                                                "id": "6479913695430950886"
+                                            },
+                                            {
+                                                "id": "6146993732918647084"
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "shapeIDCount": "4",
+                                        "shapeIDs": [
+                                            {
+                                                "id": "17911857058949078212"
+                                            },
+                                            {
+                                                "id": "10310067388732917628"
+                                            },
+                                            {
+                                                "id": "1154145103285281365"
+                                            },
+                                            {
+                                                "id": "18054910491556715255"
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "shapeIDCount": "4",
+                                        "shapeIDs": [
+                                            {
+                                                "id": "10525868611501956749"
+                                            },
+                                            {
+                                                "id": "18419838042004938514"
+                                            },
+                                            {
+                                                "id": "18174935814677401369"
+                                            },
+                                            {
+                                                "id": "11335837172153088010"
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "shapeIDCount": "4",
+                                        "shapeIDs": [
+                                            {
+                                                "id": "2507958693731964804"
+                                            },
+                                            {
+                                                "id": "11634377022588334212"
+                                            },
+                                            {
+                                                "id": "13703520977509995597"
+                                            },
+                                            {
+                                                "id": "5583354076564892235"
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "shapeIDCount": "4",
+                                        "shapeIDs": [
+                                            {
+                                                "id": "9214128914008587617"
+                                            },
+                                            {
+                                                "id": "7163855744887230118"
+                                            },
+                                            {
+                                                "id": "14920087285611861895"
+                                            },
+                                            {
+                                                "id": "8743993910530694991"
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "shapeIDCount": "4",
+                                        "shapeIDs": [
+                                            {
+                                                "id": "5710915310927028963"
+                                            },
+                                            {
+                                                "id": "13422295535798120282"
+                                            },
+                                            {
+                                                "id": "3161438015281607523"
+                                            },
+                                            {
+                                                "id": "15677044008148380955"
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "shapeIDCount": "4",
+                                        "shapeIDs": [
+                                            {
+                                                "id": "15022229057044113910"
+                                            },
+                                            {
+                                                "id": "12422528137602424693"
+                                            },
+                                            {
+                                                "id": "9155107404819301161"
+                                            },
+                                            {
+                                                "id": "9899302116484275247"
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "shapeIDCount": "4",
+                                        "shapeIDs": [
+                                            {
+                                                "id": "8122657287489656271"
+                                            },
+                                            {
+                                                "id": "9315903220655304037"
+                                            },
+                                            {
+                                                "id": "1285660006711836258"
+                                            },
+                                            {
+                                                "id": "3281171724554043458"
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "shapeIDCount": "4",
+                                        "shapeIDs": [
+                                            {
+                                                "id": "9389770251283708818"
+                                            },
+                                            {
+                                                "id": "5149683193896279985"
+                                            },
+                                            {
+                                                "id": "15423488497832843518"
+                                            },
+                                            {
+                                                "id": "6760955185872694885"
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "shapeIDCount": "4",
+                                        "shapeIDs": [
+                                            {
+                                                "id": "6626125296992582652"
+                                            },
+                                            {
+                                                "id": "9196256210347642359"
+                                            },
+                                            {
+                                                "id": "9150396715295489340"
+                                            },
+                                            {
+                                                "id": "12895736563679940858"
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "shapeIDCount": "4",
+                                        "shapeIDs": [
+                                            {
+                                                "id": "8321327451448565865"
+                                            },
+                                            {
+                                                "id": "7077083692300326315"
+                                            },
+                                            {
+                                                "id": "12593643563991678597"
+                                            },
+                                            {
+                                                "id": "14574376123736635692"
+                                            }
+                                        ]
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "name": "Straight Notch(es)",
+                        "color": "(240, 135, 132)",
+                        "totalGroupFeatureCount": "1",
+                        "subGroupCount": "1",
+                        "subGroups": [
+                            {
+                                "parametersCount": "3",
+                                "parameters": [
+                                    {
+                                        "name": "Length",
+                                        "units": "mm",
+                                        "value": "20.00"
+                                    },
+                                    {
+                                        "name": "Width",
+                                        "units": "mm",
+                                        "value": "10.00"
+                                    },
+                                    {
+                                        "name": "Corner Fillet Radius",
+                                        "units": "mm",
+                                        "value": "5.00"
+                                    }
+                                ],
+                                "featureCount": "1",
+                                "features": [
+                                    {
+                                        "shapeIDCount": "3",
+                                        "shapeIDs": [
+                                            {
+                                                "id": "7092825495580820722"
+                                            },
+                                            {
+                                                "id": "13747738006864038812"
+                                            },
+                                            {
+                                                "id": "11133176350659080008"
+                                            }
+                                        ]
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "name": "Notch(es)",
+                        "color": "(239, 136, 190)",
+                        "totalGroupFeatureCount": "1",
+                        "subGroupCount": "1",
+                        "subGroups": [
+                            {
+                                "parametersCount": "2",
+                                "parameters": [
+                                    {
+                                        "name": "Length",
+                                        "units": "mm",
+                                        "value": "30.00"
+                                    },
+                                    {
+                                        "name": "Width",
+                                        "units": "mm",
+                                        "value": "34.00"
+                                    }
+                                ],
+                                "featureCount": "1",
+                                "features": [
+                                    {
+                                        "shapeIDCount": "3",
+                                        "shapeIDs": [
+                                            {
+                                                "id": "11921452913059160486"
+                                            },
+                                            {
+                                                "id": "5999090725702824552"
+                                            },
+                                            {
+                                                "id": "11739128187039400678"
+                                            }
+                                        ]
+                                    }
+                                ]
+                            }
+                        ]
+                    }
+                ]
+            },
+            "dfm": {
+                "name": "Design for Manufacturing",
+                "totalFeatureCount": "31",
+                "featureGroups": [
+                    {
+                        "name": "Inconsistent Radius Bend(s)",
+                        "color": "(0, 35, 245)",
+                        "totalGroupFeatureCount": "8",
+                        "subGroupCount": "2",
+                        "subGroups": [
+                            {
+                                "parametersCount": "2",
+                                "parameters": [
+                                    {
+                                        "name": "Expected Radius",
+                                        "units": "mm",
+                                        "value": "1.00"
+                                    },
+                                    {
+                                        "name": "Actual Radius",
+                                        "units": "mm",
+                                        "value": "0.50"
+                                    }
+                                ],
+                                "featureCount": "5",
+                                "features": [
+                                    {
+                                        "shapeIDCount": "1",
+                                        "shapeIDs": [
+                                            {
+                                                "id": "9087839169806595837"
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "shapeIDCount": "1",
+                                        "shapeIDs": [
+                                            {
+                                                "id": "8048010910241914380"
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "shapeIDCount": "1",
+                                        "shapeIDs": [
+                                            {
+                                                "id": "1513165068276417903"
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "shapeIDCount": "1",
+                                        "shapeIDs": [
+                                            {
+                                                "id": "17762918875050154057"
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "shapeIDCount": "1",
+                                        "shapeIDs": [
+                                            {
+                                                "id": "13596976974299138431"
+                                            }
+                                        ]
+                                    }
+                                ]
+                            },
+                            {
+                                "parametersCount": "2",
+                                "parameters": [
+                                    {
+                                        "name": "Expected Radius",
+                                        "units": "mm",
+                                        "value": "1.00"
+                                    },
+                                    {
+                                        "name": "Actual Radius",
+                                        "units": "mm",
+                                        "value": "0.74"
+                                    }
+                                ],
+                                "featureCount": "3",
+                                "features": [
+                                    {
+                                        "shapeIDCount": "1",
+                                        "shapeIDs": [
+                                            {
+                                                "id": "2437507887620121305"
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "shapeIDCount": "1",
+                                        "shapeIDs": [
+                                            {
+                                                "id": "13444386293743294068"
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "shapeIDCount": "1",
+                                        "shapeIDs": [
+                                            {
+                                                "id": "4624806386101796877"
+                                            }
+                                        ]
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "name": "Irregular Corner Fillet Radius Notch(es)",
+                        "color": "(239, 136, 190)",
+                        "totalGroupFeatureCount": "1",
+                        "subGroupCount": "1",
+                        "subGroups": [
+                            {
+                                "parametersCount": "2",
+                                "parameters": [
+                                    {
+                                        "name": "Expected Corner Fillet Radius",
+                                        "units": "mm",
+                                        "value": "0.50"
+                                    },
+                                    {
+                                        "name": "Actual Corner Fillet Radius",
+                                        "units": "mm",
+                                        "value": "5.00"
+                                    }
+                                ],
+                                "featureCount": "1",
+                                "features": [
+                                    {
+                                        "shapeIDCount": "3",
+                                        "shapeIDs": [
+                                            {
+                                                "id": "7092825495580820722"
+                                            },
+                                            {
+                                                "id": "13747738006864038812"
+                                            },
+                                            {
+                                                "id": "11133176350659080008"
+                                            }
+                                        ]
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "name": "Irregular Size Bend Relief(s)",
+                        "color": "(22, 65, 124)",
+                        "totalGroupFeatureCount": "1",
+                        "subGroupCount": "1",
+                        "subGroups": [
+                            {
+                                "parametersCount": "2",
+                                "parameters": [
+                                    {
+                                        "name": "Expected Minimum Relief Size (LxW)",
+                                        "units": "mm",
+                                        "value": "0.74 x 1.00"
+                                    },
+                                    {
+                                        "name": "Actual Relief Size (LxW)",
+                                        "units": "mm",
+                                        "value": "0.74 x 0.00"
+                                    }
+                                ],
+                                "featureCount": "1",
+                                "features": [
+                                    {
+                                        "shapeIDCount": "2",
+                                        "shapeIDs": [
+                                            {
+                                                "id": "13444386293743294068"
+                                            },
+                                            {
+                                                "id": "15730153031142896365"
+                                            }
+                                        ]
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "name": "Small Distance Between Hole And Bend Issue(s)",
+                        "color": "(239, 136, 190)",
+                        "totalGroupFeatureCount": "6",
+                        "subGroupCount": "2",
+                        "subGroups": [
+                            {
+                                "parametersCount": "2",
+                                "parameters": [
+                                    {
+                                        "name": "Expected Minimum Distance",
+                                        "units": "mm",
+                                        "value": "3.00"
+                                    },
+                                    {
+                                        "name": "Actual Distance",
+                                        "units": "mm",
+                                        "value": "1.00"
+                                    }
+                                ],
+                                "featureCount": "1",
+                                "features": [
+                                    {
+                                        "shapeIDCount": "2",
+                                        "shapeIDs": [
+                                            {
+                                                "id": "5075792848311313733"
+                                            },
+                                            {
+                                                "id": "14690046128893120262"
+                                            }
+                                        ]
+                                    }
+                                ]
+                            },
+                            {
+                                "parametersCount": "2",
+                                "parameters": [
+                                    {
+                                        "name": "Expected Minimum Distance",
+                                        "units": "mm",
+                                        "value": "3.00"
+                                    },
+                                    {
+                                        "name": "Actual Distance",
+                                        "units": "mm",
+                                        "value": "2.26"
+                                    }
+                                ],
+                                "featureCount": "5",
+                                "features": [
+                                    {
+                                        "shapeIDCount": "2",
+                                        "shapeIDs": [
+                                            {
+                                                "id": "10271470217387784703"
+                                            },
+                                            {
+                                                "id": "2437507887620121305"
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "shapeIDCount": "2",
+                                        "shapeIDs": [
+                                            {
+                                                "id": "1241927037724472382"
+                                            },
+                                            {
+                                                "id": "13444386293743294068"
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "shapeIDCount": "2",
+                                        "shapeIDs": [
+                                            {
+                                                "id": "13269025147780744688"
+                                            },
+                                            {
+                                                "id": "4624806386101796877"
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "shapeIDCount": "2",
+                                        "shapeIDs": [
+                                            {
+                                                "id": "2553270826572938675"
+                                            },
+                                            {
+                                                "id": "4624806386101796877"
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "shapeIDCount": "2",
+                                        "shapeIDs": [
+                                            {
+                                                "id": "3778268653028822538"
+                                            },
+                                            {
+                                                "id": "2437507887620121305"
+                                            }
+                                        ]
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "name": "Small Distance Between Hole And Edge Issue(s)",
+                        "color": "(240, 135, 132)",
+                        "totalGroupFeatureCount": "1",
+                        "subGroupCount": "1",
+                        "subGroups": [
+                            {
+                                "parametersCount": "2",
+                                "parameters": [
+                                    {
+                                        "name": "Expected Minimum Distance",
+                                        "units": "mm",
+                                        "value": "2.00"
+                                    },
+                                    {
+                                        "name": "Actual Distance",
+                                        "units": "mm",
+                                        "value": "2.00"
+                                    }
+                                ],
+                                "featureCount": "1",
+                                "features": [
+                                    {
+                                        "shapeIDCount": "2",
+                                        "shapeIDs": [
+                                            {
+                                                "id": "2553270826572938675"
+                                            },
+                                            {
+                                                "id": "15528196668741671518"
+                                            }
+                                        ]
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "name": "Small Distance Between Notch And Bend Issue(s)",
+                        "color": "(58, 6, 3)",
+                        "totalGroupFeatureCount": "1",
+                        "subGroupCount": "1",
+                        "subGroups": [
+                            {
+                                "parametersCount": "2",
+                                "parameters": [
+                                    {
+                                        "name": "Expected Minimum Distance",
+                                        "units": "mm",
+                                        "value": "4.00"
+                                    },
+                                    {
+                                        "name": "Actual Distance",
+                                        "units": "mm",
+                                        "value": "0.20"
+                                    }
+                                ],
+                                "featureCount": "1",
+                                "features": [
+                                    {
+                                        "shapeIDCount": "4",
+                                        "shapeIDs": [
+                                            {
+                                                "id": "11921452913059160486"
+                                            },
+                                            {
+                                                "id": "5999090725702824552"
+                                            },
+                                            {
+                                                "id": "11739128187039400678"
+                                            },
+                                            {
+                                                "id": "13444386293743294068"
+                                            }
+                                        ]
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "name": "Small Length Flange(s)",
+                        "color": "(88, 19, 94)",
+                        "totalGroupFeatureCount": "5",
+                        "subGroupCount": "1",
+                        "subGroups": [
+                            {
+                                "parametersCount": "2",
+                                "parameters": [
+                                    {
+                                        "name": "Expected Minimum Length",
+                                        "units": "mm",
+                                        "value": "4.00"
+                                    },
+                                    {
+                                        "name": "Actual Length",
+                                        "units": "mm",
+                                        "value": "2.00"
+                                    }
+                                ],
+                                "featureCount": "5",
+                                "features": [
+                                    {
+                                        "shapeIDCount": "2",
+                                        "shapeIDs": [
+                                            {
+                                                "id": "7019516384440120932"
+                                            },
+                                            {
+                                                "id": "10065835702099511347"
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "shapeIDCount": "2",
+                                        "shapeIDs": [
+                                            {
+                                                "id": "2621699309571291349"
+                                            },
+                                            {
+                                                "id": "6186543087949618937"
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "shapeIDCount": "2",
+                                        "shapeIDs": [
+                                            {
+                                                "id": "8052669230524795203"
+                                            },
+                                            {
+                                                "id": "7351003422808260024"
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "shapeIDCount": "2",
+                                        "shapeIDs": [
+                                            {
+                                                "id": "3688302202846812185"
+                                            },
+                                            {
+                                                "id": "15155781154751491454"
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "shapeIDCount": "2",
+                                        "shapeIDs": [
+                                            {
+                                                "id": "13808574847505500316"
+                                            },
+                                            {
+                                                "id": "7969219699134441479"
+                                            }
+                                        ]
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "name": "Small Radius Bend(s)",
+                        "color": "(161, 251, 142)",
+                        "totalGroupFeatureCount": "8",
+                        "subGroupCount": "2",
+                        "subGroups": [
+                            {
+                                "parametersCount": "2",
+                                "parameters": [
+                                    {
+                                        "name": "Expected Minimum Radius",
+                                        "units": "mm",
+                                        "value": "1.00"
+                                    },
+                                    {
+                                        "name": "Actual Radius",
+                                        "units": "mm",
+                                        "value": "0.50"
+                                    }
+                                ],
+                                "featureCount": "5",
+                                "features": [
+                                    {
+                                        "shapeIDCount": "1",
+                                        "shapeIDs": [
+                                            {
+                                                "id": "9087839169806595837"
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "shapeIDCount": "1",
+                                        "shapeIDs": [
+                                            {
+                                                "id": "8048010910241914380"
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "shapeIDCount": "1",
+                                        "shapeIDs": [
+                                            {
+                                                "id": "1513165068276417903"
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "shapeIDCount": "1",
+                                        "shapeIDs": [
+                                            {
+                                                "id": "17762918875050154057"
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "shapeIDCount": "1",
+                                        "shapeIDs": [
+                                            {
+                                                "id": "13596976974299138431"
+                                            }
+                                        ]
+                                    }
+                                ]
+                            },
+                            {
+                                "parametersCount": "2",
+                                "parameters": [
+                                    {
+                                        "name": "Expected Minimum Radius",
+                                        "units": "mm",
+                                        "value": "1.00"
+                                    },
+                                    {
+                                        "name": "Actual Radius",
+                                        "units": "mm",
+                                        "value": "0.74"
+                                    }
+                                ],
+                                "featureCount": "3",
+                                "features": [
+                                    {
+                                        "shapeIDCount": "1",
+                                        "shapeIDs": [
+                                            {
+                                                "id": "2437507887620121305"
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "shapeIDCount": "1",
+                                        "shapeIDs": [
+                                            {
+                                                "id": "13444386293743294068"
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "shapeIDCount": "1",
+                                        "shapeIDs": [
+                                            {
+                                                "id": "4624806386101796877"
+                                            }
+                                        ]
+                                    }
+                                ]
+                            }
+                        ]
+                    }
+                ]
+            },
+            "featureRecognitionUnfolded": {
+                "name": "Feature Recognition",
+                "parametersCount": "3",
+                "parameters": [
+                    {
+                        "name": "Length",
+                        "units": "mm",
+                        "value": "220.71"
+                    },
+                    {
+                        "name": "Width",
+                        "units": "mm",
+                        "value": "167.84"
+                    },
+                    {
+                        "name": "Thickness",
+                        "units": "mm",
+                        "value": "1.00"
+                    },
+                    {
+                        "name": "Perimeter",
+                        "units": "mm",
+                        "value": "1121.37"
+                    }
+                ]
+            },
+            "dfmUnfolded": {
+                "name": "Design for Manufacturing",
+                "totalFeatureCount": "1",
+                "featureGroups": [
+                    {
+                        "name": "Non Standard Sheet Size(s)",
+                        "color": "(0, 0, 0)",
+                        "totalGroupFeatureCount": "1",
+                        "subGroupCount": "1",
+                        "subGroups": [
+                            {
+                                "parametersCount": "2",
+                                "parameters": [
+                                    {
+                                        "name": "Nearest Standard Size (LxW)",
+                                        "units": "mm",
+                                        "value": "300.00 x 200.00"
+                                    },
+                                    {
+                                        "name": "Actual Size (LxW)",
+                                        "units": "mm",
+                                        "value": "220.71 x 167.84"
+                                    }
+                                ],
+                                "featureCount": "1",
+                                "features": [
+                                    {
+                                        "shapeIDCount": "0",
+                                        "shapeIDs": []
+                                    }
+                                ]
+                            }
+                        ]
+                    }
+                ]
+            }
+        }
+    ]
+}

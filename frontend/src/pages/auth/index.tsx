@@ -1,6 +1,6 @@
 import { Box, Container, Typography } from "@mui/material";
 import React from "react";
-import LOGO from '../../assets/images/Group 11.png';
+import LOGO from '@/assets/images/Group 11.png';
 
 interface AuthProps {
     image?: string; // Optional image for flexibility

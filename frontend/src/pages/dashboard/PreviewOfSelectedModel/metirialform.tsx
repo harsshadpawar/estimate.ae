@@ -13,10 +13,9 @@ import {
 } from '@mui/material';
 import { InfoOutlined, KeyboardArrowDown } from '@mui/icons-material';
 import { useLocation, useNavigate } from 'react-router-dom';
-import apiClient from '../../../services/interceptor';
 import { toast } from 'react-toastify';
 import { useDispatch } from 'react-redux';
-import { updateMaterial } from '../../../redux/features/materials/materialsSlice';
+import { updateMaterial } from '@/redux/features/materials/materialsSlice';
 
 const StyledPaper = styled(Paper)(({ theme }) => ({
     padding: theme.spacing(3),

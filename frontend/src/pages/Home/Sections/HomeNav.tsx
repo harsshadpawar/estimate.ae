@@ -4,7 +4,6 @@ import React, { useState } from 'react'
 import {
     AppBar,
     Toolbar,
-    Typography,
     Box,
     Button,
     IconButton,
@@ -17,10 +16,10 @@ import {
 } from '@mui/material'
 import { Menu as MenuIcon } from '@mui/icons-material'
 // import Image from 'next/image'
-import mainlogo from '../../../assets/images/mainlogo.png'
+import mainlogo from '@/assets/images/mainlogo.png'
 import { useNavigate } from 'react-router-dom'
 import { useTranslation } from 'react-i18next'
-import LanguageDropdown from '../../../components/common/LanguageDropdown'
+import LanguageDropdown from '@/components/languageDropdown'
 
 const HomeNav: React.FC = () => {
     const { t, i18n } = useTranslation();

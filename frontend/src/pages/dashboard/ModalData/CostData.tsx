@@ -15,7 +15,7 @@ import {
     useMediaQuery,
     createTheme,
 } from "@mui/material";
-import logo from '../../../Assets/images/Group 7.png'
+import logo from '@/assets/images/Group 7.png'
 import { Image } from '@mui/icons-material';
 const theme = createTheme();
 interface CostData {

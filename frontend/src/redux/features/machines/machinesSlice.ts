@@ -1,5 +1,5 @@
 import { createSlice, createAsyncThunk, PayloadAction } from '@reduxjs/toolkit';
-import apiClient from '../../../services/interceptor';
+import apiClient from '@/services/interceptor';
 
 // ------------------
 // Types
@@ -72,7 +72,7 @@ export const fetchDefaultMachines = createAsyncThunk<
   'machines/fetchDefaultMachines',
   async ({ page, size }, { rejectWithValue }) => {
     try {
-      const response = await apiClient.get('/default-machine', {
+      const response = await apiClient.get('/default_machine', {
         params: { page, size }
       });
 
@@ -101,7 +101,7 @@ export const fetchMachineCategories = createAsyncThunk<string[], void, { rejectV
   'machines/fetchMachineCategories',
   async ({ page=0, size=10 }={}, { rejectWithValue }) => {
     try {
-      const response = await apiClient.get('/default-machine/categories', {
+      const response = await apiClient.get('/default_machine/categories', {
         params: { page: page + 1, size: size }
       });
       return response?.data?.data?.categories || [];
@@ -116,7 +116,7 @@ export const addMachine = createAsyncThunk<Machine, Machine, { rejectValue: stri
   async (machine, { rejectWithValue }) => {
     try {
       const response = await apiClient.post('/machine', machine);
-      return response?.data?.data?.machine;
+      return response?.data?.data;
     } catch (error: any) {
       return rejectWithValue(error.response?.data?.message || 'Failed to add machine');
     }

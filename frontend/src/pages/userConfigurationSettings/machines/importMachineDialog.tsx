@@ -17,9 +17,9 @@ import {
   CircularProgress,
 } from "@mui/material";
 import CloseIcon from "@mui/icons-material/Close";
-import "./machines.css";
+import "@/assets/css/machines.css";
 import { useDispatch, useSelector } from "react-redux";
-import { fetchDefaultMachines } from "../../../redux/features/machines/machinesSlice";
+import { fetchDefaultMachines } from "@/redux/features/machines/machinesSlice";
 
 const ImportMachineDrawer = ({ open, onDrawerClose, onImportMachine }) => {
   const dispatch = useDispatch();

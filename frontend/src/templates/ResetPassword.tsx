@@ -1,9 +1,9 @@
 import React from "react";
 import { Container, Grid, Typography, Box, Link } from "@mui/material";
-import Reset from "../assets/images/ResetPassword.png";
+import Reset from "@/assets/images/ResetPassword.png";
 import AuthComponent from "./Template";
-import Sucess from "../assets/images/Success.png";
-import CustomButton from "../components/common/Button";
+import Sucess from "@/assets/images/Success.png";
+import CustomButton from "@/components/button";
 
 const ResetPassword = () => {
   const handleButtonClick = () => {

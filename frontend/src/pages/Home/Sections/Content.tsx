@@ -12,8 +12,6 @@ import {
     useTheme,
     useMediaQuery,
 } from '@mui/material'
-import { Menu as MenuIcon, CloudUpload, Info } from '@mui/icons-material'
-import dash from '../../../assets/images/dash.png'
 import { useTranslation } from 'react-i18next'
 export default function Content() {
     const { t } = useTranslation();
@@ -26,7 +24,7 @@ export default function Content() {
                 position: 'relative',
                 overflow: 'hidden',
                 pt: 17,
-                pb: 0,
+                pb: 17,
                 pl: 0,
             }}
         >
@@ -88,7 +86,7 @@ export default function Content() {
 
                     {/* Right Column - Dashboard Preview */}
                     {/* <Grid item xs={12} md={7} lg={5}> */}
-                    <Box
+                    {/* <Box
                         component="img"
                         src={dash}
                         alt="Logo"
@@ -96,7 +94,27 @@ export default function Content() {
                             mt: -3,
                             width: { md: '600px', lg: '720px', xl: '850px' },
                         }}
-                    />
+                    /> */}
+                    <Box
+                        sx={{
+                            width: '100%',
+                            maxWidth: { xs: '100%', sm: '560px', md: '720px', lg: '960px' },
+                            height: { xs: '240px', sm: '315px', md: '405px', lg: '380px',xl:'450px' },
+                            position: 'relative',
+                            overflow: 'hidden',
+                            borderRadius: '12px',
+                        }}
+                    >
+                        <iframe
+                            width="100%"
+                            height="100%"
+                            src="https://www.youtube.com/embed/4J4MWseH-oY"
+                            title="YouTube video player"
+                            frameBorder="0"
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                            allowFullScreen
+                        ></iframe>
+                    </Box>
                     {/* </Grid> */}
                 </Box>
             </Box>

@@ -1,5 +1,5 @@
 import { createAsyncThunk, createSlice, PayloadAction } from "@reduxjs/toolkit";
-import apiClient from "../../../services/interceptor";
+import apiClient from "@/services/interceptor";
 import { AxiosError } from "axios";
 import { toast } from "react-toastify";
 
@@ -140,7 +140,7 @@ export const fetchPaginatedMaterialGroups = createAsyncThunk(
     'materials/fetchPaginatedGroups',
     async ({ page, rowsPerPage }: { page: number, rowsPerPage: number }, { rejectWithValue }) => {
         try {
-            const response = await apiClient.get("/material-group", {
+            const response = await apiClient.get("/material_group", {
                 params: { page: page + 1, size: rowsPerPage }
             });
             return {
@@ -159,7 +159,7 @@ export const fetchMaterialGroups = createAsyncThunk<MaterialGroup[], void, { rej
     'materials/fetchGroups',
     async (_, { rejectWithValue }) => {
         try {
-            const response = await apiClient.get('/material-group');
+            const response = await apiClient.get('/material_group');
             return response.data?.data?.material_groups || [];
         } catch (error) {
             const err = error as AxiosError;
@@ -174,7 +174,7 @@ export const deleteMaterialGroup = createAsyncThunk(
     'materials/deleteGroup',
     async (id: string, { rejectWithValue }) => {
         try {
-            await apiClient.delete(`/material-group/${id}`);
+            await apiClient.delete(`/material_group/${id}`);
             toast.success('Material group deleted successfully');
             return id;
         } catch (error) {
@@ -188,7 +188,7 @@ export const updateMaterialGroup = createAsyncThunk(
     'materials/updateGroup',
     async ({ id, material }: { id: any, material: Material }, { rejectWithValue }) => {
         try {
-            await apiClient.put(`/material-group/${id}`, material);
+            await apiClient.put(`/material_group/${id}`, material);
             toast.success('Material group updates successfully');
             return id;
         } catch (error) {

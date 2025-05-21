@@ -16,9 +16,7 @@ import {
 } from '@mui/material';
 import { InfoOutlined, Add as AddIcon } from '@mui/icons-material';
 import { useLocation, useNavigate } from 'react-router-dom';
-import apiClient from '../../../services/interceptor';
-import { toast } from 'react-toastify';
-import { updateSurfaceTreatment } from '../../../redux/features/surfaceTreatments/surfaceTreatmentsSlice';
+import { updateSurfaceTreatment } from '@/redux/features/surfaceTreatments/surfaceTreatmentsSlice';
 import { useDispatch } from 'react-redux';
 
 // Styled components
@@ -100,21 +98,22 @@ export default function SurfaceTreatmentForm() {
   const handleSave = async () => {
     setIsLoading(true)
     try {
-
+      console.log("form ",formData)
       const resultAction = await dispatch(
         updateSurfaceTreatment({
-          id: formData.id,
+          id: formData?.id,
           treatment: formData,
         })
       );
       navigate('/user-configuration')
     } catch (error) {
-      toast.error('Failed to save the surfacetreatment. Please check the input and try again.');
+      // toast.error('Failed to save the surfacetreatment. Please check the input and try again.');
       console
         .error("Error saving new machine:", error);
     }
     finally {
       setIsLoading(false)
+      navigate('/user-configuration')
     }
   }
   const handleDelete = (chipToDelete: MaterialGroup) => {

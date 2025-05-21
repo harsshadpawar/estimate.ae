@@ -1,6 +1,6 @@
 import React, { lazy, Suspense, ComponentType } from 'react';
-import LoadingFallback from '../components/LoadingFallback';
-import RouteErrorBoundary from '../utils/RouteErrorBoundary';
+import LoadingFallback from '@/components/loadingFallback';
+import RouteErrorBoundary from '@/utils/routeErrorBoundary';
 
 interface LazyComponentOptions {
   loadingMessage?: string;

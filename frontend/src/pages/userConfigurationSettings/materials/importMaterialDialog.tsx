@@ -11,10 +11,10 @@ import {
   IconButton,
 } from "@mui/material";
 import CloseIcon from "@mui/icons-material/Close";
-import apiClient from "../../../services/interceptor";
-import CustomTablePagination from "../customTablePagination";
-import BoldTableCell from "../boldTableCell";
-import "./material.css";
+import apiClient from "@/services/interceptor";
+import CustomTablePagination from "@/components/customTablePagination";
+import BoldTableCell from "@/components/boldTableCell";
+import "@/assets/css/material.css";
 
 // Define Material type
 interface Material {
@@ -45,7 +45,7 @@ const ImportMaterialDrawer: React.FC<ImportMaterialDrawerProps> = ({
 
   const fetchMaterials = (page: number, rowsPerPage: number) => {
     apiClient
-      .get("/api/default-material", {
+      .get("/default_material", {
         params: { page: page + 1, size: rowsPerPage },
       })
       .then((response) => {

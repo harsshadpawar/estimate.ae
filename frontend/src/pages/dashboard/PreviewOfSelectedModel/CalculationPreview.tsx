@@ -3,12 +3,10 @@
 import {
     Box,
     Typography,
-    TextField,
     Select,
     MenuItem,
     Paper,
     Stack,
-    InputAdornment,
     SelectChangeEvent,
 } from "@mui/material"
 import { Info } from 'lucide-react'
@@ -17,12 +15,6 @@ import { useState } from "react"
 export default function CalculationPreview({
     uploadedFileName,
     selectedMaterial,
-    selectedSurfaceTreatment,
-    selectedMachines,
-    volume,
-    surfaceArea,
-    setupCostsData,
-    unitCostsData
 }: any) {
     const [lotSize, setLotSize] = useState("1")
     const [variant, setVariant] = useState("Variant 1")

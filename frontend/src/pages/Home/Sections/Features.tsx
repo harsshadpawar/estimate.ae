@@ -1,9 +1,9 @@
 import { Box, Container, Typography } from '@mui/material'
 import React from 'react'
-import amico1 from '../../../assets/images/amico1.png'
-import amico2 from '../../../assets/images/amico2.png'
-import amico3 from '../../../assets/images/amico3.png'
-import amico4 from '../../../assets/images/amico4.png'
+import amico1 from '@/assets/images/amico1.png'
+import amico2 from '@/assets/images/amico2.png'
+import amico3 from '@/assets/images/amico3.png'
+import amico4 from '@/assets/images/amico4.png'
 
 import { useTranslation } from 'react-i18next'
 function Features() {

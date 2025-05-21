@@ -1,12 +1,12 @@
 
 import { Box, Container, IconButton, Link, Typography } from '@mui/material'
 import React from 'react'
-import footer from '../../../assets/images/footer.png'
+import footer from '@/assets/images/footer.png'
 import LinkedInIcon from '@mui/icons-material/LinkedIn'
 import TwitterIcon from '@mui/icons-material/Twitter'
 import FacebookIcon from '@mui/icons-material/Facebook'
 import InstagramIcon from '@mui/icons-material/Instagram'
-import mainlogo from '../../../assets/images/mainlogo.png'
+import mainlogo from '@/assets/images/mainlogo.png'
 import { useTranslation } from 'react-i18next'
 function Footer() {
     const { t } = useTranslation();

@@ -1,6 +1,6 @@
 
 import { createAsyncThunk, createSlice, PayloadAction } from "@reduxjs/toolkit";
-import apiClient from "../../../services/interceptor"; 
+import apiClient from "@/services/interceptor"; 
 
 
 interface ForgeState {

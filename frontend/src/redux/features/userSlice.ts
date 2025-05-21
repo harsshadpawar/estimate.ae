@@ -1,6 +1,6 @@
 import { createSlice, createAsyncThunk, PayloadAction } from "@reduxjs/toolkit";
-import apiClient from "../../services/interceptor";
-import { triggerToast } from "../../components/common/Snackbar";
+import apiClient from "@/services/interceptor";
+import { triggerToast } from "@/components/customToast";
 
 // Types
 type User = {
@@ -40,7 +40,7 @@ export const fetchUsers = createAsyncThunk("users/fetchUsers", async (_, { rejec
 
 export const addUser = createAsyncThunk("/user/user/", async (user: Partial<User>, { rejectWithValue }) => {
   try {
-    const response = await apiClient.post("/user/user/", user);
+    const response = await apiClient.post("/user/profile/", user);
     triggerToast(response.data?.data?.message || "User added successfully!", "success");
     return response.data.data.user;
   } catch (error: any) {

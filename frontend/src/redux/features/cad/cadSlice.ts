@@ -1,5 +1,5 @@
 import { createAsyncThunk, createSlice, PayloadAction } from "@reduxjs/toolkit";
-import apiClient from "../../../services/interceptor";
+import apiClient from "@/services/interceptor";
 import { toast } from "react-toastify";
 
 interface UploadCadResponse {
@@ -32,7 +32,7 @@ export const uploadCadFile = createAsyncThunk<UploadCadResponse,File,{ rejectVal
   async (file, { rejectWithValue }) => {
     try {
       const formData = new FormData();
-      formData.append('file', file);
+      formData.append('name', file);
       const response = await apiClient.post('/cad/upload', formData);
       toast.success("File uploaded successfully");
       return response.data as UploadCadResponse;

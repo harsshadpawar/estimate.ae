@@ -1,5 +1,5 @@
 import { createAsyncThunk, createSlice, PayloadAction } from "@reduxjs/toolkit";
-import apiClient from "../../../services/interceptor";
+import apiClient from "@/services/interceptor";
 import { AxiosError } from "axios";
 import { toast } from "react-toastify";
 
@@ -39,7 +39,7 @@ export const fetchDefaultSurfaceTreatments = createAsyncThunk(
   'surfaceTreatments/fetchDefault',
   async (_, { rejectWithValue }) => {
     try {
-      const response = await apiClient.get('/surface-treatment', {
+      const response = await apiClient.get('/surface_treatment', {
         params: { page: 1, size: 10 } // You can change defaults here if needed
       });
       return {
@@ -62,7 +62,7 @@ export const fetchSurfaceTreatments = createAsyncThunk(
   ) => {
     try {
       console.log("Fetching surface treatments for page:", page, "with rows per page:", rowsPerPage);
-      const response = await apiClient.get('/surface-treatment/', {
+      const response = await apiClient.get('/surface_treatment/', {
         params: { page: page + 1, size: rowsPerPage }
       });
       console.log("Fetched surface treatments:", response.data);
@@ -84,9 +84,9 @@ export const addSurfaceTreatment = createAsyncThunk(
   'surfaceTreatments/add',
   async (treatment: SurfaceTreatment, { rejectWithValue }) => {
     try {
-      const response = await apiClient.post("/surface-treatment", treatment);
+      const response = await apiClient.post("/surface_treatment", treatment);
       toast.success("Surface treatment added successfully");
-      return response.data.data.surface_treatment;
+      return response.data.data;
     } catch (error) {
       toast.error("Failed to add surface treatment");
       const err = error as AxiosError;
@@ -100,10 +100,11 @@ export const updateSurfaceTreatment = createAsyncThunk(
   'surfaceTreatments/update',
   async ({ id, treatment }: { id: string; treatment: SurfaceTreatment }, { rejectWithValue }) => {
     try {
-      const response = await apiClient.put(`/surface-treatment/${id}`, treatment);
+      const response = await apiClient.put(`/surface_treatment/${id}`, treatment);
       toast.success("Surface treatment updated successfully");
       return response.data.data.surface_treatment;
     } catch (error) {
+      
       toast.error("Failed to update surface treatment");
       const err = error as AxiosError;
       return rejectWithValue(err.message || "Update failed");
@@ -116,7 +117,7 @@ export const importSurfaceTreatment = createAsyncThunk(
   'surfaceTreatments/import',
   async (id: string, { rejectWithValue }) => {
     try {
-      const response = await apiClient.post(`/surface-treatment/import/${id}`);
+      const response = await apiClient.post(`/surface_treatment/import/${id}`);
       toast.success("Surface treatment imported successfully");
       return response.data.surface_treatment;
     } catch (error) {
@@ -132,7 +133,7 @@ export const deleteSurfaceTreatment = createAsyncThunk(
   'surfaceTreatments/delete',
   async (id: string, { rejectWithValue }) => {
     try {
-      await apiClient.delete(`/surface-treatment/${id}`);
+      await apiClient.delete(`/surface_treatment/${id}`);
       toast.success("Surface treatment deleted successfully");
       return id;
     } catch (error) {

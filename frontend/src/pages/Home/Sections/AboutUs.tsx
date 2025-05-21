@@ -7,7 +7,7 @@ import {
   useTheme,
   useMediaQuery,
 } from '@mui/material'
-import about from '../../../assets/images/about.png'
+import about from '@/assets/images/about.png'
 import { useTranslation } from 'react-i18next';
 function AboutUs() {
   const theme = useTheme()
