@@ -1,0 +1,78 @@
+version: '3.8'
+
+services:
+  db:
+    image: postgres:latest
+    container_name: estimat_db
+    environment:
+      POSTGRES_USER: myuser
+      POSTGRES_PASSWORD: mypassword
+      POSTGRES_DB: mydb
+    ports:
+      - "5454:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    networks:
+      - mynetwork
+
+    healthcheck:
+      test: ["CMD", "pg_isready", "-U", "myuser", "-d", "mydb"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  elasticsearch:
+    image: docker.elastic.co/elasticsearch/elasticsearch:8.11.3
+    container_name: elasticsearch
+    environment:
+      - xpack.security.enabled=false
+      - discovery.type=single-node
+      - ES_JAVA_OPTS=-Xms512m -Xmx512m  # Optional: adjust memory for your machine
+    ports:
+      - "9200:9200"  # Exposes the HTTP interface to localhost:9200
+    volumes:
+      - esdata:/usr/share/elasticsearch/data  # Persists data across restarts
+    networks:
+      - mynetwork    
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:9200"]
+      interval: 10s
+      timeout: 5s
+      retries: 5  
+
+  kibana:
+    image: docker.elastic.co/kibana/kibana:8.11.3
+    container_name: kibana
+    environment:
+      - ELASTICSEARCH_URL=http://elasticsearch:9200
+    ports:
+      - "5601:5601"  
+    networks:
+      - mynetwork
+
+  fastapi-app:
+    build: .
+    env_file:
+      - .env
+    container_name: fastapi-container
+    ports:
+      - "8000:8000"
+    depends_on:
+      db:
+        condition: service_healthy
+      elasticsearch:
+        condition: service_healthy
+    restart: on-failure     
+    networks:
+      - mynetwork    
+
+
+volumes:
+  postgres_data:
+    driver: local
+  esdata:
+    driver: local  
+
+networks:
+  mynetwork:
+    driver: bridge

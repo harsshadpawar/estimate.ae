@@ -1,0 +1,48 @@
+version: '3.8'
+
+services:
+  db:
+    image: postgres:latest
+    container_name: estimat_db
+    environment:
+      POSTGRES_USER: myuser
+      POSTGRES_PASSWORD: mypassword
+      POSTGRES_DB: mydb
+    ports:
+      - "5454:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    networks:
+      - mynetwork
+
+    healthcheck:
+      test: ["CMD", "pg_isready", "-U", "myuser", "-d", "mydb"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+
+  # fastapi-app:
+  #   build: .
+  #   env_file:
+  #     - .env
+  #   container_name: fastapi-container
+  #   ports:
+  #     - "8000:8000"
+  #   depends_on:
+  #     db:
+  #       condition: service_healthy
+  #   restart: on-failure     
+  #   networks:
+  #     - mynetwork    
+
+
+volumes:
+  postgres_data:
+    driver: local
+  # esdata:
+  #   driver: local  
+
+networks:
+  mynetwork:
+    driver: bridge

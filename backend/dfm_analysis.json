@@ -1,0 +1,29 @@
+{
+  "model_name": "tmp9yq9dcoa",
+  "parts": [
+    {
+      "part_number": 0,
+      "part_name": "BLOCK 1",
+      "solid_number": 0,
+      "issues": {
+        "Deep Pocket": {
+          "count": 1,
+          "details": [
+            {
+              "count": 1,
+              "type": "Pocket",
+              "properties": {
+                "expected max depth": 40.00000000000001,
+                "actual depth": 100.0
+              }
+            }
+          ]
+        }
+      },
+      "total_issues": 1
+    }
+  ],
+  "timestamp": "2025-05-26T19:49:56.932450",
+  "model_file": "/var/folders/kj/85n0tzm51cv2z_9qwttb2_r80000gq/T/tmp9yq9dcoa.stp",
+  "operation": "turning"
+}

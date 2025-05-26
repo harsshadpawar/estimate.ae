@@ -1,0 +1,132 @@
+{
+  "model_name": "tmpxc9qoufu",
+  "parts": [
+    {
+      "part_number": 0,
+      "part_name": "PIpe_675_55_217_SMALL",
+      "solid_number": 0,
+      "features": {
+        "Convex Profile Edge Milling Face": [
+          {
+            "count": 3,
+            "properties": {
+              "radius": 6.0
+            },
+            "type": "Turning"
+          }
+        ],
+        "Curved Milled Face": [
+          {
+            "count": 3,
+            "properties": {}
+          }
+        ],
+        "Flat Face Milled Face": [
+          {
+            "count": 6,
+            "properties": {}
+          }
+        ],
+        "Flat Side Milled Face": [
+          {
+            "count": 4,
+            "properties": {}
+          }
+        ],
+        "Through Hole": [
+          {
+            "count": 3,
+            "properties": {
+              "radius": 3.25,
+              "depth": 15.0,
+              "axis": [
+                0.0,
+                0.0,
+                -1.0
+              ]
+            },
+            "type": "Hole"
+          },
+          {
+            "count": 3,
+            "properties": {
+              "radius": 3.5,
+              "depth": 5.5,
+              "axis": [
+                0.0,
+                0.0,
+                1.0
+              ]
+            },
+            "type": "Hole"
+          },
+          {
+            "count": 1,
+            "properties": {
+              "radius": 13.0,
+              "depth": 65.0,
+              "axis": [
+                0.0,
+                0.0,
+                1.0
+              ]
+            },
+            "type": "Hole"
+          }
+        ],
+        "Flat Bottom Hole": [
+          {
+            "count": 1,
+            "properties": {
+              "radius": 17.5,
+              "depth": 2.0,
+              "axis": [
+                0.0,
+                0.0,
+                -1.0
+              ]
+            },
+            "type": "Hole"
+          },
+          {
+            "count": 1,
+            "properties": {
+              "radius": 17.5,
+              "depth": 21.0,
+              "axis": [
+                0.0,
+                0.0,
+                1.0
+              ]
+            },
+            "type": "Hole"
+          }
+        ],
+        "Boss": [
+          {
+            "count": 1,
+            "properties": {
+              "length": 45.0000002,
+              "width": 45.0000002,
+              "height": 4.500000200000001
+            },
+            "type": "Boss"
+          },
+          {
+            "count": 1,
+            "properties": {
+              "length": 46.0000002,
+              "width": 46.0000002,
+              "height": 63.0000002
+            },
+            "type": "Boss"
+          }
+        ]
+      },
+      "total_features": 27
+    }
+  ],
+  "timestamp": "2025-05-26T19:49:39.902214",
+  "model_file": "/var/folders/kj/85n0tzm51cv2z_9qwttb2_r80000gq/T/tmpxc9qoufu.stp",
+  "operation": "milling"
+}
