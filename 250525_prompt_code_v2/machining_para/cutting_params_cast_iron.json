@@ -1,0 +1,97 @@
+{
+  "material": "Cast Iron",
+  "cutting_parameters": {
+    "operations": {
+      "Milling": {
+        "End Mill": {
+          "HSS": {
+            "cutting_speed_range": {
+              "min": 24.0,
+              "max": 45.0
+            },
+            "feed_per_tooth_range": {
+              "min": 0.05,
+              "max": 0.1
+            },
+            "depth_of_cut_range": {
+              "min": 1.0,
+              "max": 3.0
+            },
+            "coolant_requirement": "Optional",
+            "special_notes": "Dry cutting possible"
+          },
+          "Carbide": {
+            "cutting_speed_range": {
+              "min": 80.0,
+              "max": 200.0
+            },
+            "feed_per_tooth_range": {
+              "min": 0.075,
+              "max": 0.2
+            },
+            "depth_of_cut_range": {
+              "min": 1.0,
+              "max": 4.0
+            },
+            "coolant_requirement": "Optional",
+            "special_notes": "Good chip evacuation needed"
+          }
+        },
+        "Face Mill": {
+          "Carbide Insert": {
+            "cutting_speed_range": {
+              "min": 120.0,
+              "max": 250.0
+            },
+            "feed_per_tooth_range": {
+              "min": 0.125,
+              "max": 0.3
+            },
+            "depth_of_cut_range": {
+              "min": 1.0,
+              "max": 5.0
+            },
+            "coolant_requirement": "Optional",
+            "special_notes": "Watch for dust"
+          }
+        }
+      },
+      "Turning": {
+        "External": {
+          "HSS": {
+            "cutting_speed_range": {
+              "min": 20.0,
+              "max": 30.0
+            },
+            "feed_per_tooth_range": {
+              "min": 0.15,
+              "max": 0.3
+            },
+            "depth_of_cut_range": {
+              "min": 1.0,
+              "max": 3.0
+            },
+            "coolant_requirement": "Optional",
+            "special_notes": "Good for interrupted cuts"
+          },
+          "Carbide Insert": {
+            "cutting_speed_range": {
+              "min": 180.0,
+              "max": 300.0
+            },
+            "feed_per_tooth_range": {
+              "min": 0.2,
+              "max": 0.45
+            },
+            "depth_of_cut_range": {
+              "min": 1.0,
+              "max": 5.0
+            },
+            "coolant_requirement": "Optional",
+            "special_notes": "High material removal"
+          }
+        }
+      }
+    }
+  }
+}

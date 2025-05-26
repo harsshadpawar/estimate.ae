@@ -1,0 +1,158 @@
+{
+  "machines": [
+    {
+      "category": "Turning Machine",
+      "abbreviation": "TSN",
+      "name": "Numeric turning machine [small]",
+      "hourly_rate": "70 AED/h",
+      "working_span": "555 x 200 x 200 mm"
+    },
+    {
+      "category": "Turning Machine",
+      "abbreviation": "TBN",
+      "name": "Numeric turning machine [big]",
+      "hourly_rate": "80 AED/h",
+      "working_span": "1000 x 1000 x 1000 mm"
+    },
+    {
+      "category": "Turning Machine",
+      "abbreviation": "TSC",
+      "name": "CNC turning machine [small]",
+      "hourly_rate": "90 AED/h",
+      "working_span": "500 x 200 x 200 mm"
+    },
+    {
+      "category": "Turning Machine",
+      "abbreviation": "TSC_HQ",
+      "name": "CNC turning machine HQ [small]",
+      "hourly_rate": "100 AED/h",
+      "working_span": "500 x 200 x 200 mm"
+    },
+    {
+      "category": "Turning Machine",
+      "abbreviation": "TBC",
+      "name": "CNC Turning Machine [big]",
+      "hourly_rate": "130 AED/h",
+      "working_span": "1000 x 950 x 950 mm"
+    },
+    {
+      "category": "Turning Machine",
+      "abbreviation": "TBC_HQ",
+      "name": "CNC Turning Machine HQ [big]",
+      "hourly_rate": "140 AED/h",
+      "working_span": "1000 x 950 x 950 mm"
+    },
+    {
+      "category": "Turning Machine",
+      "abbreviation": "TM",
+      "name": "Mill-turning machine",
+      "hourly_rate": "140 AED/h",
+      "working_span": "500 x 500 x 500 mm"
+    },
+    {
+      "category": "Turning Machine",
+      "abbreviation": "TM_HQ",
+      "name": "Mill-turning machine HQ",
+      "hourly_rate": "160 AED/h",
+      "working_span": "500 x 500 x 500 mm"
+    },
+    {
+      "category": "Turning Machine",
+      "abbreviation": "TMB",
+      "name": "Mill-turning machine [big]",
+      "hourly_rate": "170 AED/h",
+      "working_span": "2000 x 2000 x 2000 mm"
+    },
+    {
+      "category": "Turning Machine",
+      "abbreviation": "TMB_HQ",
+      "name": "Mill-turning machine HQ [big]",
+      "hourly_rate": "180 AED/h",
+      "working_span": "2000 x 2000 x 2000 mm"
+    },
+    {
+      "category": "Milling Machine",
+      "abbreviation": "M3S",
+      "name": "3-axis milling machine [small]",
+      "hourly_rate": "120 AED/h",
+      "working_span": "700 x 380 x 350 mm"
+    },
+    {
+      "category": "Milling Machine",
+      "abbreviation": "M3M",
+      "name": "3 -axis milling machine [medium]",
+      "hourly_rate": "130 AED/h",
+      "working_span": "1000 x 1000 x 500 mm"
+    },
+    {
+      "category": "Milling Machine",
+      "abbreviation": "M3B",
+      "name": "3-axis milling machine [big]",
+      "hourly_rate": "140 AED/h",
+      "working_span": "2000 x 1400 x 1000 mm"
+    },
+    {
+      "category": "Milling Machine",
+      "abbreviation": "M5S",
+      "name": "5-axis milling machine [small]",
+      "hourly_rate": "140 AED/h",
+      "working_span": "500 x 400 x 200 mm"
+    },
+    {
+      "category": "Milling Machine",
+      "abbreviation": "M5S_HQ",
+      "name": "5-axis milling machine HQ [small]",
+      "hourly_rate": "150 AED/h",
+      "working_span": "500 x 400 x 200 mm"
+    },
+    {
+      "category": "Milling Machine",
+      "abbreviation": "M5M",
+      "name": "5-axis milling machine [medium]",
+      "hourly_rate": "160 AED/h",
+      "working_span": "1000 x 1000 x 500 mm"
+    },
+    {
+      "category": "Milling Machine",
+      "abbreviation": "M5B",
+      "name": "5-axis milling machine [big]",
+      "hourly_rate": "160 AED/h",
+      "working_span": "2000 x 2000 x 2000 mm"
+    },
+    {
+      "category": "Milling Machine",
+      "abbreviation": "M5B_HQ",
+      "name": "5-axis milling machine HQ [big]",
+      "hourly_rate": "165 AED/h",
+      "working_span": "2000 x 2000 x 2000 mm"
+    },
+    {
+      "category": "Turning Machine",
+      "abbreviation": "TM",
+      "name": "Mill-turning machine",
+      "hourly_rate": "140 AED/h",
+      "working_span": "500 x 500 x 500 mm"
+    },
+    {
+      "category": "Turning Machine",
+      "abbreviation": "TM_HQ",
+      "name": "Mill-turning machine HQ",
+      "hourly_rate": "160 AED/h",
+      "working_span": "500 x 500 x 500 mm"
+    },
+    {
+      "category": "Turning Machine",
+      "abbreviation": "TMB",
+      "name": "Mill-turning machine [big]",
+      "hourly_rate": "170 AED/h",
+      "working_span": "2000 x 2000 x 2000 mm"
+    },
+    {
+      "category": "Turning Machine",
+      "abbreviation": "TMB_HQ",
+      "name": "Mill-turning machine HQ [big]",
+      "hourly_rate": "180 AED/h",
+      "working_span": "2000 x 2000 x 2000 mm"
+    }
+  ]
+}

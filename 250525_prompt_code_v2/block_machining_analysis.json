@@ -1,0 +1,70 @@
+{
+  "machining_analysis": {
+    "process_selection": {
+      "primary_process": "Milling",
+      "machine_type": "3-axis milling machine",
+      "machine_code": "M3S",
+      "justification": "Part dimensions (100x100x100mm) fit well within the M3S working envelope (700x380x350mm). The primarily prismatic features with one through pocket can be efficiently machined using 3-axis capabilities. Aluminum material allows for efficient machining on standard equipment."
+    },
+    "operation_details": {
+      "setup_count": 2,
+      "tool_count": 3,
+      "operation_count": 3,
+      "feature_based_operations": [
+        {
+          "feature_type": "Flat Face Milled Face",
+          "operation": "Face Milling",
+          "count": 2,
+          "dimensions": "100mm x 100mm",
+          "toolpath_length": 680,
+          "machining_time": 1.8
+        },
+        {
+          "feature_type": "Flat Side Milled Face",
+          "operation": "Profile Milling",
+          "count": 8,
+          "dimensions": "100mm x 100mm sides",
+          "toolpath_length": 4000,
+          "machining_time": 6.2
+        },
+        {
+          "feature_type": "Through Pocket",
+          "operation": "Pocket Milling",
+          "count": 1,
+          "dimensions": "10mm x 10mm x 100mm",
+          "toolpath_length": 42500,
+          "machining_time": 20.5
+        }
+      ]
+    },
+    "time_calculations": {
+      "total_machining_time": 28.5,
+      "setup_times": {
+        "machine_setup": 20,
+        "tool_setup": 15,
+        "work_setup": 20
+      },
+      "total_toolpath_length": 47180
+    },
+    "dfm_assessment": {
+      "manufacturability_score": 6,
+      "total_issues": 5,
+      "key_challenges": [
+        "Extremely deep pocket (100mm vs recommended 40mm)",
+        "Sharp internal corners with 0mm radius (vs recommended 33.3mm)",
+        "High aspect ratio pocket (10:1 depth-to-width)",
+        "Chip evacuation challenges in deep, narrow pocket",
+        "Tool deflection concerns with long-reach tooling"
+      ],
+      "machining_adjustments": [
+        "Extended-reach tooling for deep pocket",
+        "Reduced cutting parameters (30% lower feed rates)",
+        "Multiple pecking operations for chip evacuation",
+        "Specialized toolpath strategy for sharp corners",
+        "High pressure coolant required for deep pocket machining",
+        "More frequent tool changes to prevent breakage"
+      ],
+      "time_impact_percentage": 40
+    }
+  }
+}

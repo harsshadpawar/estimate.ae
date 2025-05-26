@@ -1,0 +1,42 @@
+{
+  "model_name": "block",
+  "parts": [
+    {
+      "part_number": 0,
+      "part_name": "BLOCK 1",
+      "solid_number": 0,
+      "issues": {
+        "Deep Pocket": {
+          "count": 1,
+          "details": [
+            {
+              "count": 1,
+              "type": "Pocket",
+              "properties": {
+                "expected max depth": 40.00000000000001,
+                "actual depth": 100.0
+              }
+            }
+          ]
+        },
+        "Small Radius Milled Part Internal Corner": {
+          "count": 4,
+          "details": [
+            {
+              "count": 4,
+              "type": "Internal Corner",
+              "properties": {
+                "expected min radius": 33.333333333333336,
+                "actual radius": 0.0
+              }
+            }
+          ]
+        }
+      },
+      "total_issues": 5
+    }
+  ],
+  "timestamp": "2025-05-25T15:15:18.429987",
+  "model_file": "./models/block.stp",
+  "operation": "milling"
+}

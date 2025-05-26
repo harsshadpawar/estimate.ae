@@ -1,0 +1,97 @@
+{
+  "material": "Aluminum",
+  "cutting_parameters": {
+    "operations": {
+      "Milling": {
+        "End Mill": {
+          "HSS": {
+            "cutting_speed_range": {
+              "min": 75.0,
+              "max": 105.0
+            },
+            "feed_per_tooth_range": {
+              "min": 0.05,
+              "max": 0.15
+            },
+            "depth_of_cut_range": {
+              "min": 1.0,
+              "max": 4.0
+            },
+            "coolant_requirement": "Recommended",
+            "special_notes": "Prevent chip welding"
+          },
+          "Carbide": {
+            "cutting_speed_range": {
+              "min": 150.0,
+              "max": 600.0
+            },
+            "feed_per_tooth_range": {
+              "min": 0.075,
+              "max": 0.25
+            },
+            "depth_of_cut_range": {
+              "min": 1.0,
+              "max": 5.0
+            },
+            "coolant_requirement": "Recommended",
+            "special_notes": "High speed capable"
+          }
+        },
+        "Face Mill": {
+          "Carbide Insert": {
+            "cutting_speed_range": {
+              "min": 300.0,
+              "max": 1000.0
+            },
+            "feed_per_tooth_range": {
+              "min": 0.15,
+              "max": 0.4
+            },
+            "depth_of_cut_range": {
+              "min": 1.0,
+              "max": 6.0
+            },
+            "coolant_requirement": "Recommended",
+            "special_notes": "Polished rake face"
+          }
+        }
+      },
+      "Turning": {
+        "External": {
+          "HSS": {
+            "cutting_speed_range": {
+              "min": 60.0,
+              "max": 90.0
+            },
+            "feed_per_tooth_range": {
+              "min": 0.15,
+              "max": 0.35
+            },
+            "depth_of_cut_range": {
+              "min": 1.0,
+              "max": 4.0
+            },
+            "coolant_requirement": "Recommended",
+            "special_notes": "Sharp cutting edges"
+          },
+          "Carbide Insert": {
+            "cutting_speed_range": {
+              "min": 300.0,
+              "max": 800.0
+            },
+            "feed_per_tooth_range": {
+              "min": 0.2,
+              "max": 0.5
+            },
+            "depth_of_cut_range": {
+              "min": 1.0,
+              "max": 6.0
+            },
+            "coolant_requirement": "Recommended",
+            "special_notes": "High polish tools"
+          }
+        }
+      }
+    }
+  }
+}

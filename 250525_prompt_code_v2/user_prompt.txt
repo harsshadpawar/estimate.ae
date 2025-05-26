@@ -1,0 +1,433 @@
+<materail> Aluminum</material>
+<consider>please consider the material hardness impact on machining time and calculate accrodingly </consider>
+
+<identified_faces> {'faces': [{'type': 'Plane', 'area': 9892.0, 'center_of_mass': [1.7137898833959673e-14, 7.716401689039146e-15, 100.0]}, {'type': 'Plane', 'area': 9892.0, 'center_of_mass': [1.6021914441704366e-14, 7.174533839980285e-15, 0.0]}, {'type': 'Plane', 'area': 9599.999999999995, 'center_of_mass': [50.000000000000014, 1.4710455076283324e-14, 50.0]}, {'type': 'Plane', 'area': 9599.999999999996, 'center_of_mass': [2.8137492336099967e-14, 50.00000000000001, 50.0]}, {'type': 'Plane', 'area': 9599.999999999996, 'center_of_mass': [-49.999999999999986, -1.4183099139586375e-14, 50.0]}, {'type': 'Plane', 'area': 9599.999999999996, 'center_of_mass': [9.237055564881303e-16, -49.99999999999999, 50.0]}, {'type': 'Plane', 'area': 1000.0, 'center_of_mass': [5.000000000000023, 7.150530167976399e-15, 50.0]}, {'type': 'Plane', 'area': 1000.0, 'center_of_mass': [2.0312640458541865e-14, 5.000000000000008, 50.0]}, {'type': 'Plane', 'area': 1000.0000000000002, 'center_of_mass': [-4.99999999999998, 7.291944825738027e-15, 50.0]}, {'type': 'Plane', 'area': 1000.0000000000003, 'center_of_mass': [2.247979580261017e-14, -4.999999999999994, 50.0]}, {'type': 'Plane', 'area': 282.842712474617, 'center_of_mass': [-48.99999999999998, -49.0, 50.0]}, {'type': 'Plane', 'area': 282.84271247462357, 'center_of_mass': [49.0, -48.99999999999998, 50.0]}, {'type': 'Plane', 'area': 282.842712474624, 'center_of_mass': [-48.99999999999997, 48.99999999999999, 50.0]}, {'type': 'Plane', 'area': 282.84271247462004, 'center_of_mass': [49.00000000000001, 49.0, 50.0]}], 'volume': 989200.0000000001, 'surface_area': 63315.37084989847, 'bounding_box': {'length': 104.00000020000002, 'width': 104.00000020000002, 'height': 104.00000019999999}, 'material_analysis': {'raw_material_volume': 1124864.0064896003, 'part_volume': 989200.0000000001, 'volume_difference': 135664.00648960017, 'material_utilization_percentage': 87.93951929238351}, 'feature_counts': {'planes': 14, 'cylinders': 0, 'cones': 0, 'spheres': 0, 'torus': 0, 'bezier': 0, 'bspline': 0, 'other': 0, 'unknown': 0}, 'surface_analysis': {'total_count': 0, 'spline_details': []}}</identified_faces>
+<consider>Form identified faces input variable consider the Part Volume, Raw Material Volume, Material Removal Required, Material Utilization from this get approximate idea about how much proportional toolpath length and machining time will be there</consider>
+
+<feature_recognition_data> {'model_name': 'block', 'parts': [{'part_number': 0, 'part_name': 'BLOCK 1', 'solid_number': 0, 'features': {'Flat Face Milled Face': [{'count': 2, 'properties': {}}], 'Flat Side Milled Face': [{'count': 8, 'properties': {}}], 'Through Pocket': [{'count': 1, 'properties': {'length': 10.000000000000004, 'width': 10.000000000000002, 'depth': 100.0, 'axis': [0.0, 0.0, 1.0]}}]}, 'total_features': 11}], 'timestamp': '2025-05-25T15:15:18.456523', 'model_file': './models/block.stp', 'operation': 'milling'}</feature_recognition_data>
+<DFM_analysis>{'model_name': 'block', 'parts': [{'part_number': 0, 'part_name': 'BLOCK 1', 'solid_number': 0, 'issues': {'Deep Pocket': {'count': 1, 'details': [{'count': 1, 'type': 'Pocket', 'properties': {'expected max depth': 40.00000000000001, 'actual depth': 100.0}}]}, 'Small Radius Milled Part Internal Corner': {'count': 4, 'details': [{'count': 4, 'type': 'Internal Corner', 'properties': {'expected min radius': 33.333333333333336, 'actual radius': 0.0}}]}}, 'total_issues': 5}], 'timestamp': '2025-05-25T15:15:18.429987', 'model_file': './models/block.stp', 'operation': 'milling'}</DFM_analysis>
+
+<instructions>
+1. "Verify that harder materials always result in longer machining times than softer ones"
+2."When analyzing similar geometry, ensure toolpath lengths remain consistent regardless of material"
+3. "Compare previous examples when similar parts are being evaluated with different materials"
+</instructions>
+
+<consider_feature_recognition>
+1. Map features to required operations:
+   - "Flat Face Milled Face" → Face Milling Operations
+   - "Flat Side Milled Face" → Profile/Contour Milling
+   - "Through Pocket" → Pocket Milling
+   - "Blind Pocket" → Pocket Milling with depth limitations
+   - "Through Hole" → Drilling Operations
+   - "Blind Hole" → Drilling with depth control
+   - "Thread" → Tapping/Threading
+   - "External Cylindrical Surface" → Turning
+   - "Internal Cylindrical Surface" → Boring
+   
+2. Use actual feature dimensions for precise toolpath calculations:
+   - Use feature count to multiply operations
+   - Apply appropriate toolpath formula based on feature type
+   - Use actual dimensions rather than estimates
+</consider_feature_recognition>
+
+<consider_dfm_analysis>
+1. Adjust machining parameters for identified DFM issues:
+   - "Deep Pocket" → Reduce feed rates by 30-50%, calculate additional passes
+   - "Small Radius" → Add specialized tooling operations, reduce feed rates
+   - "Thin Wall" → Add support strategies, reduce cutting forces
+   - "Tight Tolerance" → Add finishing passes, reduce step-over
+
+2. Calculate manufacturability score (1-10):
+   - Based on DFM issue count and severity
+   - Weight by impact on machining difficulty
+   - Use for machining complexity assessment
+
+3. Adjust setup time based on DFM challenges:
+   - Special fixturing requirements
+   - Additional alignment needs
+   - In-process measurement requirements
+</consider_dfm_analysis>
+
+<tool_cutting_parameters> {
+  "material": "Aluminum",
+  "cutting_parameters": {
+    "operations": {
+      "Milling": {
+        "End Mill": {
+          "HSS": {
+            "cutting_speed_range": {
+              "min": 75.0,
+              "max": 105.0
+            },
+            "feed_per_tooth_range": {
+              "min": 0.05,
+              "max": 0.15
+            },
+            "depth_of_cut_range": {
+              "min": 1.0,
+              "max": 4.0
+            },
+            "coolant_requirement": "Recommended",
+            "special_notes": "Prevent chip welding"
+          },
+          "Carbide": {
+            "cutting_speed_range": {
+              "min": 150.0,
+              "max": 600.0
+            },
+            "feed_per_tooth_range": {
+              "min": 0.075,
+              "max": 0.25
+            },
+            "depth_of_cut_range": {
+              "min": 1.0,
+              "max": 5.0
+            },
+            "coolant_requirement": "Recommended",
+            "special_notes": "High speed capable"
+          }
+        },
+        "Face Mill": {
+          "Carbide Insert": {
+            "cutting_speed_range": {
+              "min": 300.0,
+              "max": 1000.0
+            },
+            "feed_per_tooth_range": {
+              "min": 0.15,
+              "max": 0.4
+            },
+            "depth_of_cut_range": {
+              "min": 1.0,
+              "max": 6.0
+            },
+            "coolant_requirement": "Recommended",
+            "special_notes": "Polished rake face"
+          }
+        }
+      },
+      "Turning": {
+        "External": {
+          "HSS": {
+            "cutting_speed_range": {
+              "min": 60.0,
+              "max": 90.0
+            },
+            "feed_per_tooth_range": {
+              "min": 0.15,
+              "max": 0.35
+            },
+            "depth_of_cut_range": {
+              "min": 1.0,
+              "max": 4.0
+            },
+            "coolant_requirement": "Recommended",
+            "special_notes": "Sharp cutting edges"
+          },
+          "Carbide Insert": {
+            "cutting_speed_range": {
+              "min": 300.0,
+              "max": 800.0
+            },
+            "feed_per_tooth_range": {
+              "min": 0.2,
+              "max": 0.5
+            },
+            "depth_of_cut_range": {
+              "min": 1.0,
+              "max": 6.0
+            },
+            "coolant_requirement": "Recommended",
+            "special_notes": "High polish tools"
+          }
+        }
+      }
+    }
+  }
+}</tool_cutting_parameters>
+<cosider>Tool cutting parameters according to type of operation from variable cutting_para</consider>
+
+<machine_setuptime_parameters>
+- Need for lifting equipment 
+- Part weight 
+- Length 
+- Multiple operators needed
+</machine_setuptime_parameters>
+
+<workpiece_setuptime_parameters>
+- Dimensions (L × W × H or Diameter × Length)
+- Weight of raw stock
+- Material
+- Surface finish requirements
+- Geometric tolerances
+</workpiece_setuptime_parameters>
+
+<setup_complexity_factors>
+- Special fixturing needed?
+- Alignment criticality (standard/high/very high)
+- Number of reference surfaces
+- Need for indicated setup?
+- Tailstock/steady rest requirements
+- In-process measurement needs
+</setup_complexity_factors>
+
+<process_details> 
+<think>"Please calculate turning toolpaths as linear single-axis movements only not circumferential distances."</think>
+<take_formulas_from_system_prompt_calculate>
+<setup_1>
+<Operation name (Tool)>
+toolpath length calculation  in mm
+machining time -  - X.X min
+<Operation name (Tool)>
+toolpath length calculation  in mm
+machining time -  - X.X min
+<Operation name X(Tools)>
+[List all operations in setup 1 with toolpath length calculation in mm] 
+</setup_1>
+<Setup 1 Total toolpath length : XX.X mm>
+<Setup 1 Total machining time : XX.X min>
+
+<setup_2>
+<Operation name (Tool)>
+toolpath length calculation  in mm
+machining time -  - X.X min
+<Operation name (Tool)>
+toolpath length calculation  in mm
+machining time -  - X.X min
+<Operation name X(Tools)>
+List all operations in setup 2 with toolpath length calculation in mm] 
+</setup_2>
+<Setup 2 Total toolpath length : XX.X mm>
+<Setup 2 Total machining time : XX.X min>
+
+</take_formulas_from_system_prompt_calculate>
+
+<totals>
+<Total_operations>[total number of operations]</Total_operations>
+<Total_toolpath_length>[total toolpath length in mm]</Total_toolpath_length>
+<Total_machining_time>[total machining time in min for machining operations]</Total_machining_time>
+</totals>
+</process_details>
+
+<dfm_adjustments>
+Based on DFM issues identified:
+1. Calculate time adjustment factors for each issue type
+2. Apply appropriate toolpath modifications
+3. Determine additional setup requirements
+4. Document manufacturability score and key concerns
+</dfm_adjustments>
+
+<process_justification>[Brief explanation of machine selection and cutting parameters]</process_justification>
+<selected_machining_in_general>[General machining like CNC turning or Milling or TurnMilling]</selected_machining_in_general>
+<justification>[General machine selection 3-axis,5-axis,big,small,medium with justification]</justification>
+
+<extra_features> {
+  "machines": [
+    {
+      "category": "Turning Machine",
+      "abbreviation": "TSN",
+      "name": "Numeric turning machine [small]",
+      "hourly_rate": "70 AED/h",
+      "working_span": "555 x 200 x 200 mm"
+    },
+    {
+      "category": "Turning Machine",
+      "abbreviation": "TBN",
+      "name": "Numeric turning machine [big]",
+      "hourly_rate": "80 AED/h",
+      "working_span": "1000 x 1000 x 1000 mm"
+    },
+    {
+      "category": "Turning Machine",
+      "abbreviation": "TSC",
+      "name": "CNC turning machine [small]",
+      "hourly_rate": "90 AED/h",
+      "working_span": "500 x 200 x 200 mm"
+    },
+    {
+      "category": "Turning Machine",
+      "abbreviation": "TSC_HQ",
+      "name": "CNC turning machine HQ [small]",
+      "hourly_rate": "100 AED/h",
+      "working_span": "500 x 200 x 200 mm"
+    },
+    {
+      "category": "Turning Machine",
+      "abbreviation": "TBC",
+      "name": "CNC Turning Machine [big]",
+      "hourly_rate": "130 AED/h",
+      "working_span": "1000 x 950 x 950 mm"
+    },
+    {
+      "category": "Turning Machine",
+      "abbreviation": "TBC_HQ",
+      "name": "CNC Turning Machine HQ [big]",
+      "hourly_rate": "140 AED/h",
+      "working_span": "1000 x 950 x 950 mm"
+    },
+    {
+      "category": "Turning Machine",
+      "abbreviation": "TM",
+      "name": "Mill-turning machine",
+      "hourly_rate": "140 AED/h",
+      "working_span": "500 x 500 x 500 mm"
+    },
+    {
+      "category": "Turning Machine",
+      "abbreviation": "TM_HQ",
+      "name": "Mill-turning machine HQ",
+      "hourly_rate": "160 AED/h",
+      "working_span": "500 x 500 x 500 mm"
+    },
+    {
+      "category": "Turning Machine",
+      "abbreviation": "TMB",
+      "name": "Mill-turning machine [big]",
+      "hourly_rate": "170 AED/h",
+      "working_span": "2000 x 2000 x 2000 mm"
+    },
+    {
+      "category": "Turning Machine",
+      "abbreviation": "TMB_HQ",
+      "name": "Mill-turning machine HQ [big]",
+      "hourly_rate": "180 AED/h",
+      "working_span": "2000 x 2000 x 2000 mm"
+    },
+    {
+      "category": "Milling Machine",
+      "abbreviation": "M3S",
+      "name": "3-axis milling machine [small]",
+      "hourly_rate": "120 AED/h",
+      "working_span": "700 x 380 x 350 mm"
+    },
+    {
+      "category": "Milling Machine",
+      "abbreviation": "M3M",
+      "name": "3 -axis milling machine [medium]",
+      "hourly_rate": "130 AED/h",
+      "working_span": "1000 x 1000 x 500 mm"
+    },
+    {
+      "category": "Milling Machine",
+      "abbreviation": "M3B",
+      "name": "3-axis milling machine [big]",
+      "hourly_rate": "140 AED/h",
+      "working_span": "2000 x 1400 x 1000 mm"
+    },
+    {
+      "category": "Milling Machine",
+      "abbreviation": "M5S",
+      "name": "5-axis milling machine [small]",
+      "hourly_rate": "140 AED/h",
+      "working_span": "500 x 400 x 200 mm"
+    },
+    {
+      "category": "Milling Machine",
+      "abbreviation": "M5S_HQ",
+      "name": "5-axis milling machine HQ [small]",
+      "hourly_rate": "150 AED/h",
+      "working_span": "500 x 400 x 200 mm"
+    },
+    {
+      "category": "Milling Machine",
+      "abbreviation": "M5M",
+      "name": "5-axis milling machine [medium]",
+      "hourly_rate": "160 AED/h",
+      "working_span": "1000 x 1000 x 500 mm"
+    },
+    {
+      "category": "Milling Machine",
+      "abbreviation": "M5B",
+      "name": "5-axis milling machine [big]",
+      "hourly_rate": "160 AED/h",
+      "working_span": "2000 x 2000 x 2000 mm"
+    },
+    {
+      "category": "Milling Machine",
+      "abbreviation": "M5B_HQ",
+      "name": "5-axis milling machine HQ [big]",
+      "hourly_rate": "165 AED/h",
+      "working_span": "2000 x 2000 x 2000 mm"
+    },
+    {
+      "category": "Turning Machine",
+      "abbreviation": "TM",
+      "name": "Mill-turning machine",
+      "hourly_rate": "140 AED/h",
+      "working_span": "500 x 500 x 500 mm"
+    },
+    {
+      "category": "Turning Machine",
+      "abbreviation": "TM_HQ",
+      "name": "Mill-turning machine HQ",
+      "hourly_rate": "160 AED/h",
+      "working_span": "500 x 500 x 500 mm"
+    },
+    {
+      "category": "Turning Machine",
+      "abbreviation": "TMB",
+      "name": "Mill-turning machine [big]",
+      "hourly_rate": "170 AED/h",
+      "working_span": "2000 x 2000 x 2000 mm"
+    },
+    {
+      "category": "Turning Machine",
+      "abbreviation": "TMB_HQ",
+      "name": "Mill-turning machine HQ [big]",
+      "hourly_rate": "180 AED/h",
+      "working_span": "2000 x 2000 x 2000 mm"
+    }
+  ]
+}</extra_features>
+<cosider>From extra feature consider and analyze the input given like operations, intricate shapes machining warning, quantity of production to incorporate in the outputs</consider>
+<important>Consider the machine database and select the machine <select>select the machine code</select> </important>
+
+OUTPUT FORMAT:
+
+                    ```json
+
+                    {
+                      "machining_analysis": {
+                        "process_selection": {
+                          "primary_process": "string (Milling/Turning/Turn-Milling)",
+                          "machine_type": "string (3-axis/5-axis/etc)",
+                          "machine_code": "string",
+                          "justification": "string"
+                        },
+                        "operation_details": {
+                          "setup_count": 0,
+                          "tool_count": 0,
+                          "operation_count": 0,
+                          "feature_based_operations": [
+                            {
+                              "feature_type": "string",
+                              "operation": "string",
+                              "tool_selected": "string",
+                              "tool_specifications": "string",
+                              "count": 0,
+                              "dimensions": "string",
+                              "toolpath_length": 0,
+                              "machining_time": 0
+                            }
+                          ]
+                        },
+                        "time_calculations": {
+                          "total_machining_time": 0,
+                          "setup_times": {
+                            "machine_setup": 0,
+                            "tool_setup": 0,
+                            "work_setup": 0
+                          },
+                          "total_toolpath_length": 0
+                        },
+                        "dfm_assessment": {
+                          "manufacturability_score": 0,
+                          "total_issues": 0,
+                          "key_challenges": ["string"],
+                          "machining_adjustments": ["string"],
+                          "time_impact_percentage": 0
+                        },
+                        "postprocess_report": { }
+                      }````
+                    review the calculation once again before presenting and get trained with every output and save in your cache memory

@@ -1,0 +1,65 @@
+{
+  "material": "Titanium",
+  "cutting_parameters": {
+    "operations": {
+      "Milling": {
+        "End Mill": {
+          "Carbide": {
+            "cutting_speed_range": {
+              "min": 30.0,
+              "max": 45.0
+            },
+            "feed_per_tooth_range": {
+              "min": 0.05,
+              "max": 0.1
+            },
+            "depth_of_cut_range": {
+              "min": 0.5,
+              "max": 2.0
+            },
+            "coolant_requirement": "Required",
+            "special_notes": "Sharp cutting edges"
+          }
+        },
+        "Face Mill": {
+          "Carbide Insert": {
+            "cutting_speed_range": {
+              "min": 40.0,
+              "max": 60.0
+            },
+            "feed_per_tooth_range": {
+              "min": 0.075,
+              "max": 0.15
+            },
+            "depth_of_cut_range": {
+              "min": 0.5,
+              "max": 2.0
+            },
+            "coolant_requirement": "Required",
+            "special_notes": "High pressure coolant"
+          }
+        }
+      },
+      "Turning": {
+        "External": {
+          "Carbide Insert": {
+            "cutting_speed_range": {
+              "min": 45.0,
+              "max": 70.0
+            },
+            "feed_per_tooth_range": {
+              "min": 0.1,
+              "max": 0.2
+            },
+            "depth_of_cut_range": {
+              "min": 0.5,
+              "max": 2.0
+            },
+            "coolant_requirement": "Required",
+            "special_notes": "Monitor tool wear"
+          }
+        }
+      }
+    }
+  }
+}
