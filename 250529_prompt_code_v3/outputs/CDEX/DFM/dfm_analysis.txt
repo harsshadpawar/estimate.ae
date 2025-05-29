@@ -1,0 +1,14 @@
+Model: block
+
+Part #0 ["BLOCK 1"] - solid #0 has:
+    Deep Pocket Issue(s): 1
+        1 Pocket(s) with
+          expected max depth: 40.00000000000001 mm
+          actual depth: 100.0 mm
+    Small Radius Milled Part Internal Corner Issue(s): 4
+        4 Internal Corner(s) with
+          expected min radius: 33.333333333333336 mm
+          actual radius: 0.0 mm
+
+    Total issues: 5
+

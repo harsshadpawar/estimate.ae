@@ -1,0 +1,97 @@
+{
+  "material": "Steel (non-alloyed)",
+  "cutting_parameters": {
+    "operations": {
+      "Milling": {
+        "End Mill": {
+          "HSS": {
+            "cutting_speed_range": {
+              "min": 21.0,
+              "max": 30.0
+            },
+            "feed_per_tooth_range": {
+              "min": 0.025,
+              "max": 0.075
+            },
+            "depth_of_cut_range": {
+              "min": 1.0,
+              "max": 3.0
+            },
+            "coolant_requirement": "Optional",
+            "special_notes": "General purpose machining"
+          },
+          "Carbide": {
+            "cutting_speed_range": {
+              "min": 60.0,
+              "max": 150.0
+            },
+            "feed_per_tooth_range": {
+              "min": 0.05,
+              "max": 0.15
+            },
+            "depth_of_cut_range": {
+              "min": 1.0,
+              "max": 4.0
+            },
+            "coolant_requirement": "Recommended",
+            "special_notes": "Higher productivity"
+          }
+        },
+        "Face Mill": {
+          "Carbide Insert": {
+            "cutting_speed_range": {
+              "min": 100.0,
+              "max": 200.0
+            },
+            "feed_per_tooth_range": {
+              "min": 0.1,
+              "max": 0.25
+            },
+            "depth_of_cut_range": {
+              "min": 1.0,
+              "max": 5.0
+            },
+            "coolant_requirement": "Recommended",
+            "special_notes": "For large surfaces"
+          }
+        }
+      },
+      "Turning": {
+        "External": {
+          "HSS": {
+            "cutting_speed_range": {
+              "min": 15.0,
+              "max": 25.0
+            },
+            "feed_per_tooth_range": {
+              "min": 0.125,
+              "max": 0.25
+            },
+            "depth_of_cut_range": {
+              "min": 1.0,
+              "max": 3.0
+            },
+            "coolant_requirement": "Recommended",
+            "special_notes": "Basic turning operations"
+          },
+          "Carbide Insert": {
+            "cutting_speed_range": {
+              "min": 150.0,
+              "max": 250.0
+            },
+            "feed_per_tooth_range": {
+              "min": 0.15,
+              "max": 0.4
+            },
+            "depth_of_cut_range": {
+              "min": 1.0,
+              "max": 5.0
+            },
+            "coolant_requirement": "Recommended",
+            "special_notes": "High productivity turning"
+          }
+        }
+      }
+    }
+  }
+}

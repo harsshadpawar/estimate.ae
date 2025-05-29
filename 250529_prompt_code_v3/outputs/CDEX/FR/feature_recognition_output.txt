@@ -1,0 +1,14 @@
+Model: block
+
+Part #0 ["BLOCK 1"] - solid #0 has:
+    Flat Face Milled Face(s): 2
+    Flat Side Milled Face(s): 8
+    Through Pocket(s): 1
+        1  with
+          length: 10.000000000000004 mm
+          width: 10.000000000000002 mm
+          depth: 100.0 mm
+          axis: (0.00, 0.00, 1.00) 
+
+    Total features: 11
+

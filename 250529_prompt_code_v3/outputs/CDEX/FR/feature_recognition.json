@@ -1,0 +1,43 @@
+{
+  "model_name": "block",
+  "parts": [
+    {
+      "part_number": 0,
+      "part_name": "BLOCK 1",
+      "solid_number": 0,
+      "features": {
+        "Flat Face Milled Face": [
+          {
+            "count": 2,
+            "properties": {}
+          }
+        ],
+        "Flat Side Milled Face": [
+          {
+            "count": 8,
+            "properties": {}
+          }
+        ],
+        "Through Pocket": [
+          {
+            "count": 1,
+            "properties": {
+              "length": 10.000000000000004,
+              "width": 10.000000000000002,
+              "depth": 100.0,
+              "axis": [
+                0.0,
+                0.0,
+                1.0
+              ]
+            }
+          }
+        ]
+      },
+      "total_features": 11
+    }
+  ],
+  "timestamp": "2025-05-29T11:48:37.361102",
+  "model_file": "./models/block.stp",
+  "operation": "milling"
+}
