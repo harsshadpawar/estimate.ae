@@ -1,43 +1,42 @@
 import React, { useEffect, useState } from "react";
 import {
   Box,
-  Button,
-  Typography,
   Checkbox,
-  Table,
-  TableBody,
-  TableCell,
-  TableRow,
-  TableHead,
   IconButton,
-  styled,
-  tableCellClasses,
   Backdrop,
   CircularProgress,
 } from "@mui/material";
 import { Delete } from "@mui/icons-material";
+import { FaEye } from "react-icons/fa";
+import { TbEdit } from "react-icons/tb";
+import { useNavigate } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { toast } from "react-toastify";
+
 import ConfirmDialog from "../../dashboard/ConfirmDialog/confirmDialog";
 import AddSurfaceTreatmentDialog from "./addSurfaceTreatmentDialog";
 import ImportSurfaceTreatmentDialog from "./importSurfaceTreatmentDialog";
 import AddNewSurfaceTreatmentDialog from "./addNewSurfaceTreatmentDialog";
-import "@/assets/css/surfaceTreatments.css";
-import { useNavigate } from "react-router-dom";
-import { FaEye } from "react-icons/fa";
-import { TbEdit } from "react-icons/tb";
-import { useDispatch, useSelector } from "react-redux";
 
-import { addSurfaceTreatment, deleteSurfaceTreatment, fetchSurfaceTreatments, importSurfaceTreatment, updateSurfaceTreatment } from "@/redux/features/surfaceTreatments/surfaceTreatmentsSlice";
+import {
+  addSurfaceTreatment,
+  deleteSurfaceTreatment,
+  fetchSurfaceTreatments,
+  importSurfaceTreatment,
+  updateSurfaceTreatment
+} from "@/redux/features/surfaceTreatments/surfaceTreatmentsSlice";
 import { fetchMaterialGroups } from "@/redux/features/materials/materialsSlice";
 import { RootState } from "@/redux/store/store";
-import { toast } from "react-toastify";
+import EnhancedTable from "@/components/table";
+import Loader from "@/components/loader";
 
 // Type Definitions
 interface SurfaceTreatment {
   id: string;
   active: boolean;
-  name: string;
+  surface_treat_name: string;
   price_per_kg: number;
-  surface_price: number;
+  price: number;
 }
 
 interface MaterialGroup {
@@ -45,36 +44,15 @@ interface MaterialGroup {
   name: string;
 }
 
-const StyledTableCell = styled(TableCell)(({ theme }) => ({
-  [`&.${tableCellClasses.body}`]: {
-    fontWeight: 500,
-    fontSize: '15px',
-    lineHeight: '18.15px'
-  },
-}));
-
-const StyledTableRow = styled(TableRow)(({ theme }) => ({
-  height: '54px',
-  '&:nth-of-type(odd)': {
-    backgroundColor: '#EFF7FD',
-  },
-  '&:nth-of-type(even)': {
-    backgroundColor: '#FFFF',
-  },
-  '&:last-child td, &:last-child th': {
-    border: 0,
-  },
-}));
-
 const SurfaceTreatments: React.FC = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  
+  const role = useSelector((state: RootState) => state?.auth?.role);
   // Redux selectors
   const surfaceTreatments = useSelector((state: RootState) => state?.surfaceTreatments.treatments);
   const materialGroups = useSelector((state: RootState) => state?.materials.groups);
   const status = useSelector((state: RootState) => state?.surfaceTreatments.status);
-  
+
   // Local state
   const [isDialogOpen, setIsDialogOpen] = useState(false);
   const [dialogType, setDialogType] = useState<string>("");
@@ -163,88 +141,94 @@ const SurfaceTreatments: React.FC = () => {
     );
   };
 
-  return (
-    <Box>
-      <Box sx={{ display: 'flex', justifyContent: 'space-between', my: { xs: 3, sm: 1 } }}>
-        <Typography sx={{ 
-          fontWeight: 600,
-          fontSize: { xs: '20px', sm: '24px', md: '28px' },
-          lineHeight: '33.89px',
-        }} gutterBottom>
-          Surface Treatments
-        </Typography>
-        <Button 
-          variant="contained" 
-          color="primary" 
-          onClick={() => openDialog("")}
-        >
-          Add Surface Treatment
-        </Button>
-      </Box>
-
-      {status === 'loading' && (
-        <Backdrop
-          sx={{
-            color: '#fff',
-            zIndex: (theme) => theme.zIndex.drawer + 1,
-          }}
-          open={status === 'loading'}
-        >
-          <CircularProgress color="inherit" />
-        </Backdrop>
-      )}
-
-      <Table sx={{ 
-        borderTopLeftRadius: '20px', 
-        borderTopRightRadius: '20px', 
-        backgroundColor: '#0591FC', 
-        color: '#FFFF' 
-      }}>
-        <TableHead>
-          <TableRow>
-            <TableCell sx={{ color: "white", fontWeight: "bold" }}>#</TableCell>
-            <TableCell sx={{ color: "white", fontWeight: "bold" }}>Name</TableCell>
-            <TableCell sx={{ color: "white", fontWeight: "bold" }}>Price per KG</TableCell>
-            <TableCell sx={{ color: "white", fontWeight: "bold" }}>Surface Price</TableCell>
-            <TableCell sx={{ color: "white", fontWeight: "bold" }}>Action</TableCell>
-          </TableRow>
-        </TableHead>
-        <TableBody>
-          {surfaceTreatments?.map((treatment, index) => (
-            <StyledTableRow key={treatment?.id}>
-              <StyledTableCell>
-                <Checkbox 
-                  checked={treatment?.active} 
-                  onChange={() => toggleCheckbox(treatment?.id)} 
-                />
-              </StyledTableCell>
-              <TableCell>{treatment?.name}</TableCell>
-              <TableCell>{treatment?.price_per_kg}</TableCell>
-              <TableCell>{treatment?.surface_price}</TableCell>
-              <TableCell>
-                <IconButton 
-                  sx={{ color: 'Green', height: '12px' }}
-                  onClick={() => handleView("view", treatment)}
-                >
-                  <FaEye />
-                </IconButton>
-                <IconButton 
-                  sx={{ color: '#0591FC', height: '12px' }} 
-                  onClick={() => handleView("edit", treatment)}
+  // Table columns configuration
+  const columns = [
+    {
+      id: 'active',
+      label: '#',
+      sortable: false,
+      searchable: false,
+      format: (value: boolean, row: SurfaceTreatment) => (
+        <Checkbox
+          checked={value}
+          onChange={() => toggleCheckbox(row.id)}
+        />
+      )
+    },
+    {
+      id: 'surface_treat_name',
+      label: 'Name',
+      sortable: true,
+      searchable: true,
+    },
+    {
+      id: 'price_per_kg',
+      label: 'Price per KG',
+      sortable: true,
+      searchable: true,
+      format: (value: number) => value?.toFixed(2) || '0.00'
+    },
+    {
+      id: 'price',
+      label: 'Surface Price',
+      sortable: true,
+      searchable: true,
+      format: (value: number) => value?.toFixed(2) || '0.00'
+    },
+    {
+      id: 'actions',
+      label: 'Action',
+      sortable: false,
+      searchable: false,
+      format: (value: any, row: SurfaceTreatment) => (
+        <Box sx={{ display: 'flex', gap: 1 }}>
+          <IconButton
+            sx={{ color: 'Green', height: '12px' }}
+            onClick={() => handleView("view", row)}
+          >
+            <FaEye />
+          </IconButton>
+          {role == 'super-admin' || role == 'admin' ?
+            (
+              <>
+                <IconButton
+                  sx={{ color: '#0591FC', height: '12px' }}
+                  onClick={() => handleView("edit", row)}
                 >
                   <TbEdit />
                 </IconButton>
-                <IconButton 
-                  sx={{ color: 'red' }} 
-                  onClick={() => openConfirmDialog(treatment?.id)}
+                <IconButton
+                  sx={{ color: 'red' }}
+                  onClick={() => openConfirmDialog(row.id)}
                 >
                   <Delete />
                 </IconButton>
-              </TableCell>
-            </StyledTableRow>
-          ))}
-        </TableBody>
-      </Table>
+              </>
+            ) : null}
+        </Box>
+      )
+    }
+  ];
+
+  const handleAddSurfaceTreatment = () => {
+    openDialog("");
+  };
+
+  return (
+    <Box>
+      {status === 'loading' && (
+        <Loader loading={status === 'loading'} />
+      )}
+
+      <EnhancedTable
+        title="Surface Treatments"
+        data={surfaceTreatments || []}
+        columns={columns}
+        {...((role === 'super-admin' || role === 'admin') && { add: () => handleAddSurfaceTreatment() })}
+        // add={handleAddSurfaceTreatment}
+        initialSortColumn="name"
+        initialSortDirection="asc"
+      />
 
       {/* Dialog Components */}
       {dialogType === "" && (

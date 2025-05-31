@@ -57,7 +57,8 @@ const Login = () => {
             if (userRole == 'customer' || userRole == 'user') {
                 navigate('/dashboard');
             } else if (userRole == 'super-admin' || userRole == 'admin') {
-                navigate('/admin/admin-dashboard');
+                navigate('/admin/user-managemnet');
+                // navigate('/admin/admin-dashboard');
             }
         } catch (error) {
             console.error("Login Error: ", error);

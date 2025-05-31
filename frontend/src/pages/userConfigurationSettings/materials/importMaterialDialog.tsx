@@ -49,7 +49,7 @@ const ImportMaterialDrawer: React.FC<ImportMaterialDrawerProps> = ({
         params: { page: page + 1, size: rowsPerPage },
       })
       .then((response) => {
-        setDefaultMaterials(response?.data?.data?.materials); // Assuming API response includes `materials`
+        setDefaultMaterials(response?.data?.data); // Assuming API response includes `materials`
         setTotalMaterials(response?.data?.data?.total); // Assuming API response includes `total`
       })
       .catch((error) => {

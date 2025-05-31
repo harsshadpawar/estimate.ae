@@ -30,7 +30,7 @@ const AppHeader: React.FC<AppHeaderProps> = ({ drawerOpen, toggleDrawer }) => {
         boxShadow: 'none',
         borderBottom: '1px solid',
         borderColor: 'divider',
-        zIndex: (theme) => theme.zIndex.drawer + 1, // Ensure AppBar is above drawer
+        zIndex: (theme) => theme.zIndex.drawer, // Ensure AppBar is above drawer
       }}
     >
       <Toolbar sx={{ p: 0 }}>

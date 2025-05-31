@@ -7,16 +7,7 @@ import {
   Accordion,
   AccordionSummary,
   AccordionDetails,
-  Paper,
-  TableContainer,
   IconButton,
-  Table,
-  TableBody,
-  TableCell,
-  TableRow,
-  TableHead,
-  styled,
-  tableCellClasses,
   Backdrop,
   CircularProgress,
 } from "@mui/material";
@@ -31,40 +22,27 @@ import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "@/redux/store/store";
 import { addMaterial, deleteMaterial, fetchMaterialGroups, fetchMaterials, importMaterial, updateMaterial } from "@/redux/features/materials/materialsSlice";
+import EnhancedTable from "@/components/table";
 
-const StyledTableCell = styled(TableCell)(({ theme }) => ({
-  [`&.${tableCellClasses.body}`]: {
-    fontWeight: 500,
-    fontSize: '15px',
-    lineHeight: '18.15px'
-  },
-}));
-
-const StyledTableRow = styled(TableRow)(({ theme }) => ({
-  height: '54px',
-  '&:nth-of-type(odd)': {
-    backgroundColor: '#EFF7FD',
-  },
-  '&:nth-of-type(even)': {
-    backgroundColor: '#FFFF',
-  },
-  '&:last-child td, &:last-child th': {
-    border: 0,
-  },
-}));
+// Define the Material type if not already defined
+interface Material {
+  id: string;
+  material_name: string;
+  material_price_per_kg: number;
+  active: boolean;
+  material_group_id: string;
+}
 
 const Materials: React.FC = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  
+  const role = useSelector((state: RootState) => state?.auth?.role);
+
   // Redux selectors
-  const groupedMaterials = useSelector((state:RootState) => state.materials.groupedMaterials);
-  const materialGroups = useSelector((state:RootState) => state.materials.groups);
-  const status = useSelector((state:RootState) => state.materials.status);
+  const groupedMaterials = useSelector((state: RootState) => state.materials.groupedMaterials);
+  const materialGroups = useSelector((state: RootState) => state.materials.groups);
+  const status = useSelector((state: RootState) => state.materials.status);
 
-
-
-  
   // Local state
   const [isDialogOpen, setIsDialogOpen] = useState(false);
   const [dialogType, setDialogType] = useState("");
@@ -85,15 +63,6 @@ const Materials: React.FC = () => {
 
   const closeDialog = () => setIsDialogOpen(false);
 
-  // Define the Material type if not already defined
-  interface Material {
-    id: string;
-    name: string;
-    price_per_kg: number;
-    active: boolean;
-    material_group_id: string;
-  }
-  
   const handleSaveMaterial = async (material: Material) => {
     if (selectedMaterialId) {
       dispatch(updateMaterial({ id: selectedMaterialId, material }));
@@ -146,23 +115,89 @@ const Materials: React.FC = () => {
       .find(material => material.id === selectedMaterialId);
   };
 
+  // Define columns for the EnhancedTable
+  const getTableColumns = () => [
+    {
+      id: 'active',
+      label: 'Active',
+      sortable: false,
+      searchable: false,
+      format: (value: boolean, row: Material) => (
+        <Checkbox
+          checked={value}
+          onChange={() => toggleCheckbox(row.id)}
+        />
+      )
+    },
+    {
+      id: 'material_name',
+      label: 'Name',
+      sortable: true,
+      searchable: true,
+    },
+    {
+      id: 'material_price_per_kg',
+      label: 'Price per KG',
+      sortable: true,
+      searchable: true,
+      format: (value: number) => `$${value.toFixed(2)}`
+    },
+    {
+      id: 'actions',
+      label: 'Actions',
+      sortable: false,
+      searchable: false,
+      format: (value: any, row: Material) => (
+        <Box sx={{ display: 'flex', gap: 1 }}>
+          <IconButton
+            sx={{ color: 'Green', height: '32px', width: '32px' }}
+            onClick={() => handleView("view", row)}
+            title="View"
+          >
+            <FaEye />
+          </IconButton>
+          {role == 'super-admin' || role == 'admin' ?
+            (
+              <>
+                <IconButton
+                  sx={{ color: '#0591FC', height: '32px', width: '32px' }}
+                  onClick={() => handleView("edit", row)}
+                  title="Edit"
+                >
+                  <TbEdit />
+                </IconButton>
+                <IconButton
+                  sx={{ color: 'red', height: '32px', width: '32px' }}
+                  onClick={() => openConfirmDialog(row.id)}
+                  title="Delete"
+                >
+                  <Delete />
+                </IconButton>
+              </>) : null}
+        </Box>
+      )
+    }
+  ];
+
   return (
     <Box>
-      <Box sx={{ display: 'flex', justifyContent: 'space-between' }}>
-        <Typography sx={{ 
+      <Box sx={{ display: 'flex', justifyContent: 'space-between', mb: 3 }}>
+        <Typography sx={{
           fontWeight: 600,
           fontSize: { xs: '20px', sm: '24px', md: '28px' },
           lineHeight: '33.89px'
         }} gutterBottom>
           Materials
         </Typography>
-        <Button 
-          variant="contained" 
-          color="primary" 
-          onClick={() => openDialog("")}
-        >
-          Add Material
-        </Button>
+        {role === 'super-admin' || role === 'admin' ?
+          <Button
+            variant="contained"
+            color="primary"
+            onClick={() => openDialog("")}
+          >
+            Add Material
+          </Button>
+          : null}
       </Box>
 
       {status === 'loading' && (
@@ -177,69 +212,35 @@ const Materials: React.FC = () => {
         </Backdrop>
       )}
 
-      <div style={{ marginTop: "20px" }}>
+      <Box sx={{ marginTop: "20px" }}>
         {Object.keys(groupedMaterials).map((category) => (
-          <Accordion key={category} sx={{ boxShadow: 0, marginTop: 0 }}>
-            <AccordionSummary sx={{ backgroundColor: '#F9F9F9' }} expandIcon={<ExpandMore />}>
-              <Typography sx={{ fontWeight: 600, fontSize: '18px', lineHeight: '24px' }}>
-                {category}
+          <Accordion key={category} sx={{ boxShadow: 2, marginBottom: 2 }}>
+            <AccordionSummary
+              sx={{ backgroundColor: '#F9F9F9' }}
+              expandIcon={<ExpandMore />}
+            >
+              <Typography sx={{
+                fontWeight: 600,
+                fontSize: '18px',
+                lineHeight: '24px'
+              }}>
+                {category} ({groupedMaterials[category].length} items)
               </Typography>
             </AccordionSummary>
-            <TableContainer sx={{ boxShadow: 0 }} component={Paper}>
-              <Table sx={{ 
-                borderTopLeftRadius: '20px', 
-                borderTopRightRadius: '20px', 
-                backgroundColor: '#0591FC', 
-                color: '#FFFF' 
-              }}>
-                <TableHead>
-                  <TableRow>
-                    <TableCell sx={{ color: "white", fontWeight: "bold" }}>#</TableCell>
-                    <TableCell sx={{ color: "white", fontWeight: "bold" }}>Name</TableCell>
-                    <TableCell sx={{ color: "white", fontWeight: "bold" }}>Price per KG</TableCell>
-                    <TableCell sx={{ color: "white", fontWeight: "bold" }}>Actions</TableCell>
-                  </TableRow>
-                </TableHead>
-                <TableBody>
-                  {groupedMaterials[category].map((material, index) => (
-                    <StyledTableRow key={material.id}>
-                      <StyledTableCell>
-                        <Checkbox 
-                          checked={material.active} 
-                          onChange={() => toggleCheckbox(material.id)} 
-                        />
-                      </StyledTableCell>
-                      <TableCell>{material.name}</TableCell>
-                      <TableCell>{material.price_per_kg}</TableCell>
-                      <TableCell>
-                        <IconButton 
-                          sx={{ color: 'Green', height: '12px' }}
-                          onClick={() => handleView("view", material)}
-                        >
-                          <FaEye />
-                        </IconButton>
-                        <IconButton 
-                          sx={{ color: '#0591FC', height: '12px' }}
-                          onClick={() => handleView("edit", material)}
-                        >
-                          <TbEdit />
-                        </IconButton>
-                        <IconButton 
-                          sx={{ color: 'red' }}
-                          onClick={() => openConfirmDialog(material.id)}
-                        >
-                          <Delete />
-                        </IconButton>
-                      </TableCell>
-                    </StyledTableRow>
-                  ))}
-                </TableBody>
-              </Table>
-            </TableContainer>
+            <AccordionDetails sx={{ padding: 0 }}>
+              <EnhancedTable
+                title=""
+                data={groupedMaterials[category]}
+                columns={getTableColumns()}
+                initialSortColumn="material_name"
+                initialSortDirection="asc"
+              />
+            </AccordionDetails>
           </Accordion>
         ))}
-      </div>
+      </Box>
 
+      {/* Dialogs remain the same */}
       {dialogType === "" && (
         <AddMaterialDialog
           open={isDialogOpen}
@@ -250,11 +251,11 @@ const Materials: React.FC = () => {
       )}
 
       {dialogType === "import" && (
-        <ImportMaterialDialog 
-          open={isDialogOpen} 
-          onDrawerClose={closeDialog} 
-          onImportMaterial={handleImportMaterial} 
-          materialGroups={materialGroups} 
+        <ImportMaterialDialog
+          open={isDialogOpen}
+          onDrawerClose={closeDialog}
+          onImportMaterial={handleImportMaterial}
+          materialGroups={materialGroups}
         />
       )}
 

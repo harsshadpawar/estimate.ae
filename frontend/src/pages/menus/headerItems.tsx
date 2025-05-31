@@ -13,5 +13,9 @@ export const steptext = [
     {
         step: 3,
         title: "Here is your estimate report!"
+    },
+     {
+        step: 4,
+        title: "Here is your manufacturing process report!"
     }
 ];

@@ -181,20 +181,40 @@ export const resetPassword = createAsyncThunk(
   }
 );
 
+export const logout = createAsyncThunk(
+  "auth/logout",
+  async (_, { rejectWithValue }) => {
+    try {
+      const response = await apiClient.post("/auth/logout");
+
+      if (response.status == 200) {
+        triggerToast(response.data?.message || "logout successfully!", "success");
+        return response.data;
+      } else {
+        return rejectWithValue(response.data?.message || "logout failed");
+      }
+    } catch (error: any) {
+      const errorMessage =
+        error.response?.data?.message || "An error occurred during logout";
+      triggerToast(errorMessage, "error");
+      return rejectWithValue(errorMessage);
+    }
+  }
+);
 // Slice
 const authSlice = createSlice({
   name: "auth",
   initialState,
   reducers: {
-    logout: (state) => {
-      state.basicUserInfo = null;
-      state.userProfileData = null;
-      state.status = "idle";
-      state.error = null;
-      state.isAuthenticated = false;
-      state.role = null;
-      localStorage.clear();
-    },
+    // logout: (state) => {
+    //   state.basicUserInfo = null;
+    //   state.userProfileData = null;
+    //   state.status = "idle";
+    //   state.error = null;
+    //   state.isAuthenticated = false;
+    //   state.role = null;
+    //   localStorage.clear();
+    // },
     setRole: (state, action: PayloadAction<string>) => {
       state.role = action.payload;
       localStorage.setItem("role", action.payload);
@@ -336,9 +356,27 @@ const authSlice = createSlice({
       state.status = "failed";
       state.error = action.payload;
     });
-
+    builder.addCase(logout.pending, (state) => {
+      state.status = "loading";
+      state.error = null;
+    });
+    builder.addCase(logout.fulfilled, (state) => {
+      state.status = "succeeded";
+      state.basicUserInfo = null;
+      state.userProfileData = null;
+      state.status = "idle";
+      state.error = null;
+      state.isAuthenticated = false;
+      state.role = null;
+      localStorage.clear();
+      // dismissToast();
+    });
+    builder.addCase(logout.rejected, (state, action: PayloadAction<any>) => {
+      state.status = "failed";
+      state.error = action.payload;
+    });
   },
 });
 
-export const { logout, setRole, clearUserProfile } = authSlice.actions;
+export const {  setRole, clearUserProfile } = authSlice.actions;
 export default authSlice.reducer;

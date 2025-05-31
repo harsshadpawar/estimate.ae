@@ -20,11 +20,11 @@ interface DrawerModalProps {
     actions?: React.ReactNode;
 }
 
-const StyledLogoButton = styled(IconButton)(({ theme, width }:any) => ({
+const StyledLogoButton = styled(IconButton)(({ theme, width }: any) => ({
     position: "fixed",
     top: theme.spacing(3),
     right: width, // Adjust to match drawer width (when anchor="right")
-    zIndex: 1301, // MUI drawer zIndex is 1200+, ensure it's above
+    zIndex: 3001, // MUI drawer zIndex is 1200+, ensure it's above
     backgroundColor: "#fff",
     border: "1px solid #d1d5db",
     borderTopLeftRadius: "9999px",
@@ -94,6 +94,7 @@ const DrawerModal: React.FC<DrawerModalProps> = ({
                 onClose={onClose}
                 PaperProps={{
                     sx: {
+                        zIndex: 3001,
                         width,
                         borderTopLeftRadius: anchor === "right" ? 12 : 0,
                         borderBottomLeftRadius: anchor === "right" ? 12 : 0,

@@ -31,7 +31,7 @@ import Captcha from "./captcha";
 import { useDispatch } from "react-redux";
 import { register, verifyOtp } from "@/redux/features/authSlice";
 import Loader from "@/components/loader";
-import FormikDatePicker from "@/components/formikDatePicker"
+import { FormikDatePicker } from "@/components/formikDatePicker";
 const today = new Date();
 const minDate = new Date(today.getFullYear() - 18, today.getMonth(), today.getDate());
 

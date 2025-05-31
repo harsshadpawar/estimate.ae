@@ -64,10 +64,10 @@ interface CustomStepperProps {
 // ✅ Custom stepper
 const CustomStepper: React.FC<CustomStepperProps> = ({
   steps,
-  activeStep,
+  activeStep ,
 }) => {
   return (
-    <Box sx={{ width: "100%", py: 2 }}>
+    <Box sx={{ width: "100%", py: 5 }}>
       <Stepper
         activeStep={activeStep}
         alternativeLabel

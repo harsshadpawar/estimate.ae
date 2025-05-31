@@ -85,7 +85,7 @@ const UserConfigurationSettings: React.FC = () => {
   };
 
   return (
-    <Box sx={{  bgcolor: '#F9FAFB', mt: {xs:4,sm:5,md:5} ,padding:{xs:'10px',md:'20px'}}}>
+    <Box sx={{padding:{xs:'10px',md:'20px'}}}>
       <Box sx={{ borderBottom: 'none' }}>
         <StyledTabs
           value={value}

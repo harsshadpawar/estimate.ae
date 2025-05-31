@@ -34,10 +34,15 @@ interface MaterialsState {
     status: 'idle' | 'loading' | 'succeeded' | 'failed';
     error: string | null;
 }
+const staticMaterialGroups: MaterialGroup[] = [
+    { id: '1', name: 'Steel', abbreviation: 'ST', active: true,price:'40.9',density:'4',co2_emission:'0.5' },
+    { id: '2', name: 'Aluminium', abbreviation: 'AL', active: true ,price:'40.9',density:'4',co2_emission:'0.5' },
+    { id: '3', name: 'Plastic', abbreviation: 'PL', active: true,price:'40.9',density:'4',co2_emission:'0.5'  }
+];
 
 const initialState: MaterialsState = {
     materials: [],
-    groups: [],
+    groups: staticMaterialGroups,
     groupedMaterials: {},
     pagination: {
         page: 0,
@@ -64,7 +69,7 @@ export const fetchMaterials = createAsyncThunk<Material[], void, { rejectValue: 
     async (_, { rejectWithValue }) => {
         try {
             const response = await apiClient.get('/material');
-            return response.data?.data?.materials || [];
+            return response.data?.data || [];
         } catch (error) {
             const err = error as AxiosError;
             return rejectWithValue(err.message || "Failed to fetch materials");
@@ -78,7 +83,7 @@ export const addMaterial = createAsyncThunk(
         try {
             const response = await apiClient.post("/material", material);
             toast.success('Material added successfully');
-            return response.data.material;
+            return response.data?.data || [];
         } catch (error) {
             toast.error('Failed to add material');
             const err = error as AxiosError;
@@ -94,7 +99,7 @@ export const updateMaterial = createAsyncThunk(
         try {
             const response = await apiClient.put(`/material/${id}`, material);
             toast.success('Material updated successfully');
-            return response.data.material;
+            return response.data?.data || [];
         } catch (error) {
             toast.error('Failed to update material');
             const err = error as AxiosError;
@@ -110,7 +115,7 @@ export const importMaterial = createAsyncThunk(
         try {
             const response = await apiClient.post(`/material/import/${id}`);
             toast.success('Material imported successfully');
-            return response.data.material;
+            return response.data?.data || [];
         } catch (error) {
             toast.error('Failed to import material');
             const err = error as AxiosError;
@@ -144,8 +149,8 @@ export const fetchPaginatedMaterialGroups = createAsyncThunk(
                 params: { page: page + 1, size: rowsPerPage }
             });
             return {
-                groups: response.data.data.material_groups,
-                total: response.data.data.total
+                groups: response.data.data,
+                total: response.data.data
             };
         } catch (error) {
             const err = error as AxiosError;
@@ -160,7 +165,7 @@ export const fetchMaterialGroups = createAsyncThunk<MaterialGroup[], void, { rej
     async (_, { rejectWithValue }) => {
         try {
             const response = await apiClient.get('/material_group');
-            return response.data?.data?.material_groups || [];
+            return response.data?.data || [];
         } catch (error) {
             const err = error as AxiosError;
             return rejectWithValue(err.message || "Failed to fetch material groups");
@@ -254,10 +259,12 @@ const materialsSlice = createSlice({
             })
             .addCase(fetchMaterialGroups.fulfilled, (state, action: PayloadAction<MaterialGroup[]>) => {
                 state.status = 'succeeded';
-                state.groups = action.payload;
+                state.groups = action.payload.length > 0 ? action.payload : staticMaterialGroups;
+
             })
             .addCase(fetchMaterialGroups.rejected, (state, action) => {
                 state.status = 'failed';
+                state.groups = staticMaterialGroups;
                 state.error = action.payload ?? "Error loading material groups";
             })
 

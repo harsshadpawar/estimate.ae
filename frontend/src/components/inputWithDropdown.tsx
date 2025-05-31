@@ -21,7 +21,7 @@ function InputWithDropdown({
   helperText,
 }: InputWithDropdownProps) {
   return (
-    <Box sx={{ minWidth: "100%", margin: "auto", paddingTop: 5 }}>
+    <Box sx={{ minWidth: "100%", margin: "auto", paddingTop: 1 }}>
       {/* Label */}
       <Typography
         sx={{
@@ -38,7 +38,7 @@ function InputWithDropdown({
       </Typography>
 
       {/* Dropdown */}
-      <FormControl fullWidth sx={{ marginTop: 2 }}>
+      <FormControl fullWidth sx={{ marginTop: 1 }}>
         <InputLabel id="dropdown-label" error={error}>{label}</InputLabel>
         <Select
           value={value}

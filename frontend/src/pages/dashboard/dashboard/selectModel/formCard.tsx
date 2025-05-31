@@ -1,459 +1,3 @@
-// import React, { useState, useEffect } from 'react';
-// import {
-//     Box,
-//     TextField,
-//     FormControl,
-//     InputLabel,
-//     Select,
-//     MenuItem,
-//     Chip,
-//     OutlinedInput,
-//     Radio,
-//     RadioGroup,
-//     FormControlLabel,
-//     FormLabel,
-//     Paper,
-//     Grid,
-//     SelectChangeEvent,
-//     Theme,
-//     useTheme,
-//     InputAdornment,
-//     IconButton
-// } from '@mui/material';
-// import { Close as CloseIcon, ExpandMore as ExpandMoreIcon } from '@mui/icons-material';
-// import { useSelector, useDispatch } from 'react-redux';
-// import { RootState } from '@/redux/store/store';
-// import {
-//     fetchMaterials,
-//     fetchMaterialGroups
-// } from "@/redux/features/materials/materialsSlice";
-// import {
-//     fetchSurfaceTreatments
-// } from "@/redux/features/surfaceTreatments/surfaceTreatmentsSlice";
-// import {
-//     fetchMachines
-// } from "@/redux/features/machines/machinesSlice";
-
-// // Define types for form data
-// interface FormDataType {
-//     model: string;
-//     materialGroup: string;
-//     materialGroupId: string;
-//     material: string;
-//     materialId: string;
-//     surfaceTreatment: string;
-//     surfaceTreatmentId: string;
-//     quantity: string;
-//     processSelection: string;
-// }
-
-// // Types from the original code
-// interface Material {
-//     id: string;
-//     name: string;
-//     material_group_id: string;
-//     // Other properties as needed
-// }
-
-// interface MaterialGroup {
-//     id: string;
-//     name: string;
-//     density?: number;
-//     // Other properties as needed
-// }
-
-// interface SurfaceTreatment {
-//     id: string;
-//     name: string;
-//     // Other properties as needed
-// }
-
-// const ITEM_HEIGHT = 48;
-// const ITEM_PADDING_TOP = 8;
-// const MenuProps = {
-//     PaperProps: {
-//         style: {
-//             maxHeight: ITEM_HEIGHT * 4.5 + ITEM_PADDING_TOP,
-//             width: 250,
-//         },
-//     },
-// };
-
-// // Quantity options similar to original code
-// const quantities = ['1', '5', '10', '25', '50', '100', '250', '500', '1000'];
-
-// export default function FormCard() {
-//     const theme = useTheme();
-//     const dispatch = useDispatch();
-
-//     // Form state
-//     const [formData, setFormData] = useState<FormDataType>({
-//         model: 'PIPE.STP',
-//         materialGroup: '',
-//         materialGroupId: '',
-//         material: '',
-//         materialId: '',
-//         surfaceTreatment: '',
-//         surfaceTreatmentId: '',
-//         quantity: '',
-//         processSelection: 'Milling'
-//     });
-
-//     // Redux state
-//     const { materials, groups: materialGroups, status: materialsStatus } = useSelector((state: RootState) => state.materials);
-//     const { machines, status: machinesStatus } = useSelector((state: RootState) => state.machines);
-//     const { treatments: surfaceTreatments, status: surfaceTreatmentsStatus } = useSelector((state: RootState) => state.surfaceTreatments);
-
-//     // Local state for filtered materials
-//     const [filteredMaterials, setFilteredMaterials] = useState<Material[]>([])
-
-//     // Filter materials when material group changes
-//     useEffect(() => {
-//         if (formData.materialGroupId && materials.length > 0) {
-//             const filtered = materials.filter(
-//                 material => material.material_group_id === formData.materialGroupId
-//             );
-//             setFilteredMaterials(filtered);
-//         } else {
-//             setFilteredMaterials([]);
-//         }
-//     }, [formData.materialGroupId, materials]);
-
-//     // Handle material group change
-//     const handleMaterialGroupChange = (event: SelectChangeEvent<string>) => {
-//         const selectedGroupId = event.target.value;
-//         const selectedGroup = materialGroups.find(group => group.id === selectedGroupId);
-
-//         setFormData(prev => ({
-//             ...prev,
-//             materialGroupId: selectedGroupId,
-//             materialGroup: selectedGroup ? selectedGroup.name : '',
-//             material: '', // Reset material when group changes
-//             materialId: '' // Reset materialId when group changes
-//         }));
-//     };
-
-//     // Handle material change
-//     const handleMaterialChange = (event: SelectChangeEvent<string>) => {
-//         const selectedMaterialId = event.target.value;
-//         const selectedMaterial = materials.find(material => material.id === selectedMaterialId);
-
-//         setFormData(prev => ({
-//             ...prev,
-//             materialId: selectedMaterialId,
-//             material: selectedMaterial ? selectedMaterial.name : ''
-//         }));
-//     };
-
-//     // Handle surface treatment change
-//     const handleSurfaceTreatmentChange = (event: SelectChangeEvent<string>) => {
-//         const selectedTreatmentId = event.target.value;
-//         const selectedTreatment = surfaceTreatments.find(treatment => treatment.id === selectedTreatmentId);
-
-//         setFormData(prev => ({
-//             ...prev,
-//             surfaceTreatmentId: selectedTreatmentId,
-//             surfaceTreatment: selectedTreatment ? selectedTreatment.name : ''
-//         }));
-//     };
-
-//     // Handle quantity change
-//     const handleQuantityChange = (event: SelectChangeEvent<string>) => {
-//         setFormData(prev => ({
-//             ...prev,
-//             quantity: event.target.value
-//         }));
-//     };
-
-//     // Handle radio button changes
-//     const handleRadioChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-//         setFormData(prev => ({
-//             ...prev,
-//             processSelection: (event.target as HTMLInputElement).value
-//         }));
-//     };
-
-//     // Clear a field
-//     const clearField = (fieldName: keyof FormDataType) => {
-//         switch (fieldName) {
-//             case 'materialGroup':
-//                 setFormData(prev => ({
-//                     ...prev,
-//                     materialGroup: '',
-//                     materialGroupId: '',
-//                     material: '', // Also clear dependent field
-//                     materialId: '' // Also clear dependent field
-//                 }));
-//                 break;
-//             case 'material':
-//                 setFormData(prev => ({
-//                     ...prev,
-//                     material: '',
-//                     materialId: ''
-//                 }));
-//                 break;
-//             case 'surfaceTreatment':
-//                 setFormData(prev => ({
-//                     ...prev,
-//                     surfaceTreatment: '',
-//                     surfaceTreatmentId: ''
-//                 }));
-//                 break;
-//             case 'quantity':
-//                 setFormData(prev => ({
-//                     ...prev,
-//                     quantity: ''
-//                 }));
-//                 break;
-//             default:
-//                 setFormData(prev => ({
-//                     ...prev,
-//                     [fieldName]: ''
-//                 }));
-//         }
-//     };
-
-//     // Loading state check
-//     const isLoading =
-//         materialsStatus === 'loading' ||
-//         machinesStatus === 'loading' ||
-//         surfaceTreatmentsStatus === 'loading';
-
-//     return (
-//         <Paper elevation={0} sx={{ p: 3, bgcolor: 'primary.lighter', borderRadius: 2 }}>
-//             <Grid container spacing={2}>
-//                 {/* Model */}
-//                 <Grid item xs={12} sm={3} display="flex" alignItems="center">
-//                     <FormLabel sx={{ fontWeight: 500 }}>Model:</FormLabel>
-//                 </Grid>
-//                 <Grid item xs={12} sm={9}>
-//                     <TextField
-//                         fullWidth
-//                         value={formData.model}
-//                         InputProps={{
-//                             readOnly: true,
-//                         }}
-//                         variant="outlined"
-//                         sx={{
-//                             bgcolor: 'action.disabledBackground',
-//                             '& .MuiOutlinedInput-root': {
-//                                 '& fieldset': { borderColor: 'grey.300' },
-//                             }
-//                         }}
-//                     />
-//                 </Grid>
-
-//                 {/* Material Group */}
-//                 <Grid item xs={12} sm={3} display="flex" alignItems="center">
-//                     <FormLabel sx={{ fontWeight: 500 }}>Raw Material Group:</FormLabel>
-//                 </Grid>
-//                 <Grid item xs={12} sm={9}>
-//                     <FormControl fullWidth variant="outlined">
-//                         <InputLabel id="material-group-label">Material Group</InputLabel>
-//                         <Select
-//                             labelId="material-group-label"
-//                             id="material-group"
-//                             value={formData.materialGroupId}
-//                             onChange={handleMaterialGroupChange}
-//                             input={
-//                                 <OutlinedInput
-//                                     label="Material Group"
-//                                     endAdornment={
-//                                         formData.materialGroupId ? (
-//                                             <InputAdornment position="end">
-//                                                 <IconButton
-//                                                     onClick={(e) => {
-//                                                         e.stopPropagation();
-//                                                         clearField('materialGroup');
-//                                                     }}
-//                                                     edge="end"
-//                                                     size="small"
-//                                                 >
-//                                                     <CloseIcon sx={{ marginRight: '10px', fontSize: '18px' }} />
-//                                                 </IconButton>
-//                                             </InputAdornment>
-//                                         ) : null
-//                                     }
-//                                 />
-//                             }
-//                             MenuProps={MenuProps}
-//                             IconComponent={ExpandMoreIcon}
-//                             disabled={isLoading || materialGroups.length === 0}
-//                         >
-//                             {materialGroups.map((group) => (
-//                                 <MenuItem key={group.id} value={group.id}>
-//                                     {group.name}
-//                                 </MenuItem>
-//                             ))}
-//                         </Select>
-//                     </FormControl>
-//                 </Grid>
-
-//                 {/* Material */}
-//                 <Grid item xs={12} sm={3} display="flex" alignItems="center">
-//                     <FormLabel sx={{ fontWeight: 500 }}>Raw Material:</FormLabel>
-//                 </Grid>
-//                 <Grid item xs={12} sm={9}>
-//                     <FormControl fullWidth variant="outlined">
-//                         <InputLabel id="material-label">Material</InputLabel>
-//                         <Select
-//                             labelId="material-label"
-//                             id="material"
-//                             value={formData.materialId}
-//                             onChange={handleMaterialChange}
-//                             input={
-//                                 <OutlinedInput
-//                                     label="Material"
-//                                     endAdornment={
-//                                         formData.materialId ? (
-//                                             <InputAdornment position="end">
-//                                                 <IconButton
-//                                                     onClick={(e) => {
-//                                                         e.stopPropagation();
-//                                                         clearField('material');
-//                                                     }}
-//                                                     edge="end"
-//                                                     size="small"
-//                                                 >
-//                                                     <CloseIcon sx={{ marginRight: '10px', fontSize: '18px' }} />
-//                                                 </IconButton>
-//                                             </InputAdornment>
-//                                         ) : null
-//                                     }
-//                                 />
-//                             }
-//                             MenuProps={MenuProps}
-//                             IconComponent={ExpandMoreIcon}
-//                             disabled={isLoading || filteredMaterials.length === 0 || !formData.materialGroupId}
-//                         >
-//                             {filteredMaterials.map((material) => (
-//                                 <MenuItem key={material.id} value={material.id}>
-//                                     {material.name}
-//                                 </MenuItem>
-//                             ))}
-//                         </Select>
-//                     </FormControl>
-//                 </Grid>
-
-//                 {/* Surface Treatment */}
-//                 <Grid item xs={12} sm={3} display="flex" alignItems="center">
-//                     <FormLabel sx={{ fontWeight: 500 }}>Additional Part Treatment:</FormLabel>
-//                 </Grid>
-//                 <Grid item xs={12} sm={9}>
-//                     <FormControl fullWidth variant="outlined">
-//                         <InputLabel id="surface-treatment-label">Surface Treatment</InputLabel>
-//                         <Select
-//                             labelId="surface-treatment-label"
-//                             id="surface-treatment"
-//                             value={formData.surfaceTreatmentId}
-//                             onChange={handleSurfaceTreatmentChange}
-//                             input={
-//                                 <OutlinedInput
-//                                     label="Surface Treatment"
-//                                     endAdornment={
-//                                         formData.surfaceTreatmentId ? (
-//                                             <InputAdornment position="end">
-//                                                 <IconButton
-//                                                     onClick={(e) => {
-//                                                         e.stopPropagation();
-//                                                         clearField('surfaceTreatment');
-//                                                     }}
-//                                                     edge="end"
-//                                                     size="small"
-//                                                 >
-//                                                     <CloseIcon sx={{ marginRight: '10px', fontSize: '18px' }} />
-//                                                 </IconButton>
-//                                             </InputAdornment>
-//                                         ) : null
-//                                     }
-//                                 />
-//                             }
-//                             MenuProps={MenuProps}
-//                             IconComponent={ExpandMoreIcon}
-//                             disabled={isLoading || surfaceTreatments.length === 0}
-//                         >
-//                             {surfaceTreatments.map((treatment) => (
-//                                 <MenuItem key={treatment.id} value={treatment.id}>
-//                                     {treatment.name}
-//                                 </MenuItem>
-//                             ))}
-//                         </Select>
-//                     </FormControl>
-//                 </Grid>
-
-//                 {/* Quantity */}
-//                 <Grid item xs={12} sm={3} display="flex" alignItems="center">
-//                     <FormLabel sx={{ fontWeight: 500 }}>Quantity:</FormLabel>
-//                 </Grid>
-//                 <Grid item xs={12} sm={9}>
-//                     <FormControl fullWidth variant="outlined">
-//                         <InputLabel id="quantity-label">Quantity</InputLabel>
-//                         <Select
-//                             labelId="quantity-label"
-//                             id="quantity"
-//                             value={formData.quantity}
-//                             onChange={handleQuantityChange}
-//                             input={
-//                                 <OutlinedInput
-//                                     label="Quantity"
-//                                     endAdornment={
-//                                         <InputAdornment position="end">
-//                                             {/* <Chip size="small" sx={{ mr: 1 }} /> */}
-//                                             {formData.quantity && (
-//                                                 <IconButton
-//                                                     onClick={(e) => {
-//                                                         e.stopPropagation();
-//                                                         clearField('quantity');
-//                                                     }}
-//                                                     edge="end"
-//                                                     size="small"
-//                                                 >
-//                                                     <CloseIcon sx={{ marginRight: '10px', fontSize: '18px' }} />
-//                                                 </IconButton>
-//                                             )}
-//                                         </InputAdornment>
-//                                     }
-//                                 />
-//                             }
-//                             MenuProps={MenuProps}
-//                             IconComponent={ExpandMoreIcon}
-//                         >
-//                             {quantities.map((option) => (
-//                                 <MenuItem key={option} value={option}>
-//                                     {option}
-//                                 </MenuItem>
-//                             ))}
-//                         </Select>
-//                     </FormControl>
-//                 </Grid>
-
-//                 {/* Process Selection */}
-//                 <Grid item xs={12} sm={3} display="flex" alignItems="center">
-//                     <FormLabel sx={{ fontWeight: 500 }}>Process Selection:</FormLabel>
-//                 </Grid>
-//                 <Grid item xs={12} sm={9}>
-//                     <RadioGroup
-//                         row
-//                         name="processSelection"
-//                         value={formData.processSelection}
-//                         onChange={handleRadioChange}
-//                     >
-//                         <FormControlLabel value="Milling" control={<Radio />} label="Milling" />
-//                         <FormControlLabel value="Turning" control={<Radio />} label="Turning" />
-//                     </RadioGroup>
-//                 </Grid>
-//             </Grid>
-//         </Paper>
-//     );
-// }
-
-
-
-
-
-// ================================
-
-
 import React, { useState, useEffect } from 'react';
 import {
     Box,
@@ -498,6 +42,7 @@ interface Material {
     id: string;
     name: string;
     material_group_id: string;
+    material_name: string;
     // Other properties as needed
 }
 
@@ -511,7 +56,13 @@ interface MaterialGroup {
 interface SurfaceTreatment {
     id: string;
     name: string;
+    surface_treat_name: string;
     // Other properties as needed
+}
+
+interface FormCardProps {
+    formData: FormDataType;
+    setFormData: React.Dispatch<React.SetStateAction<FormDataType>>;
 }
 
 const ITEM_HEIGHT = 48;
@@ -538,41 +89,38 @@ const getChipStyles = (name: string, selected: string[], theme: Theme) => {
     };
 };
 
-export default function FormCard() {
+export default function FormCard({ formData, setFormData }: FormCardProps) {
     const theme = useTheme();
     const dispatch = useDispatch();
-
-    // Form state with arrays for multiple selections
-    const [formData, setFormData] = useState<FormDataType>({
-        model: 'PIPE.STP',
-        materialGroup: [],
-        materialGroupIds: [],
-        material: [],
-        materialIds: [],
-        surfaceTreatment: [],
-        surfaceTreatmentIds: [],
-        quantity: [],
-        processSelection: 'Milling'
-    });
-
+    const { mtkModelData, navigationState } = useSelector((state: RootState) => state.file);
+    
     // Redux state
     const { materials, groups: materialGroups, status: materialsStatus } = useSelector((state: RootState) => state.materials);
     const { machines, status: machinesStatus } = useSelector((state: RootState) => state.machines);
     const { treatments: surfaceTreatments, status: surfaceTreatmentsStatus } = useSelector((state: RootState) => state.surfaceTreatments);
-
+    
     // Local state for filtered materials
     const [filteredMaterials, setFilteredMaterials] = useState<Material[]>([]);
 
+    // Update model name when mtkModelData changes
+    useEffect(() => {
+        setFormData(prev => ({
+            ...prev,
+            model: mtkModelData?.model?.name || "select model"
+        }));
+    }, [mtkModelData, setFormData]);
+
     // Filter materials when material group changes
     useEffect(() => {
-        if (formData.materialGroupIds.length > 0 && materials.length > 0) {
-            const filtered = materials.filter(
-                material => formData.materialGroupIds.includes(material.material_group_id)
-            );
-            setFilteredMaterials(filtered);
-        } else {
-            setFilteredMaterials([]);
-        }
+        setFilteredMaterials(materials);
+        // if (formData.materialGroupIds.length > 0 && materials.length > 0) {
+        //     const filtered = materials.filter(
+        //         material => formData.materialGroupIds.includes(material.material_group_id)
+        //     );
+        //     setFilteredMaterials(filtered);
+        // } else {
+        //     setFilteredMaterials(materials);
+        // }
     }, [formData.materialGroupIds, materials]);
 
     // Handle material group change
@@ -755,11 +303,14 @@ export default function FormCard() {
     };
 
     // Loading state check
-    const isLoading =
-        materialsStatus === 'loading' ||
-        machinesStatus === 'loading' ||
-        surfaceTreatmentsStatus === 'loading';
-
+    const isLoading = false
+        // materialsStatus === 'loading' ||
+        // machinesStatus === 'loading' ||
+        // surfaceTreatmentsStatus === 'loading';
+    console.log("isLoading", isLoading);    
+    console.log("surfaceTreatments", surfaceTreatments);
+    console.log("filteredMaterials", filteredMaterials);
+    console.log("materialGroups", materialGroups);
     return (
         <Paper elevation={0} sx={{ p: 3, bgcolor: 'primary.lighter', borderRadius: 2 }}>
             <Grid container spacing={2}>
@@ -895,7 +446,7 @@ export default function FormCard() {
                                         return material && (
                                             <Chip
                                                 key={value}
-                                                label={material.name}
+                                                label={material.material_name}
                                                 size="small"
                                                 onDelete={(e) => {
                                                     e.stopPropagation();
@@ -909,15 +460,16 @@ export default function FormCard() {
                             )}
                             MenuProps={MenuProps}
                             IconComponent={ExpandMoreIcon}
-                            disabled={isLoading || filteredMaterials.length === 0 || formData.materialGroupIds.length === 0}
+                            // disabled={isLoading || filteredMaterials.length === 0 || formData.materialGroupIds.length === 0}
+                            disabled={isLoading || filteredMaterials.length === 0}
                         >
                             {filteredMaterials.map((material) => (
                                 <MenuItem
                                     key={material.id}
                                     value={material.id}
-                                    style={getChipStyles(material.name, formData.material, theme)}
+                                    style={getChipStyles(material.material_name, formData.material, theme)}
                                 >
-                                    {material.name}
+                                    {material.material_name}
                                 </MenuItem>
                             ))}
                         </Select>
@@ -965,7 +517,7 @@ export default function FormCard() {
                                         return treatment && (
                                             <Chip
                                                 key={value}
-                                                label={treatment.name}
+                                                label={treatment.surface_treat_name}
                                                 size="small"
                                                 onDelete={(e) => {
                                                     e.stopPropagation();
@@ -985,9 +537,9 @@ export default function FormCard() {
                                 <MenuItem
                                     key={treatment.id}
                                     value={treatment.id}
-                                    style={getChipStyles(treatment.name, formData.surfaceTreatment, theme)}
+                                    style={getChipStyles(treatment.surface_treat_name, formData.surfaceTreatment, theme)}
                                 >
-                                    {treatment.name}
+                                    {treatment.surface_treat_name}
                                 </MenuItem>
                             ))}
                         </Select>

@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import { useLocation } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import { styled, alpha } from '@mui/material/styles';
 
 import { CiMenuFries } from "react-icons/ci";
@@ -26,6 +26,7 @@ const StyledAppBar = styled(AppBar)(({ theme }) => ({
 }));
 
 const TopBar = ({ handleDrawerToggle }: { handleDrawerToggle: () => void }) => {
+    const navigate = useNavigate();
     const location = useLocation();
     const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
     const dispatch = useDispatch();
@@ -139,7 +140,7 @@ const TopBar = ({ handleDrawerToggle }: { handleDrawerToggle: () => void }) => {
                         open={Boolean(anchorEl)}
                         onClose={handleMenuClose}
                     >
-                        <MenuItem onClick={handleMenuClose}>Profile</MenuItem>
+                        <MenuItem onClick={()=>{handleMenuClose(),navigate('/profile')}}>Profile</MenuItem>
                         <MenuItem onClick={handleMenuClose}>My account</MenuItem>
                         <MenuItem onClick={handleLogout}>Logout</MenuItem>
                     </Menu>

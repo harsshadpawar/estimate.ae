@@ -1,14 +1,12 @@
 import React from "react";
 import {
-  Drawer,
   Box,
   Card,
   CardActionArea,
   CardContent,
   Typography,
-  IconButton,
 } from "@mui/material";
-import CloseIcon from "@mui/icons-material/Close";
+import DrawerModal from "@/components/drawerModel";
 
 // Define the props type
 interface AddSurfaceTreatmentDrawerProps {
@@ -25,25 +23,21 @@ const AddSurfaceTreatmentDrawer: React.FC<AddSurfaceTreatmentDrawerProps> = ({
   onAddNewSurfaceTreatment,
 }) => {
   return (
-    <Drawer anchor="right" open={open} onClose={onDrawerClose}>
+    <DrawerModal
+      isOpen={open}
+      onClose={onDrawerClose}
+      title="Select an Option"
+      width={400}
+      anchor="right"
+    >
       <Box
         sx={{
-          width: 400,
-          padding: 2,
           display: "flex",
           flexDirection: "column",
           gap: 2,
         }}
       >
-        {/* Header with Close Button */}
-        <Box display="flex" justifyContent="space-between" alignItems="center">
-          <Typography variant="h6">Select an Option</Typography>
-          <IconButton onClick={onDrawerClose}>
-            <CloseIcon />
-          </IconButton>
-        </Box>
-
-        {/* Options */}
+        {/* Import Option */}
         <Card
           onClick={onImportSurfaceTreatment}
           sx={{ cursor: "pointer", textAlign: "center" }}
@@ -54,6 +48,8 @@ const AddSurfaceTreatmentDrawer: React.FC<AddSurfaceTreatmentDrawerProps> = ({
             </CardContent>
           </CardActionArea>
         </Card>
+
+        {/* Add New Option */}
         <Card
           onClick={onAddNewSurfaceTreatment}
           sx={{ cursor: "pointer", textAlign: "center" }}
@@ -65,7 +61,7 @@ const AddSurfaceTreatmentDrawer: React.FC<AddSurfaceTreatmentDrawerProps> = ({
           </CardActionArea>
         </Card>
       </Box>
-    </Drawer>
+    </DrawerModal>
   );
 };
 

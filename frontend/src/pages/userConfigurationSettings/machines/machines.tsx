@@ -1,71 +1,45 @@
 import React, { useState, useEffect } from "react";
 import {
-  Table,
-  TableBody,
-  TableCell,
-  TableContainer,
-  TableHead,
-  TableRow,
   Typography,
-  Checkbox,
   IconButton,
-  Paper,
   Accordion,
   AccordionSummary,
   AccordionDetails,
-  Button,
-  styled,
-  tableCellClasses,
   Backdrop,
   CircularProgress,
   Box,
+  Checkbox,
 } from "@mui/material";
-import { Edit, Delete, ExpandMore } from "@mui/icons-material";
+import { Delete, ExpandMore } from "@mui/icons-material";
 import { TbEdit } from "react-icons/tb";
-import AddMachineDialog from "./addMachineDialog";
-import ImportMachineDialog from "./importMachineDialog";
-import AddNewMachineDialog from "./addNewMachineDialog";
-import ConfirmDialog from "../../dashboard/ConfirmDialog/confirmDialog";
-import "@/assets/css/machines.css";
 import { FaEye } from "react-icons/fa";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import { useDispatch, useSelector } from "react-redux";
-import { 
-  fetchMachines, 
-  addMachine, 
-  updateMachine, 
-  deleteMachine as removeMachine, 
-  importMachine as importMachineAction 
+import {
+  fetchMachines,
+  addMachine,
+  updateMachine,
+  deleteMachine as removeMachine,
+  importMachine as importMachineAction
 } from "@/redux/features/machines/machinesSlice";
 
-const StyledTableCell = styled(TableCell)(({ theme }) => ({
-  [`&.${tableCellClasses.body}`]: {
-    fontWeight: 500,
-    fontSize: '15px',
-    lineHeight: '18.15px'
-  },
-}));
-
-const StyledTableRow = styled(TableRow)(({ theme }) => ({
-  height: '54px',
-  '&:nth-of-type(even)': {
-    backgroundColor: '#EFF7FD',
-  },
-  '&:nth-of-type(odd)': {
-    backgroundColor: '#FFFF',
-  },
-  // hide last border
-  '&:last-child td, &:last-child th': {
-    border: 0,
-  },
-}));
+import AddMachineDialog from "./addMachineDialog";
+import ImportMachineDialog from "./importMachineDialog";
+import AddNewMachineDialog from "./addNewMachineDialog";
+import ConfirmDialog from "../../dashboard/ConfirmDialog/confirmDialog";
+import CustomButton from "@/components/button"; // Add this import
+import "@/assets/css/machines.css";
+import EnhancedTable from "@/components/table";
+import Loader from "@/components/loader";
+import { RootState } from "@/redux/store/store";
 
 const Machine = () => {
   // Redux hooks
   const dispatch = useDispatch();
   const { machines, status: machinesStatus, error } = useSelector((state) => state.machines);
-  
+  const role = useSelector((state: RootState) => state?.auth?.role);
+
   // Local state
   const [groupedMachines, setGroupedMachines] = useState({});
   const [isDialogOpen, setIsDialogOpen] = useState(false);
@@ -73,9 +47,9 @@ const Machine = () => {
   const [selectedMachineId, setSelectedMachineId] = useState("");
   const [isConfirmDialogOpen, setIsConfirmDialogOpen] = useState(false);
   const [selected, setSelected] = useState([]);
-  
+
   const navigate = useNavigate();
-  
+
   // Determine if we're loading
   const isLoading = machinesStatus === 'loading';
 
@@ -94,7 +68,7 @@ const Machine = () => {
   // Group machines by category
   const groupMachinesByCategory = (data) => {
     const grouped = data.reduce((acc, machine) => {
-      const category = machine.category || "Uncategorized";
+      const category = machine.machine_category || "Uncategorized";
       if (!acc[category]) acc[category] = [];
       acc[category].push(machine);
       return acc;
@@ -127,7 +101,7 @@ const Machine = () => {
     try {
       if (machines.some(machine =>
         machine?.name === newMachine?.name ||
-        machine?.abbreviation === newMachine?.abbreviation
+        machine?.machine_abbreviation === newMachine?.machine_abbreviation
       )) {
         toast.warn("Machine with the same name and abbreviation already exists.");
         return;
@@ -153,14 +127,14 @@ const Machine = () => {
   const importMachine = async (machine) => {
     closeDialog();
     try {
-      if (machines.some((existingMachine) => 
-        existingMachine?.name === machine?.name && 
-        existingMachine?.abbreviation === machine?.abbreviation
+      if (machines.some((existingMachine) =>
+        existingMachine?.name === machine?.name &&
+        existingMachine?.machine_abbreviation === machine?.machine_abbreviation
       )) {
         toast.warn("Machine already exists");
         return;
       }
-      
+
       await dispatch(importMachineAction(machine.id)).unwrap();
       toast.success('Machine imported successfully');
     } catch (error) {
@@ -198,6 +172,91 @@ const Machine = () => {
     );
   };
 
+  // Define columns for the EnhancedTable
+  const columns = [
+    {
+      id: 'checkbox',
+      label: '#',
+      sortable: false,
+      searchable: false,
+      format: (value, row) => (
+        <Checkbox
+          checked={selected.includes(row.id)}
+          onChange={() => toggleCheckbox(row.id)}
+        />
+      )
+    },
+    {
+      id: 'machine_abbreviation',
+      label: 'Abbreviation',
+      sortable: true,
+      searchable: true,
+      format: (value) => (
+        <Box sx={{ display: { xs: 'none', sm: 'block' } }}>
+          {value || '--'}
+        </Box>
+      )
+    },
+    {
+      id: 'name',
+      label: 'Name',
+      sortable: true,
+      searchable: true,
+    },
+    {
+      id: 'hourly_rate',
+      label: 'Hourly Rate',
+      sortable: true,
+      searchable: false,
+      format: (value, row) =>
+        value > 0 ? `${value}/h` : '--'
+    },
+    {
+      id: 'working_span',
+      label: 'Working Span',
+      sortable: true,
+      searchable: false,
+      format: (value) => (
+        <Box sx={{ display: { xs: 'none', sm: 'block' } }}>
+          {value || '--'}
+        </Box>
+      )
+    },
+    {
+      id: 'actions',
+      label: 'Action',
+      sortable: false,
+      searchable: false,
+      format: (value, row) => (
+        <Box>
+          <IconButton
+            sx={{ color: 'Green', height: '12px' }}
+            onClick={() => handleView("view", row)}
+          >
+            <FaEye />
+          </IconButton>
+          {role == 'super-admin' || role == 'admin' ?
+            (
+              <>
+                <IconButton
+                  sx={{ color: '#0591FC', height: '12px' }}
+                  onClick={() => handleView("edit", row)}
+                >
+                  <TbEdit />
+                </IconButton>
+                <IconButton
+                  sx={{ color: 'red' }}
+                  onClick={() => openConfirmDialog(row.id)}
+                >
+                  <Delete />
+                </IconButton>
+              </>
+            ) : null}
+        </Box>
+      )
+    }
+  ];
+
   // Handle potential error state
   if (machinesStatus === 'failed') {
     return (
@@ -209,99 +268,51 @@ const Machine = () => {
 
   return (
     <div>
-      <Box sx={{ display: 'flex', justifyContent: 'space-between' }}>
-        <Typography sx={{ fontWeight: 600, fontSize: { xs: '20px', sm: '24px', md: '28px' }, lineHeight: '33.89px', }} gutterBottom>
-          Machines
-        </Typography>
-        <Button
-          variant="contained"
-          color="primary"
-          onClick={() => openDialog("")}
-        >
-          Add Machine
-        </Button>
-      </Box>
-      
       {isLoading && (
-        <Backdrop
-          sx={{
-            color: '#fff',
-            zIndex: (theme) => theme.zIndex.drawer + 1,
-          }}
-          open={isLoading}
-        >
-          <CircularProgress color="inherit" />
-        </Backdrop>
+        <Loader loading={isLoading} />
       )}
-      
+
       {machines.length === 0 && !isLoading ? (
-        <Typography
-          variant="body1"
-          align="center"
-          style={{ marginTop: "20px" }}
-        >
-          Please add machines to view the list.
-        </Typography>
+        <Box sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 3 }}>
+          <Typography sx={{ fontWeight: 600, fontSize: { xs: '20px', sm: '24px', md: '28px' }, lineHeight: '33.89px' }}>
+            Machines
+          </Typography>
+          <Typography
+            variant="body1"
+            align="center"
+            style={{ marginTop: "20px" }}
+          >
+            Please add machines to view the list.
+          </Typography>
+          <Box sx={{ width: '200px', mt: 2 }}>
+            <CustomButton
+              text="Add Machine"
+              onClick={() => openDialog("")}
+              width="200px"
+              height="50px"
+              borderRadius="14px"
+            />
+          </Box>
+        </Box>
       ) : (
         Object.keys(groupedMachines).map((category) => (
-          <Accordion key={category} sx={{ boxShadow: 0, marginTop: 0 }}>
+          <Accordion key={category} sx={{ boxShadow: 0, marginTop: 2 }}>
             <AccordionSummary sx={{ backgroundColor: '#F9F9F9' }} expandIcon={<ExpandMore />}>
-              <Typography sx={{ fontWeight: 600, fontSize: '18px', lineHeight: '24px' }}>{category}</Typography>
+              <Typography sx={{ fontWeight: 600, fontSize: '18px', lineHeight: '24px' }}>
+                {category}
+              </Typography>
             </AccordionSummary>
-            <TableContainer sx={{ boxShadow: 0 }} component={Paper}>
-              <Table sx={{ borderTopLeftRadius: '20px', borderTopRightRadius: '20px', backgroundColor: '#0591FC', color: '#FFFF' }}>
-                <TableHead>
-                  <TableRow>
-                    <TableCell sx={{ color: "white", fontWeight: "bold" }}>#</TableCell>
-                    <TableCell sx={{ color: "white", fontWeight: "bold", display:{xs:'none',sm:'block'} }}>Abbreviation</TableCell>
-                    <TableCell sx={{ color: "white", fontWeight: "bold" }}>Name</TableCell>
-                    <TableCell sx={{ color: "white", fontWeight: "bold" }}>Hourly Rate</TableCell>
-                    <TableCell sx={{ color: "white", fontWeight: "bold", display:{xs:'none',sm:'block'} }}>Working Span</TableCell>
-                    <TableCell sx={{ color: "white", fontWeight: "bold" }}>Action</TableCell>
-                  </TableRow>
-                </TableHead>
-                <TableBody>
-                  {groupedMachines[category].map((machine, index) => (
-                    <StyledTableRow key={machine.id || machine.name}>
-                      <StyledTableCell>
-                        <Checkbox 
-                          checked={selected.includes(machine.id)} 
-                          onChange={() => toggleCheckbox(machine.id)} 
-                        />
-                      </StyledTableCell>
-                      <TableCell sx={{display:{xs:'none',sm:'block'}}}>{machine.abbreviation}</TableCell>
-                      <TableCell>{machine.name}</TableCell>
-                      <TableCell>
-                        {machine.hourly_rate > 0
-                          ? `${machine.currency} ${machine.hourly_rate}/h`
-                          : "--"}
-                      </TableCell>
-                      <TableCell sx={{display:{xs:'none',sm:'block'}}}>{machine.working_span || "--"}</TableCell>
-                      <TableCell>
-                        <IconButton 
-                          sx={{ color: 'Green', height: '12px' }}
-                          onClick={() => handleView("view", machine)}
-                        >
-                          <FaEye />
-                        </IconButton>
-                        <IconButton 
-                          sx={{ color: '#0591FC', height: '12px' }}
-                          onClick={() => handleView("edit", machine)}
-                        >
-                          <TbEdit />
-                        </IconButton>
-                        <IconButton 
-                          sx={{ color: 'red' }}
-                          onClick={() => openConfirmDialog(machine.id)}
-                        >
-                          <Delete />
-                        </IconButton>
-                      </TableCell>
-                    </StyledTableRow>
-                  ))}
-                </TableBody>
-              </Table>
-            </TableContainer>
+            <AccordionDetails sx={{ padding: 0 }}>
+              <EnhancedTable
+                title=""
+                data={groupedMachines[category]}
+                columns={columns}
+                {...((role === 'super-admin' || role === 'admin') && { add: () => openDialog("") })}
+                initialSortColumn="name"
+                initialSortDirection="asc"
+              />
+
+            </AccordionDetails>
           </Accordion>
         ))
       )}
@@ -315,7 +326,7 @@ const Machine = () => {
           onAddNewMachine={() => openDialog("add")}
         />
       )}
-      
+
       {dialogType === "import" && (
         <ImportMachineDialog
           open={isDialogOpen}
@@ -323,7 +334,7 @@ const Machine = () => {
           onImportMachine={importMachine}
         />
       )}
-      
+
       {(dialogType === "add" || dialogType === "edit") && (
         <AddNewMachineDialog
           open={isDialogOpen}

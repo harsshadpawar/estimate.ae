@@ -57,7 +57,7 @@ export const fetchMachines = createAsyncThunk<Machine[], void, { rejectValue: st
   async (_, { rejectWithValue }) => {
     try {
       const response = await apiClient.get('/machine/');
-      return response?.data?.data?.machines || [];
+      return response?.data?.data || [];
     } catch (error: any) {
       return rejectWithValue(error.response?.data?.message || 'Failed to fetch machines');
     }
@@ -176,6 +176,7 @@ const machinesSlice = createSlice({
       })
       .addCase(fetchMachines.fulfilled, (state, action: PayloadAction<Machine[]>) => {
         state.status = 'succeeded';
+
         state.machines = action.payload;
         state.error = null;
       })

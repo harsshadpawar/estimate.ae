@@ -7,9 +7,9 @@ import { toast } from "react-toastify";
 interface SurfaceTreatment {
   id: string;
   active: boolean;
-  name: string;
+  surface_treat_name: string;
   price_per_kg: number;
-  surface_price: number;
+  price: number;
 }
 
 interface SurfaceTreatmentsState {
@@ -43,7 +43,7 @@ export const fetchDefaultSurfaceTreatments = createAsyncThunk(
         params: { page: 1, size: 10 } // You can change defaults here if needed
       });
       return {
-        treatments: response.data?.data?.surface_treatments || [],
+        treatments: response.data?.data || [],
         total: response.data?.data?.total || 0
       };
     } catch (error) {
@@ -67,7 +67,7 @@ export const fetchSurfaceTreatments = createAsyncThunk(
       });
       console.log("Fetched surface treatments:", response.data);
       return {
-        treatments: response.data?.data?.surface_treatments || [],
+        treatments: response.data?.data || [],
         total: response.data?.data?.total || 0
       };
     } catch (error) {

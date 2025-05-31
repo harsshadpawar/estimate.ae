@@ -1,36 +1,6 @@
-// ****************************************************************************
-//
-// Copyright (C) 2008-2014, Roman Lygin. All rights reserved.
-// Copyright (C) 2014-2025, CADEX. All rights reserved.
-//
-// This file is part of the Manufacturing Toolkit software.
-//
-// You may use this file under the terms of the BSD license as follows:
-//
-// Redistribution and use in source and binary forms, with or without
-// modification, are permitted provided that the following conditions are met:
-// * Redistributions of source code must retain the above copyright notice,
-//   this list of conditions and the following disclaimer.
-// * Redistributions in binary form must reproduce the above copyright notice,
-//   this list of conditions and the following disclaimer in the documentation
-//   and/or other materials provided with the distribution.
-//
-// THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS"
-// AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
-// IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE
-// ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE
-// LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR
-// CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF
-// SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS
-// INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN
-// CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
-// ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
-// POSSIBILITY OF SUCH DAMAGE.
-//
-// ****************************************************************************
-
 import './MTKExplorerViewer.scss';
-
+import { useSelector, useDispatch } from 'react-redux';
+import { RootState } from '@/redux/store/store'; // Adjust import path
 import {
   Intersection,
   Object3D,
@@ -42,7 +12,6 @@ import {
   useEffect,
   useState,
 } from 'react';
-import { useLocation, useParams } from 'react-router-dom';
 
 import { Allotment } from 'allotment';
 import { AnalysisMode } from '../viewer/MTKExplorerViewer';
@@ -53,6 +22,8 @@ import { ProductInformationPanel } from './ProductInformationPanel';
 import { ProductSelectAndViewControls } from './ProductSelectAndViewControls';
 import { SheetMetalProduct } from '../viewer/sheet-metal/SheetMetalProduct';
 import { Viewport } from 'features/viewport/ui/Viewport';
+import { setError, setLoading } from '@/redux/features/file/fileSlice';
+import { Box, Container } from '@mui/material';
 
 interface PartSelectorOption {
   value: number;
@@ -61,34 +32,68 @@ interface PartSelectorOption {
 
 export const MTKExplorerViewer = () => {
   const [viewerRef] = useState<MTKExplorerViewerRef>(new MTKExplorerViewerRef());
+  const dispatch = useDispatch();
 
-  const location = useLocation();
+  // Get data from Redux instead of React Router
+  const { mtkModelData, navigationState } = useSelector((state: RootState) => state.file);
+  console.log("mtkModelData", mtkModelData);
+  console.log("navigationState", navigationState);
+
   const getModelData = (): MTKModelData | null => {
-    return location.state ? location.state as MTKModelData : null;
+    return mtkModelData || (navigationState?.state ? navigationState.state : null);
   };
 
-  const params = useParams();
   const getModel = (): MTKModel => {
-    return { name: params.name ? params.name : 'undefined', process: params.process ? params.process : 'undefined' };
+    const modelData = getModelData();
+    if (modelData) {
+      console.log("getmodel inside", modelData);
+      return modelData.model;
+    }
+
+    // Fallback to parsing from navigation state pathname
+    if (navigationState?.pathname) {
+      const pathParts = navigationState.pathname.split('/');
+      return {
+        name: pathParts[pathParts.length - 1] || 'undefined',
+        process: pathParts[pathParts.length - 2] || 'undefined'
+      };
+    }
+
+    return { name: 'undefined', process: 'undefined' };
   };
 
   useEffect(() => {
-    const files = getModelData()?.files;
-    if (files && files.length && files[0] instanceof FileData) {
-      readConvertedModel(files);
+    const modelData = getModelData();
+    const fileData = modelData?.fileData; // Use fileData instead of files
+
+    if (fileData && fileData.length) {
+      // Use FileData array directly
+      readConvertedModel(fileData);
     } else {
       readModel();
     }
-  }, []);
+  }, [mtkModelData, navigationState]);
 
   const readModel = async () => {
     const model = getModel();
+    dispatch(setLoading(true));
+
     if (await checkServerAvailable()) {
-      const files = await getConvertedModel(model);
-      readConvertedModel(files);
+      try {
+        const files = await getConvertedModel(model);
+        readConvertedModel(files);
+      } catch (error) {
+        const errorMessage = `Unable to load model: ${model.name}`;
+        dispatch(setError(errorMessage));
+        alert(errorMessage);
+      }
     } else {
-      alert(`Unavailable to read model: ${model.name}`);
+      const errorMessage = `Unavailable to read model: ${model.name}`;
+      dispatch(setError(errorMessage));
+      alert(errorMessage);
     }
+
+    dispatch(setLoading(false));
   };
 
   const [partOptions, setPartOptions] = useState<PartSelectorOption[]>([]);
@@ -155,12 +160,12 @@ export const MTKExplorerViewer = () => {
     setPartOptions(parts);
     setCurrentProduct(viewerRef.currentProduct);
 
-    if (viewerRef.currentProduct && getModelData()?.isCreateThumbnail) {
+    const modelData = getModelData();
+    if (viewerRef.currentProduct && modelData?.isCreateThumbnail) {
       setTimeout(() => {
         viewerRef.viewport.captureSceneImage((imageBlob: Blob | null) => {
-          const modelData = getModelData();
           if (imageBlob && modelData?.model) {
-            saveThumbnail(imageBlob, modelData?.model);
+            saveThumbnail(imageBlob, modelData.model);
           }
         });
       }, 200);
@@ -173,15 +178,22 @@ export const MTKExplorerViewer = () => {
     if (!files || !files.length) {
       return;
     }
+
+    dispatch(setLoading(true));
     viewerRef.clearViewer();
     viewerRef
       .loadModel(files)
       .then(onConvertedModelLoaded)
       .catch((e: Error) => {
         console.log(`Unable to load model from folder: `, e);
-        alert(`Unable to load model from folder [${e.message}]`);
+        const errorMessage = `Unable to load model from folder [${e.message}]`;
+        dispatch(setError(errorMessage));
+        alert(errorMessage);
+      })
+      .finally(() => {
+        dispatch(setLoading(false));
       });
-  }, [setPartOptions, setCurrentProduct, viewerRef, onConvertedModelLoaded]);
+  }, [setPartOptions, setCurrentProduct, viewerRef, onConvertedModelLoaded, dispatch]);
 
   const onSelectedFromViewport = (
     intersection: Intersection<Object3D>[] | null,
@@ -191,40 +203,49 @@ export const MTKExplorerViewer = () => {
   };
 
   return (
-    <Allotment defaultSizes={[3, 1]} minSize={300}>
-      <Allotment.Pane>
-        <div className="product-controls-container">
-          <ProductSelectAndViewControls
-            isShowSelectControl={partOptions.length > 1}
-            defaultSelectValue={0}
-            selectOptions={partOptions}
-            onSelectValueChanged={onCurrentPartIndexChanged}
-            isShowViewControl={isUnfoldedViewAvailable()}
-            currentViewIndex={currentViewIndex}
-            defaultViewName="Original"
-            alternativeViewName="Unfolded"
-            onViewChanged={onIsUnfoldedViewActiveChanged}
-          />
+    <Container>
+      <Allotment defaultSizes={[3, 1]} minSize={300} >
+        <div style={{ display: 'flex', height: '600px' }}>
+          <div style={{ width: "75%", height: '100%' }}>
+            <Allotment.Pane >
+              <div style={{ height: '600px' }}>
+                <div className="product-controls-container">
+                  <ProductSelectAndViewControls
+                    isShowSelectControl={partOptions.length > 1}
+                    defaultSelectValue={0}
+                    selectOptions={partOptions}
+                    onSelectValueChanged={onCurrentPartIndexChanged}
+                    isShowViewControl={isUnfoldedViewAvailable()}
+                    currentViewIndex={currentViewIndex}
+                    defaultViewName="Original"
+                    alternativeViewName="Unfolded"
+                    onViewChanged={onIsUnfoldedViewActiveChanged}
+                  />
+                </div>
+                <Viewport
+                  viewportRef={viewerRef.viewport}
+                  onIntersect={onSelectedFromViewport}
+                  style={{ width: '100%', height: 600 }}
+                />
+              </div>
+            </Allotment.Pane>
+          </div>
+          <Allotment.Pane>
+            {(viewerRef.currentProduct) && (
+              <ProductInformationPanel
+                currentPartError={currentProduct?.error}
+                currentAnalysisMode={currentAnalysisMode}
+                onCurrentAnalysisModeChanged={onCurrentAnalysisModeChanged}
+                isUnfoldedViewActive={currentViewIndex === 1}
+                currentUnfoldedPartParameters={getCurrentUnfoldedPartParameters()}
+                activeAnalysisModeMessage={getCurrentAnalysisModeMessage()}
+                currentStructureManager={getCurrentFeaturesStructureManager()}
+                onFeatureTypeChanged={onFeatureTypeChanged}
+              />
+            )}
+          </Allotment.Pane>
         </div>
-        <Viewport
-          viewportRef={viewerRef.viewport}
-          onIntersect={onSelectedFromViewport}
-        />
-      </Allotment.Pane>
-      <Allotment.Pane>
-        {(viewerRef.currentProduct) && (
-          <ProductInformationPanel
-            currentPartError={currentProduct?.error}
-            currentAnalysisMode={currentAnalysisMode}
-            onCurrentAnalysisModeChanged={onCurrentAnalysisModeChanged}
-            isUnfoldedViewActive={currentViewIndex === 1}
-            currentUnfoldedPartParameters={getCurrentUnfoldedPartParameters()}
-            activeAnalysisModeMessage={getCurrentAnalysisModeMessage()}
-            currentStructureManager={getCurrentFeaturesStructureManager()}
-            onFeatureTypeChanged={onFeatureTypeChanged}
-          />
-        )}
-      </Allotment.Pane>
-    </Allotment>
+      </Allotment>
+    </Container>
   );
 };

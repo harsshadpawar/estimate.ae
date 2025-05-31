@@ -18,6 +18,7 @@ import { InfoOutlined, Add as AddIcon } from '@mui/icons-material';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { updateSurfaceTreatment } from '@/redux/features/surfaceTreatments/surfaceTreatmentsSlice';
 import { useDispatch } from 'react-redux';
+import Loader from '@/components/loader';
 
 // Styled components
 const StyledPaper = styled(Paper)(({ theme }) => ({
@@ -83,22 +84,22 @@ export default function SurfaceTreatmentForm() {
   const location = useLocation()
   const [isLoading, setIsLoading] = useState(false); // Add loading state
   const data = location?.state?.machineData
-  console.log("data",data)
+  console.log("data", data)
   const materialGroups = location?.state?.materialGroups
   const viewMode = location?.state?.viewMode === "view" ? true : false;
   const navigate = useNavigate()
   const [formData, setFormData] = useState({
     id: data?.id,
-    name: data?.name,
+    name: data?.surface_treat_name,
     active: data?.active,
     material_group_ids: data?.material_group_ids || [],
-    price_per_kg: data?.price_per_kg  ,
+    price_per_kg: data?.price_per_kg,
     co2Emission: '',
   });
   const handleSave = async () => {
     setIsLoading(true)
     try {
-      console.log("form ",formData)
+      console.log("form ", formData)
       const resultAction = await dispatch(
         updateSurfaceTreatment({
           id: formData?.id,
@@ -139,15 +140,7 @@ export default function SurfaceTreatmentForm() {
         Surface Treatment Data:
       </Typography>
       {isLoading && (
-        <Backdrop
-          sx={{
-            color: '#fff',
-            zIndex: (theme) => theme.zIndex.drawer + 1,
-          }}
-          open={isLoading}
-        >
-          <CircularProgress color="inherit" />
-        </Backdrop>
+        <Loader loading={isLoading} />
       )}
       <FormSection>
         <FormRow>

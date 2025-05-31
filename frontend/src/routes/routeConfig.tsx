@@ -1,5 +1,4 @@
-import { lazy } from 'react';
-import LoadingFallback from '@/components/loadingFallback';
+import React from 'react';
 
 // Route configuration types
 export interface RouteConfig {
@@ -12,17 +11,12 @@ export interface RouteConfig {
 }
 
 // Create a custom lazy loader with loading message
+// Optimized lazy loader - removed unnecessary LoadingFallback call
 export const createLazyComponent = (
   importFunc: () => Promise<{ default: React.ComponentType<any> }>,
   loadingMessage = 'Loading...'
 ) => {
-  return lazy(() => {
-    // Show loading message using the LoadingFallback for SSR
-    if (typeof window !== 'undefined') {
-      LoadingFallback({ message: loadingMessage });
-    }
-    return importFunc();
-  });
+  return React.lazy(importFunc); // Simplified - let Suspense handle the loading
 };
 
 // Public routes
@@ -76,7 +70,8 @@ export const publicRoutes: RouteConfig[] = [
     path: '/reset-password-success',
     component: createLazyComponent(() => import('@/templates/ResetPassword')),
     layout: 'none'
-  }
+  },
+  
 ];
 
 // Protected routes with sidebar layout
@@ -116,6 +111,11 @@ export const protectedRoutes: RouteConfig[] = [
     component: createLazyComponent(() => import('@/pages/dashboard/dashboard/dashboard')),
     protected: true,
     layout: 'sidebar'
+  },
+  {
+    path: '/profile',
+    component: createLazyComponent(() => import('@/pages/profile/profile'), 'Loading profile page...'), 
+    layout: 'none'
   }
 ];
 
@@ -131,6 +131,20 @@ export const adminRoutes: RouteConfig[] = [
   {
     path: 'user-managemnet',
     component: createLazyComponent(() => import('@/pages/dashboard/admin/UserManagement/userManagement'), 'Loading user management...'),
+    protected: true,
+    layout: 'sidebar',
+    isAdmin: true
+  },
+  {
+    path: 'company-management',
+    component: createLazyComponent(() => import('@/pages/dashboard/admin/Company/companyManagement'), 'Loading user management...'),
+    protected: true,
+    layout: 'sidebar',
+    isAdmin: true
+  },
+  {
+    path: 'product-management',
+    component: createLazyComponent(() => import('@/pages/dashboard/admin/Product/productManagement'), 'Loading product management...'),
     protected: true,
     layout: 'sidebar',
     isAdmin: true
@@ -169,5 +183,40 @@ export const adminRoutes: RouteConfig[] = [
     protected: true,
     layout: 'sidebar',
     isAdmin: true
-  }
+  },
+  {
+    path: 'user-configuration',
+    component: createLazyComponent(() => import('@/pages/userConfigurationSettings/userConfigurationSettings'), 'Loading user settings...'),
+    protected: true,
+    layout: 'sidebar',
+    isAdmin: true
+  },
+  {
+    path: 'machine',
+    component: createLazyComponent(() => import('@/pages/dashboard/PreviewOfSelectedModel'), 'Loading preview...'),
+    protected: true,
+    layout: 'sidebar',
+    isAdmin: true
+  },
+  {
+    path: 'surface',
+    component: createLazyComponent(() => import('@/pages/dashboard/PreviewOfSelectedModel/SurfaceTreatmentData'), 'Loading surface treatment form...'),
+    protected: true,
+    layout: 'sidebar',
+    isAdmin: true
+  },
+  {
+    path: 'material',
+    component: createLazyComponent(() => import('@/pages/dashboard/PreviewOfSelectedModel/metirialform'), 'Loading material data form...'),
+    protected: true,
+    layout: 'sidebar',
+    isAdmin: true
+  },
+  {
+    path: 'material-group',
+    component: createLazyComponent(() => import('@/pages/dashboard/PreviewOfSelectedModel/MetirialGroupData'), 'Loading material group form...'),
+    protected: true,
+    layout: 'sidebar',
+    isAdmin: true
+  },
 ];

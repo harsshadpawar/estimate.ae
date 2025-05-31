@@ -11,48 +11,39 @@ import { RootState } from '@/redux/store/store';
 import { ModelViewerPage } from '@/pages/base-viewer';
 import { useModelLoader } from '@/pages/common/hooks';
 import { BaseModelViewer } from '@/pages/base-viewer/viewer/BaseModelViewer';
-function SelectModel() {
-    const dispatch = useDispatch()
-    const [volume, setVolume] = useState<number>(0);
-    const [surfaceArea, setSurfaceArea] = useState<number>(0);
-    const [selectedFile, setSelectedFile] = useState<File | null>(null);
-    const { fileId: cadFileId } = useSelector((state: RootState) => state.cad);
-    const { token: accessToken } = useSelector((state: RootState) => state.forge);
-    const handleFileSelect = (selectedFile: File) => {
-        if (selectedFile) {
-            setSelectedFile(selectedFile);
-            // dispatch(uploadCadFile(selectedFile))
-            //     .then(() => dispatch(getForgeToken()));
-        }
-    };
 
-     const [viewer] = useState(new BaseModelViewer());
-    
-      const {
-        onMTKWEBFileSelected,
-        onMTKWEBFolderSelected,
-      } = useModelLoader(viewer);
-    
-    const getDimensions = (dimensionValues: any) => {
-        setVolume(dimensionValues.rawMaterialDimensions.volume);
-        setSurfaceArea(dimensionValues.rawMaterialDimensions.surfaceArea);
-    };
+// Define types for form data
+interface FormDataType {
+    model: string;
+    materialGroup: string[];
+    materialGroupIds: string[];
+    material: string[];
+    materialIds: string[];
+    surfaceTreatment: string[];
+    surfaceTreatmentIds: string[];
+    quantity: string[];
+    processSelection: string;
+}
 
+interface SelectModelProps {
+    formData: FormDataType;
+    setFormData: React.Dispatch<React.SetStateAction<FormDataType>>;
+    step?:any
+}
 
+function SelectModel({step, formData, setFormData }: SelectModelProps) {
     return (
         <Container maxWidth="lg" sx={{ py: 4 }}>
             <Grid container spacing={2}>
                 <Grid item xs={12} md={6}>
-                    
-                        {/* <FileUpload onFileSelect={onMTKWEBFolderSelected} /> */}
-                        <ModelViewerPage />
-
-                        {/* {cadFileId && render3DPreview(cadFileId, accessToken, getDimensions)} */}
-                    
+                    <ModelViewerPage step={step}/>
                 </Grid>
                 <Grid item xs={12} md={6}>
                     <Card title={'Please Select data below'}>
-                        <FormCard />
+                        <FormCard 
+                            formData={formData}
+                            setFormData={setFormData}
+                        />
                     </Card>
                 </Grid>
             </Grid>

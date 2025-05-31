@@ -8,9 +8,17 @@ type User = {
   first_name: string;
   last_name: string;
   email: string;
+  phone: string;
   company_name: string;
   role: string;
   title: string;
+  gender: string;
+  date_of_birth: string;
+  email_verified: boolean;
+  is_active: boolean;
+  subscription_plan: string;
+  created_at: string;
+  updated_at: string;
 };
 
 type UserState = {
@@ -29,8 +37,8 @@ const initialState: UserState = {
 // Thunks
 export const fetchUsers = createAsyncThunk("users/fetchUsers", async (_, { rejectWithValue }) => {
   try {
-    const response = await apiClient.get("/user/users/");
-    return response.data.data.users;
+    const response = await apiClient.get("/user/");
+    return response.data.data;
   } catch (error: any) {
     const errorMessage = error.response?.data?.message || "Failed to fetch users.";
     triggerToast(errorMessage, "error");
@@ -38,11 +46,11 @@ export const fetchUsers = createAsyncThunk("users/fetchUsers", async (_, { rejec
   }
 });
 
-export const addUser = createAsyncThunk("/user/user/", async (user: Partial<User>, { rejectWithValue }) => {
+export const addUser = createAsyncThunk("users/addUser", async (user: Partial<User>, { rejectWithValue }) => {
   try {
-    const response = await apiClient.post("/user/profile/", user);
-    triggerToast(response.data?.data?.message || "User added successfully!", "success");
-    return response.data.data.user;
+    const response = await apiClient.post("/user/register", user);
+    triggerToast(response.data?.message || "User added successfully!", "success");
+    return response.data.data;
   } catch (error: any) {
     const errorMessage = error.response?.data?.message || "Failed to add user.";
     triggerToast(errorMessage, "error");
@@ -54,9 +62,9 @@ export const updateUser = createAsyncThunk(
   "users/updateUser",
   async ({ id, user }: { id: string; user: Partial<User> }, { rejectWithValue }) => {
     try {
-      const response = await apiClient.put(`/user/user/${id}/`, user);
-      triggerToast(response.data?.data?.message || "User updated successfully!", "success");
-      return response.data.data.user;
+      const response = await apiClient.put(`/user/${id}`, user);
+      triggerToast(response.data?.message || "User updated successfully!", "success");
+      return response.data.data;
     } catch (error: any) {
       const errorMessage = error.response?.data?.message || "Failed to update user.";
       triggerToast(errorMessage, "error");
@@ -67,8 +75,8 @@ export const updateUser = createAsyncThunk(
 
 export const deleteUser = createAsyncThunk("users/deleteUser", async (id: string, { rejectWithValue }) => {
   try {
-    const response = await apiClient.delete(`/user/user/${id}/`);
-    triggerToast(response.data?.data?.message || "User deleted successfully!", "success");
+    const response = await apiClient.delete(`/user/${id}`);
+    triggerToast(response.data?.message || "User deleted successfully!", "success");
     return id;
   } catch (error: any) {
     const errorMessage = error.response?.data?.message || "Failed to delete user.";
@@ -76,6 +84,22 @@ export const deleteUser = createAsyncThunk("users/deleteUser", async (id: string
     return rejectWithValue(errorMessage);
   }
 });
+
+export const assignRole = createAsyncThunk(
+  "users/assignRole",
+  async ({ id, role_name }: { id: string; role_name: string }, { rejectWithValue }) => {
+    try {
+      const response = await apiClient.put(`/user/${id}/assign-role`, { role_name });
+      triggerToast(response.data?.message || "Role assigned successfully!", "success");
+      // fetchUsers(); // Refresh the user list after assigning role
+      return response.data.data;
+    } catch (error: any) {
+      const errorMessage = error.response?.data?.message || "Failed to assign role.";
+      triggerToast(errorMessage, "error");
+      return rejectWithValue(errorMessage);
+    }
+  }
+);
 
 // Slice
 const userSlice = createSlice({
@@ -90,7 +114,6 @@ const userSlice = createSlice({
     builder.addCase(fetchUsers.fulfilled, (state, action: PayloadAction<User[]>) => {
       state.status = "succeeded";
       state.users = action.payload;
-      //triggerToast("Users fetched successfully!", "success");
     });
     builder.addCase(fetchUsers.rejected, (state, action: PayloadAction<any>) => {
       state.status = "failed";
@@ -98,39 +121,61 @@ const userSlice = createSlice({
     });
 
     // Add User
+    builder.addCase(addUser.pending, (state) => {
+      state.status = "loading";
+    });
     builder.addCase(addUser.fulfilled, (state, action: PayloadAction<User>) => {
+      state.status = "succeeded";
       state.users.push(action.payload);
-      triggerToast("User added successfully!", "success");
     });
     builder.addCase(addUser.rejected, (state, action: PayloadAction<any>) => {
       state.status = "failed";
       state.error = action.payload;
-      triggerToast("Failed to add user.", "error");
     });
 
     // Update User
+    builder.addCase(updateUser.pending, (state) => {
+      state.status = "loading";
+    });
     builder.addCase(updateUser.fulfilled, (state, action: PayloadAction<User>) => {
+      state.status = "succeeded";
       const index = state.users.findIndex((user) => user.id === action.payload.id);
       if (index !== -1) {
         state.users[index] = action.payload;
       }
-      triggerToast("User updated successfully!", "success");
     });
     builder.addCase(updateUser.rejected, (state, action: PayloadAction<any>) => {
       state.status = "failed";
       state.error = action.payload;
-      triggerToast("Failed to update user.", "error");
     });
 
     // Delete User
+    builder.addCase(deleteUser.pending, (state) => {
+      state.status = "loading";
+    });
     builder.addCase(deleteUser.fulfilled, (state, action: PayloadAction<string>) => {
+      state.status = "succeeded";
       state.users = state.users.filter((user) => user.id !== action.payload);
-      triggerToast("User deleted successfully!", "success");
     });
     builder.addCase(deleteUser.rejected, (state, action: PayloadAction<any>) => {
       state.status = "failed";
       state.error = action.payload;
-      triggerToast("Failed to delete user.", "error");
+    });
+
+    // Assign Role
+    builder.addCase(assignRole.pending, (state) => {
+      state.status = "loading";
+    });
+    builder.addCase(assignRole.fulfilled, (state, action: PayloadAction<User>) => {
+      state.status = "succeeded";
+      const index = state.users.findIndex((user) => user.id === action.payload.id);
+      if (index !== -1) {
+        state.users[index] = action.payload;
+      }
+    });
+    builder.addCase(assignRole.rejected, (state, action: PayloadAction<any>) => {
+      state.status = "failed";
+      state.error = action.payload;
     });
   },
 });

@@ -61,7 +61,7 @@ const CustomSlider = styled(Slider)(({ theme }) => ({
 const StyledTextField = styled(TextField)(({ theme }) => ({
   '& .MuiOutlinedInput-root': {
     height: '32px',
-    width: '120px',
+    width: '150px',
     '& input': {
       padding: '4px 8px',
     },
@@ -147,7 +147,7 @@ export default function MachineDataForm() {
 
   const [formData, setFormData] = useState({
     id: data?.id,
-    abbreviation: data?.abbreviation,
+    abbreviation: data?.machine_abbreviation,
     name: data?.name,
     working_span: data?.working_span,
     activeVariant1: data?.active,
@@ -157,7 +157,7 @@ export default function MachineDataForm() {
     cuttingParameters: 50,
     transverse: 50,
     toolChange: 50,
-    programmingTimes: 50,
+    programmingTimes: data?.avg_programming_time,
     maximumPower: 2000,
     maximumLength: 2000,
     maximumWidth: 1500,

@@ -1,9 +1,9 @@
 import React, { Suspense } from 'react';
 import { Routes, Route } from 'react-router-dom';
-import SidebarLayout from '@/pages/layout/layout';
+const SidebarLayout = React.lazy(() => import('@/pages/layout/layout'));
 import ProtectedRoute from './protectedRoute';
-import LoadingFallback from '@/components/loadingFallback';
 import { publicRoutes, protectedRoutes, adminRoutes } from './routeConfig';
+import LoadingFallback from '@/components/LoadingFallback';
 
 const AppRoutes: React.FC = () => {
   return (

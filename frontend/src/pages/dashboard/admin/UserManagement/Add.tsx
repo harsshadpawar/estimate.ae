@@ -4,85 +4,143 @@ import React from 'react'
 function Add({ addForm, handleAddChange, addErrors }: any) {
     return (
         <Box sx={{ display: 'flex', flexDirection: 'column', gap: 2 }}>
-
-            <FormControl fullWidth>
-                <InputLabel id="add-title-label">Title</InputLabel>
-                <Select
-                    labelId="add-title-label"
-                    name="title"
-                    value={addForm?.title}
-                    onChange={handleAddChange}
-                >
-                    <MenuItem value="Mr.">Mr</MenuItem>
-                    <MenuItem value="Mrs.">Mrs</MenuItem>
-                    <MenuItem value="Dr.">Dr</MenuItem>
-                    <MenuItem value="Prof.">Prof</MenuItem>
-                </Select>
-                {addErrors?.title && (
-                    <Typography variant="caption" color="error">{addErrors.title}</Typography>
-                )}
-            </FormControl>
             <TextField
                 name="first_name"
                 label="First Name"
                 variant="outlined"
-                value={addForm?.first_name}
+                value={addForm?.first_name || ''}
                 onChange={handleAddChange}
                 error={Boolean(addErrors?.first_name)}
+                helperText={addErrors?.first_name}
                 fullWidth
+                required
             />
             <TextField
                 name="last_name"
                 label="Last Name"
                 variant="outlined"
-                value={addForm?.last_name}
+                value={addForm?.last_name || ''}
                 onChange={handleAddChange}
                 error={Boolean(addErrors?.last_name)}
+                helperText={addErrors?.last_name}
                 fullWidth
-            />
-            <TextField
-                name="password"
-                label="Password"
-                variant="outlined"
-                value={addForm?.password}
-                onChange={handleAddChange}
-                error={Boolean(addErrors?.password)}
-                fullWidth
+                required
             />
             <TextField
                 name="email"
                 label="Email"
                 type="email"
                 variant="outlined"
-                value={addForm?.email}
+                value={addForm?.email || ''}
                 onChange={handleAddChange}
                 error={Boolean(addErrors?.email)}
+                helperText={addErrors?.email}
+                fullWidth
+                required
+            />
+            <TextField
+                name="phone"
+                label="Phone"
+                variant="outlined"
+                value={addForm?.phone || ''}
+                onChange={handleAddChange}
+                error={Boolean(addErrors?.phone)}
+                helperText={addErrors?.phone}
+                fullWidth
+            />
+            <FormControl fullWidth>
+                <InputLabel id="add-gender-label">Gender</InputLabel>
+                <Select
+                    labelId="add-gender-label"
+                    name="gender"
+                    value={addForm?.gender || ''}
+                    label="Gender"
+                    onChange={handleAddChange}
+                    error={Boolean(addErrors?.gender)}
+                >
+                    <MenuItem value="male">Male</MenuItem>
+                    <MenuItem value="female">Female</MenuItem>
+                    <MenuItem value="other">Other</MenuItem>
+                </Select>
+                {addErrors?.gender && (
+                    <Typography variant="caption" color="error">{addErrors.gender}</Typography>
+                )}
+            </FormControl>
+            <TextField
+                name="date_of_birth"
+                label="Date of Birth"
+                type="date"
+                variant="outlined"
+                value={addForm?.date_of_birth || ''}
+                onChange={handleAddChange}
+                error={Boolean(addErrors?.date_of_birth)}
+                helperText={addErrors?.date_of_birth}
+                InputLabelProps={{
+                    shrink: true,
+                }}
                 fullWidth
             />
             <TextField
-                name="company_name"
-                label="Company"
+                name="address"
+                label="Address"
                 variant="outlined"
-                value={addForm?.company_name}
+                multiline
+                rows={3}
+                value={addForm?.address || ''}
                 onChange={handleAddChange}
-                error={Boolean(addErrors?.company_name)}
+                error={Boolean(addErrors?.address)}
+                helperText={addErrors?.address}
                 fullWidth
             />
+            <FormControl fullWidth>
+                <InputLabel id="add-subscription-label">Subscription Plan</InputLabel>
+                <Select
+                    labelId="add-subscription-label"
+                    name="subscription_plan"
+                    value={addForm?.subscription_plan || 'free'}
+                    label="Subscription Plan"
+                    onChange={handleAddChange}
+                    error={Boolean(addErrors?.subscription_plan)}
+                >
+                    <MenuItem value="free">Free</MenuItem>
+                    <MenuItem value="basic">Basic</MenuItem>
+                    <MenuItem value="premium">Premium</MenuItem>
+                    <MenuItem value="enterprise">Enterprise</MenuItem>
+                </Select>
+                {addErrors?.subscription_plan && (
+                    <Typography variant="caption" color="error">{addErrors.subscription_plan}</Typography>
+                )}
+            </FormControl>
             <FormControl fullWidth>
                 <InputLabel id="add-role-label">Role</InputLabel>
                 <Select
                     labelId="add-role-label"
-                    name="role"
-                    value={addForm?.role}
+                    name="role_name"
+                    value={addForm?.role_name || 'user'}
+                    label="Role"
                     onChange={handleAddChange}
+                    error={Boolean(addErrors?.role_name)}
                 >
                     <MenuItem value="user">User</MenuItem>
-                    <MenuItem value="sub-admin">Sub-admin</MenuItem>
+                    <MenuItem value="admin">Admin</MenuItem>
+                    <MenuItem value="super-admin">Super Admin</MenuItem>
                 </Select>
-                {addErrors?.role && (
-                    <Typography variant="caption" color="error">{addErrors?.role}</Typography>
+                {addErrors?.role_name && (
+                    <Typography variant="caption" color="error">{addErrors.role_name}</Typography>
                 )}
             </FormControl>
+            <TextField
+                name="password"
+                label="Password"
+                type="password"
+                variant="outlined"
+                value={addForm?.password || ''}
+                onChange={handleAddChange}
+                error={Boolean(addErrors?.password)}
+                helperText={addErrors?.password || "Password is required for new users"}
+                fullWidth
+                required
+            />
         </Box>
     )
 }

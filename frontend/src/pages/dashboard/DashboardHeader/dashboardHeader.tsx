@@ -4,14 +4,29 @@ import PathImg from "@/assets/images/Path.png";
 import Dashboard from "@/assets/images/Group.png";
 import { useSelector } from "react-redux";
 import { steptext } from "../../menus/headerItems";
+import CustomButton from "@/components/button";
 
-const DashboardHeader = ({ step }: any) => {
+const DashboardHeader = ({ step, SetStepperStep, SetHeaderStep }: any) => {
   const user = useSelector((state: any) => state.auth.userProfileData);
 
   const stepContent = steptext.find((s) => s.step === step) || {
     title: "Welcome to your dashboard.",
     description: "",
-    description1:""
+    description1: ""
+  };
+
+  const handleEstimationReportClick = () => {
+    // Add your estimation report logic here
+    console.log("Estimation Report clicked");
+    SetStepperStep(3)
+    SetHeaderStep(3)
+  };
+
+  const handleManufacturingProcessReportClick = () => {
+    // Add your manufacturing process report logic here
+    console.log("Manufacturing Process Report clicked");
+    SetStepperStep(4)
+    SetHeaderStep(4)
   };
 
   return (
@@ -19,6 +34,7 @@ const DashboardHeader = ({ step }: any) => {
       sx={{
         backgroundColor: "#A7D8FF",
         borderRadius: "8px",
+        height: "200px",
         padding: { xs: '20px', sm: "20px" },
         display: "flex",
         alignItems: "center",
@@ -44,7 +60,7 @@ const DashboardHeader = ({ step }: any) => {
           src={Dashboard}
           alt="Dashboard Icon"
           sx={{
-            width: { xs: "100px", sm: "120px",md:'180px' },
+            width: { xs: "100px", sm: "120px", md: '180px' },
             height: "auto",
             borderRadius: "8px",
           }}
@@ -54,7 +70,7 @@ const DashboardHeader = ({ step }: any) => {
       {/* Text Section */}
       <Box
         sx={{
-          flex: { xs: "1 1 100%", sm: "0 0 75%" },
+          flex: 1,
           display: "flex",
           flexDirection: "column",
           justifyContent: "center",
@@ -112,6 +128,7 @@ const DashboardHeader = ({ step }: any) => {
             {stepContent.description}
           </Typography>
         )}
+
         {stepContent.description1 && (
           <Typography
             variant="body2"
@@ -133,6 +150,61 @@ const DashboardHeader = ({ step }: any) => {
           </Typography>
         )}
       </Box>
+
+      {/* Buttons Section - Only show when step is 2 */}
+      {step === 2 && (
+        <Box
+          sx={{
+            display: "flex",
+            flexDirection: "column",
+            gap: 2,
+            alignItems: "flex-end",
+            justifyContent: "center",
+            // minWidth: "250px",
+          }}
+        >
+          <CustomButton
+            text="ESTIMATION REPORT  "
+            onClick={handleEstimationReportClick}
+            height="50px"
+            width="250px"
+            borderRadius="5px"
+            fontSize="12px"
+            showArrow={true}
+          />
+          <CustomButton
+            text="MANUFACTURING PROCESS REPORT   "
+            onClick={handleManufacturingProcessReportClick}
+            height="60px"
+            // width="250px"
+            borderRadius="5px"
+            fontSize="12px"
+            showArrow={true}
+          />
+        </Box>
+      )}
+      {step === 3 && (
+        <Box
+          sx={{
+            display: "flex",
+            flexDirection: "column",
+            gap: 2,
+            alignItems: "flex-end",
+            justifyContent: "center",
+            // minWidth: "250px",
+          }}
+        >
+          <CustomButton
+            text="Download REPORT  "
+            onClick={handleEstimationReportClick}
+            height="50px"
+            width="250px"
+            borderRadius="5px"
+            fontSize="12px"
+            showArrow={true}
+          />
+        </Box>
+      )}
     </Box>
   );
 };

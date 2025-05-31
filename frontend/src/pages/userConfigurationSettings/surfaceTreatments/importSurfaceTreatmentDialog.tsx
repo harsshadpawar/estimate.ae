@@ -1,6 +1,5 @@
 import React, { useEffect } from "react";
 import {
-  Drawer,
   Box,
   Table,
   TableBody,
@@ -8,10 +7,8 @@ import {
   TableCell,
   TableHead,
   Typography,
-  IconButton,
   CircularProgress,
 } from "@mui/material";
-import CloseIcon from "@mui/icons-material/Close";
 import { useDispatch, useSelector } from "react-redux";
 
 import { RootState } from "@/redux/store/store";
@@ -21,6 +18,7 @@ import "@/assets/css/surfaceTreatments.css";
 // Assuming these components exist in your project
 import CustomTablePagination from "@/components/customTablePagination";
 import BoldTableCell from "@/components/boldTableCell";
+import DrawerModal from "@/components/drawerModel";
 
 interface SurfaceTreatment {
   id: string;
@@ -64,78 +62,64 @@ const ImportSurfaceTreatmentDialog: React.FC<ImportSurfaceTreatmentDialogProps> 
   };
 
   return (
-    <Drawer anchor="right" open={open} onClose={onDrawerClose}>
-      <Box
-        sx={{
-          width: 600,
-          padding: 3,
-          display: "flex",
-          flexDirection: "column",
-          gap: 2,
-          height: "100%",
-        }}
-      >
-        {/* Header with Close Button */}
-        <Box display="flex" justifyContent="space-between" alignItems="center" mb={2}>
-          <Typography variant="h6">Select a Surface Treatment to Import</Typography>
-          <IconButton onClick={onDrawerClose}>
-            <CloseIcon />
-          </IconButton>
+    <DrawerModal
+      isOpen={open}
+      onClose={onDrawerClose}
+      title="Select a Surface Treatment to Import"
+      width={600}
+      anchor="right"
+    >
+      {status === 'loading' ? (
+        <Box display="flex" justifyContent="center" alignItems="center" height="200px">
+          <CircularProgress />
         </Box>
-
-        {/* Content */}
-        {status === 'loading' ? (
-          <Box display="flex" justifyContent="center" alignItems="center" height="200px">
-            <CircularProgress />
-          </Box>
-        ) : treatments.length === 0 ? (
-          <Box textAlign="center" mt={4}>
-            <Typography variant="body1" color="textSecondary">
-              No surface treatments available to import.
-            </Typography>
-          </Box>
-        ) : (
-          <>
-            <Box className="import-surface-treatment-table" sx={{ flexGrow: 1, overflow: "auto" }}>
-              <Table>
-                <TableHead className="import-machine-table-header">
-                  <TableRow>
-                    <BoldTableCell>Surface Treatment</BoldTableCell>
-                    <BoldTableCell align="right">Price per kg</BoldTableCell>
-                    <BoldTableCell align="right">Surface Price</BoldTableCell>
+      ) : treatments.length === 0 ? (
+        <Box textAlign="center" mt={4}>
+          <Typography variant="body1" color="textSecondary">
+            No surface treatments available to import.
+          </Typography>
+        </Box>
+      ) : (
+        <>
+          <Box className="import-surface-treatment-table" sx={{ flexGrow: 1, overflow: "auto" }}>
+            <Table>
+              <TableHead className="import-machine-table-header">
+                <TableRow>
+                  <BoldTableCell>Surface Treatment</BoldTableCell>
+                  <BoldTableCell align="right">Price per kg</BoldTableCell>
+                  <BoldTableCell align="right">Surface Price</BoldTableCell>
+                </TableRow>
+              </TableHead>
+              <TableBody>
+                {treatments.map((treatment) => (
+                  <TableRow
+                    key={treatment.id}
+                    onClick={() => onImportSurfaceTreatment(treatment)}
+                    sx={{ 
+                      cursor: "pointer",
+                      '&:hover': {
+                        backgroundColor: 'rgba(5, 145, 252, 0.08)',
+                      }
+                    }}
+                  >
+                    <TableCell>{treatment.name}</TableCell>
+                    <TableCell align="right">{treatment.price_per_kg}</TableCell>
+                    <TableCell align="right">{treatment.surface_price}</TableCell>
                   </TableRow>
-                </TableHead>
-                <TableBody>
-                  {treatments.map((treatment) => (
-                    <TableRow
-                      key={treatment.id}
-                      onClick={() => onImportSurfaceTreatment(treatment)}
-                      sx={{ 
-                        cursor: "pointer",
-                        '&:hover': {
-                          backgroundColor: 'rgba(5, 145, 252, 0.08)',
-                        }
-                      }}
-                    >
-                      <TableCell>{treatment.name}</TableCell>
-                      <TableCell align="right">{treatment.price_per_kg}</TableCell>
-                      <TableCell align="right">{treatment.surface_price}</TableCell>
-                    </TableRow>
-                  ))}
-                </TableBody>
-              </Table>
-            </Box>
-            <CustomTablePagination
-              totalItems={pagination.total}
-              page={pagination.page}
-              onPageChange={handleChangePage}
-              rowsPerPage={pagination.rowsPerPage}
-              onRowsPerPageChange={handleChangeRowsPerPage}
-            />
-          </>
-        )}
-      </Box>
-    </Drawer>
+                ))}
+              </TableBody>
+            </Table>
+          </Box>
+          <CustomTablePagination
+            totalItems={pagination.total}
+            page={pagination.page}
+            onPageChange={handleChangePage}
+            rowsPerPage={pagination.rowsPerPage}
+            onRowsPerPageChange={handleChangeRowsPerPage}
+          />
+        </>
+      )}
+    </DrawerModal>
   );
 };
 

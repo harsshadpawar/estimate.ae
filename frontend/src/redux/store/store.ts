@@ -11,6 +11,10 @@ import materialsReducer from "../features/materials/materialsSlice";
 import machinesReducer from "../features/machines/machinesSlice";
 import surfaceTreatmentsReducer from "../features/surfaceTreatments/surfaceTreatmentsSlice";
 import costsReducer from "../features/costs/costsSlice";
+import companyReducer from "../features/company/companySlice";
+import subscriptionReducer from "../features/subscription/subscriptionSlice";
+import fileReducer from "../features/file/fileSlice";
+import productReducer from "../features/product/productSlice";
 export const store = configureStore({
   reducer: {
     // Add other reducers here
@@ -24,6 +28,11 @@ export const store = configureStore({
     machines: machinesReducer,
     surfaceTreatments: surfaceTreatmentsReducer,
     costs: costsReducer,
+    company: companyReducer,
+    subscription: subscriptionReducer,
+    file: fileReducer,
+    product:productReducer,
+    
   },
 });
 
