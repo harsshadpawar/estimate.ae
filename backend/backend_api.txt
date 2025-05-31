@@ -1,0 +1,11 @@
+Register
+
+{
+    "first_name": "super-admin",
+    "last_name": "super-admin",
+    "email": "superadmin@gmail.com",
+    "password": "password",
+    "phone": "9834061989",
+    "date_of_birth": "1991-06-30",
+    "gender": "male"
+}

@@ -1,0 +1,70 @@
+Part Analysis:
+        Volume and Material Usage:
+        - Part Volume: 989200.00 cubic units
+        - Total Surface Area: 63315.37 square units
+        - Raw Material Block Size (with 2mm margin):
+        * Length: 104.00 units
+        * Width: 104.00 units
+        * Height: 104.00 units
+        - Raw Material Volume: 1124864.01 cubic units
+        - Material Removal Required: 135664.01 cubic units
+        - Material Utilization: 87.9%
+
+        Feature Summary:
+        Total Faces: 14
+        Basic Surfaces:
+        - 14 planar faces
+        - 0 cylindrical faces
+        - 0 conical faces
+        - 0 spherical faces
+        - 0 toroidal faces
+
+        Advanced Surfaces:
+        - 0 Bezier surfaces
+        - 0 B-Spline surfaces
+        - 0 other surface types
+        - 0 unidentified surfaces
+        
+Detailed Surface Analysis:
+Surface 1:
+  Type: Plane
+  Area: 9892.00
+Surface 2:
+  Type: Plane
+  Area: 9892.00
+Surface 3:
+  Type: Plane
+  Area: 9600.00
+Surface 4:
+  Type: Plane
+  Area: 9600.00
+Surface 5:
+  Type: Plane
+  Area: 9600.00
+Surface 6:
+  Type: Plane
+  Area: 9600.00
+Surface 7:
+  Type: Plane
+  Area: 1000.00
+Surface 8:
+  Type: Plane
+  Area: 1000.00
+Surface 9:
+  Type: Plane
+  Area: 1000.00
+Surface 10:
+  Type: Plane
+  Area: 1000.00
+Surface 11:
+  Type: Plane
+  Area: 282.84
+Surface 12:
+  Type: Plane
+  Area: 282.84
+Surface 13:
+  Type: Plane
+  Area: 282.84
+Surface 14:
+  Type: Plane
+  Area: 282.84

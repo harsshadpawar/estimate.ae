@@ -1,0 +1,245 @@
+CREATE TABLE users (
+    id SERIAL PRIMARY KEY,
+    company_id INTEGER REFERENCES companies(id) ON DELETE SET NULL,
+    email VARCHAR(255) UNIQUE NOT NULL,
+    name VARCHAR(255) NOT NULL,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+
+CREATE TABLE roles (
+    id SERIAL PRIMARY KEY,
+    name VARCHAR(50) UNIQUE NOT NULL  -- e.g., 'admin', 'editor', 'user'
+);
+
+
+CREATE TABLE user_roles (
+    user_id INTEGER REFERENCES users(id) ON DELETE CASCADE,
+    role_id INTEGER REFERENCES roles(id) ON DELETE CASCADE,
+    PRIMARY KEY (user_id, role_id)
+);
+
+
+CREATE TABLE companies (
+    id SERIAL PRIMARY KEY,
+    name VARCHAR(255) NOT NULL,             -- Company Name
+    address VARCHAR(255),                   -- Company Address (optional)
+    contact_email VARCHAR(255),             -- Contact Email (optional)
+    contact_phone VARCHAR(20),              -- Contact Phone (optional)
+    website_url VARCHAR(255),               -- Website URL (optional)
+    status VARCHAR(50) DEFAULT 'active',    -- Status of the company ('active', 'inactive')
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,  -- Date and time when the company was created
+    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,  -- Date and time when the company record was last updated
+    created_by INTEGER,                     -- User ID who created the company record (optional)
+    updated_by INTEGER                      -- User ID who last updated the company record (optional)
+);
+
+
+CREATE TABLE products (
+    id SERIAL PRIMARY KEY,
+    name VARCHAR(255) NOT NULL,
+    description TEXT,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+
+
+CREATE TABLE subscription_plans (
+    id SERIAL PRIMARY KEY,
+    name VARCHAR(50) UNIQUE NOT NULL,  -- 'Free', 'Premium', 'Enterprise'
+    price DECIMAL(10, 2) DEFAULT 0.00,
+    features TEXT,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+
+
+CREATE TABLE subscriptions (
+    id SERIAL PRIMARY KEY,
+    user_id INTEGER REFERENCES users(id) ON DELETE CASCADE,
+    company_id INTEGER REFERENCES companies(id) ON DELETE CASCADE,
+    product_id INTEGER REFERENCES products(id) ON DELETE CASCADE,
+    subscription_plan_id INTEGER REFERENCES subscription_plans(id),
+    start_date DATE NOT NULL,
+    end_date DATE,
+    status VARCHAR(50) DEFAULT 'active',  -- 'active', 'cancelled', 'expired'
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+
+    CHECK (
+        (user_id IS NOT NULL AND company_id IS NULL) OR
+        (user_id IS NULL AND company_id IS NOT NULL)
+    )
+);
+
+
+
+CREATE TABLE plan_limits (
+    id SERIAL PRIMARY KEY,
+    subscription_plan_id INTEGER REFERENCES subscription_plans(id) ON DELETE CASCADE,
+    period VARCHAR(20) NOT NULL CHECK (period IN ('daily', 'weekly', 'yearly')),
+    api_name VARCHAR(100) NOT NULL,  -- e.g., 'get-report', 'upload-data'
+    limit_count INTEGER NOT NULL
+);
+
+
+CREATE TABLE api_usage_logs (
+    id SERIAL PRIMARY KEY,
+    user_id INTEGER REFERENCES users(id) ON DELETE CASCADE,
+    company_id INTEGER REFERENCES companies(id) ON DELETE CASCADE,
+    api_name VARCHAR(100) NOT NULL,
+    called_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+
+    CHECK (
+        (user_id IS NOT NULL AND company_id IS NULL) OR
+        (user_id IS NULL AND company_id IS NOT NULL)
+    )
+);
+
+
+
+
+CREATE TABLE countries (
+    code VARCHAR(2) PRIMARY KEY,             -- ISO 3166-1 alpha-2 (e.g., 'US', 'IN')
+    name VARCHAR(100) NOT NULL,              -- Full country name (e.g., 'India')
+    iso3_code VARCHAR(3),                    -- ISO 3166-1 alpha-3 (e.g., 'IND')
+    currency_code VARCHAR(3),                -- ISO 4217 currency code (e.g., 'INR', 'USD')
+    currency_symbol VARCHAR(5),              -- Currency symbol (e.g., '₹', '$')
+    phone_code VARCHAR(10),                  -- Country calling code (e.g., '+91', '+1')
+    continent VARCHAR(50),                   -- Continent (e.g., 'Asia', 'North America')
+    timezone VARCHAR(100),                   -- Primary time zone (e.g., 'Asia/Kolkata')
+    language_code VARCHAR(10),               -- Default language code (e.g., 'en', 'hi')
+    is_active BOOLEAN DEFAULT TRUE,          -- Flag for availability in the platform
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+
+
+CREATE TABLE country_subscription_plans (
+    id SERIAL PRIMARY KEY,
+    subscription_plan_id INTEGER REFERENCES subscription_plans(id) ON DELETE CASCADE,
+    country_code VARCHAR(2) REFERENCES countries(code) ON DELETE CASCADE,
+    price DECIMAL(10, 2),                    -- Override price for the country
+    features TEXT,                           -- Optional country-specific features
+    status VARCHAR(50) DEFAULT 'active',
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    UNIQUE (subscription_plan_id, country_code)
+);
+
+
+---------------------------Heere   New Code      ---------
+
+
+CREATE TABLE machine_master (
+    id SERIAL PRIMARY KEY,
+    machine_abbreviation VARCHAR NOT NULL UNIQUE,
+    machine_category VARCHAR NOT NULL,
+    machine_subcategory VARCHAR NOT NULL,
+    name VARCHAR NOT NULL,
+    hourly_rate FLOAT NOT NULL,
+    working_span VARCHAR NOT NULL,
+    machine_setup_time INTEGER,
+    avg_programming_time INTEGER
+);
+
+
+
+CREATE TABLE machine_override (
+    id SERIAL PRIMARY KEY,
+    machine_abbreviation VARCHAR NOT NULL REFERENCES machine_master(machine_abbreviation),
+    user_id INTEGER,             -- nullable
+    company_id INTEGER,          -- nullable
+    country_id INTEGER,          -- nullable
+
+    -- Only overrideable fields:
+    hourly_rate FLOAT,
+    working_span VARCHAR,
+    machine_setup_time INTEGER,
+    avg_programming_time INTEGER,
+
+    UNIQUE (user_id, company_id, country_id, machine_abbreviation)
+);
+
+
+
+
+
+
+SELECT 
+    m.machine_abbreviation,
+    m.machine_category,
+    m.machine_subcategory,
+    m.name,
+    COALESCE(o.hourly_rate, m.hourly_rate) AS hourly_rate,
+    COALESCE(o.working_span, m.working_span) AS working_span,
+    COALESCE(o.machine_setup_time, m.machine_setup_time) AS machine_setup_time,
+    COALESCE(o.avg_programming_time, m.avg_programming_time) AS avg_programming_time
+FROM machine_master m
+LEFT JOIN machine_override o
+    ON m.machine_abbreviation = o.machine_abbreviation
+    AND o.user_id = :user_id;
+
+
+
+
+
+
+
+
+
+
+1. machine_config
+
+CREATE TABLE machine_config (
+    id INTEGER PRIMARY KEY,
+    user_id INTEGER,               -- Nullable
+    company_id INTEGER,            -- Nullable
+    country_id INTEGER,            -- Nullable
+    machine_category VARCHAR NOT NULL,
+    machine_subcategory VARCHAR NOT NULL,
+    machine_abbreviation VARCHAR NOT NULL,
+    name VARCHAR NOT NULL,
+    hourly_rate FLOAT NOT NULL,
+    working_span VARCHAR NOT NULL,
+    machine_setup_time INTEGER,
+    avg_programming_time INTEGER,
+
+    UNIQUE (user_id, company_id, country_id, machine_abbreviation)
+);
+
+    If user_id and company_id are both NULL → it's a global config
+    If user_id is set → user-specific override
+    If company_id is set → company-wide config
+    You can prioritize config selection in this order: user > company > global
+
+
+
+
+
+
+
+
+CREATE TABLE "Material_Groups" (
+    id INTEGER PRIMARY KEY,
+    abbreviation VARCHAR NOT NULL,
+    material VARCHAR NOT NULL,
+    price_per_kg FLOAT NOT NULL, -- AED/kg
+    density FLOAT NOT NULL       -- g/mm3
+);
+
+CREATE TABLE "Material_Subgrades" (
+    id INTEGER PRIMARY KEY,
+    abbreviation VARCHAR NOT NULL,
+    material VARCHAR NOT NULL,
+    price_per_kg FLOAT NOT NULL, -- AED/kg
+    density FLOAT NOT NULL,      -- g/mm3
+    material_group_id INTEGER REFERENCES "Material_Groups"(id)
+);
+
+
+
+CREATE TABLE "Surface_Treatments" (
+    id INTEGER PRIMARY KEY,
+    name VARCHAR NOT NULL,
+    treatment_price FLOAT,
+    price_unit VARCHAR
+);
